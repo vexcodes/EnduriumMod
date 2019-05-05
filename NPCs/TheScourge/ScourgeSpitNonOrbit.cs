@@ -43,10 +43,8 @@ namespace EnduriumMod.NPCs.TheScourge
         {
             npc.dontTakeDamage = true;
             Player player = Main.player[npc.target];
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
                 npc.TargetClosest(true);
-            }
+            
             if (Main.player[npc.target].dead)
             {
                 npc.active = false;
@@ -61,7 +59,6 @@ namespace EnduriumMod.NPCs.TheScourge
                 Vector2 PlayerPosition = new Vector2(player.Center.X + Main.rand.Next(-150, 151) - npc.Center.X, player.Center.Y + Main.rand.Next(-150, 151) - npc.Center.Y);
                 PlayerPosition.Normalize();
                 npc.velocity = PlayerPosition * 12f;
-                npc.ai[0] = 1;
                 hasSummoned = true;
                 for (int num623 = 0; num623 < 15; num623++)
                 {
@@ -74,66 +71,6 @@ namespace EnduriumMod.NPCs.TheScourge
                     int num1 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ScourgeSpit"));
                     Main.npc[num1].ai[0] = npc.whoAmI;
                 }
-            }
-            else if (npc.ai[1] == 1f && Main.netMode != 1)
-            {
-                int num3 = -1;
-                float num4 = 2000f;
-                for (int k = 0; k < 255; k = num + 1)
-                {
-                    if (Main.player[k].active && !Main.player[k].dead)
-                    {
-                        Vector2 center = Main.player[k].Center;
-                        float num5 = Vector2.Distance(center, npc.Center);
-                        if ((num5 < num4 || num3 == -1) && Collision.CanHit(npc.Center, 1, 1, center, 1, 1))
-                        {
-                            num4 = num5;
-                            num3 = k;
-                        }
-                    }
-                    num = k;
-                }
-                if (num3 != -1)
-                {
-                    npc.ai[1] = 21f;
-                    npc.ai[0] = (float)num3;
-                    npc.netUpdate = true;
-                }
-            }
-            else if (npc.ai[1] > 20f && npc.ai[1] < 200f)
-            {
-                npc.ai[1] += 1f;
-                int num6 = (int)npc.ai[0];
-                if (!Main.player[num6].active || Main.player[num6].dead)
-                {
-                    npc.ai[1] = 1f;
-                    npc.ai[0] = 0f;
-                    npc.netUpdate = true;
-                }
-                else
-                {
-                    float num7 = npc.velocity.ToRotation();
-                    Vector2 vector2 = Main.player[num6].Center - npc.Center;
-                    float targetAngle = vector2.ToRotation();
-                    if (vector2 == Vector2.Zero)
-                    {
-                        targetAngle = num7;
-                    }
-                    float num8 = num7.AngleLerp(targetAngle, 0.008f);
-                    npc.velocity = new Vector2(npc.velocity.Length(), 0f).RotatedBy((double)num8, default(Vector2));
-                }
-            }
-            if (npc.ai[1] >= 1f && npc.ai[1] < 20f)
-            {
-                npc.ai[1] += 1f;
-                if (npc.ai[1] == 20f)
-                {
-                    npc.ai[1] = 1f;
-                }
-            }
-            if (npc.ai[1] == 0)
-            {
-                npc.ai[1] = 1;
             }
         }
     }

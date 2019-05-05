@@ -45,17 +45,20 @@ namespace EnduriumMod.NPCs.TheScourge
             {
                 npc.frame.Y = 0 * frameHeight;
             }
-            if (npc.ai[3] == 1)
+            if (npc.ai[3] >= 1 && npc.ai[3] <= 3)
             {
-                npc.frame.Y = 4 * frameHeight;
-            }
-            if (npc.ai[3] == 2)
-            {
-                npc.frame.Y = 5 * frameHeight;
-            }
-            if (npc.ai[3] == 3)
-            {
-                npc.frame.Y = 6 * frameHeight;
+                if (npc.ai[2] > 22)
+                {
+                    npc.frame.Y = 5 * frameHeight;
+                }
+                if (npc.ai[2] < 22 && npc.ai[2] > 11)
+                {
+                    npc.frame.Y = 4 * frameHeight;
+                }
+                if (npc.ai[2] < 11)
+                {
+                    npc.frame.Y = 3 * frameHeight;
+                }
             }
         }
 
@@ -130,7 +133,7 @@ namespace EnduriumMod.NPCs.TheScourge
                 if (npc.ai[0] >= 300)
                 {
                     npc.ai[0] = 0f;
-                    npc.ai[3] = 1 + Main.rand.Next(0, 2);
+                    npc.ai[3] = 1;
                 }
 
             }
@@ -138,12 +141,16 @@ namespace EnduriumMod.NPCs.TheScourge
             {
                 npc.ai[0] += 1f;
                 npc.ai[1] += 1f;
+                if (npc.ai[2] < 33)
+                {
+                    npc.ai[2] += 1f;
+                }
                 if (npc.ai[0] >= 60) //shoot projectile
                 {
                     npc.ai[0] = 0;
                     for (int k = 0; k < npc.ai[3]; k++)
                     {
-                        NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2) + npc.velocity.X), (int)(npc.position.Y - 60 + (float)(npc.height / 2) + npc.velocity.Y), mod.NPCType("ScourgeSpitNonOrbit"), npc.damage, 0f, 1f, 0f, 0f, 255);
+                        NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y - 60 + (float)(npc.height / 2)), mod.NPCType("ScourgeSpitNonOrbit"), npc.damage, 0f, Main.myPlayer, npc.whoAmI);
                     }
                 }
                 if (npc.ai[1] >= 260)
