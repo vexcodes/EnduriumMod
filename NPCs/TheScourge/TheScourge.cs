@@ -47,15 +47,15 @@ namespace EnduriumMod.NPCs.TheScourge
             }
             if (npc.ai[3] >= 1 && npc.ai[3] <= 3)
             {
-                if (npc.ai[2] > 22)
+                if (npc.ai[1] > 22)
                 {
                     npc.frame.Y = 5 * frameHeight;
                 }
-                if (npc.ai[2] < 22 && npc.ai[2] > 11)
+                if (npc.ai[1] < 22 && npc.ai[1] > 11)
                 {
                     npc.frame.Y = 4 * frameHeight;
                 }
-                if (npc.ai[2] < 11)
+                if (npc.ai[1] < 11)
                 {
                     npc.frame.Y = 3 * frameHeight;
                 }
@@ -106,11 +106,11 @@ namespace EnduriumMod.NPCs.TheScourge
                 {
                     npc.velocity.X = -movementCAPX;
                 }
-                if (npc.position.Y > player.position.Y + 50f)
+                else if (npc.position.Y + (float)(npc.height / 2) > player.position.Y + (float)(player.height / 2) + 50f)
                 {
                     npc.velocity.Y = npc.velocity.Y -= movementACCY;
                 }
-                else if (npc.position.Y < player.position.Y - 50f)
+                else if (npc.position.Y + (float)(npc.height / 2) < player.position.Y + (float)(player.height / 2) - 50f)
                 {
                     npc.velocity.Y = npc.velocity.Y += movementACCY;
                 }
@@ -127,13 +127,13 @@ namespace EnduriumMod.NPCs.TheScourge
                 npc.ai[0] += 1f;
                 if (npc.ai[0] >= 280)
                 {
-                    npc.velocity *= 0.9f;
+                    npc.velocity *= 0.8f;
                 }
 
                 if (npc.ai[0] >= 300)
                 {
                     npc.ai[0] = 0f;
-                    npc.ai[3] = 1;
+                    npc.ai[3] = 1 + Main.rand.Next(0, 2);
                 }
 
             }
@@ -141,10 +141,6 @@ namespace EnduriumMod.NPCs.TheScourge
             {
                 npc.ai[0] += 1f;
                 npc.ai[1] += 1f;
-                if (npc.ai[2] < 33)
-                {
-                    npc.ai[2] += 1f;
-                }
                 if (npc.ai[0] >= 60) //shoot projectile
                 {
                     npc.ai[0] = 0;
@@ -155,10 +151,9 @@ namespace EnduriumMod.NPCs.TheScourge
                 }
                 if (npc.ai[1] >= 260)
                 {
-                    npc.ai[3] = 4;
+                    npc.ai[3] = 0;
                     npc.ai[1] = 0;
                     npc.ai[0] = 0;
-                    npc.ai[2] = 0;
                 }
             }
 

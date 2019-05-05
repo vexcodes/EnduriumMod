@@ -42,9 +42,9 @@ namespace EnduriumMod.NPCs.TheScourge
         public override void AI()
         {
             npc.dontTakeDamage = true;
+            npc.TargetClosest(true);
             Player player = Main.player[npc.target];
-                npc.TargetClosest(true);
-            
+
             if (Main.player[npc.target].dead)
             {
                 npc.active = false;
