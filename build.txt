@@ -3,7 +3,7 @@ version = 0.9.1
 
 displayName = The Endurium Mod
 homepage = https://forums.terraria.org/index.php?threads/the-endurium-mod.64620/
-hideCode = true
+hideCode = false
 hideResources = false
 includeSource = false
 
