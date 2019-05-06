@@ -15,8 +15,8 @@ namespace EnduriumMod.Projectiles
             projectile.height = 64;
             projectile.friendly = true;
             projectile.penetrate = -1;
+            Main.projFrames[projectile.type] = 7;
             projectile.tileCollide = false;
-            Main.projFrames[projectile.type] = 5;
             projectile.ranged = true;
             projectile.ignoreWater = true;
         }
@@ -24,58 +24,78 @@ namespace EnduriumMod.Projectiles
         {
             DisplayName.SetDefault("Shadegasm");
         }
+        int shotsLeft = 0;
+        float damage = 0.25f;
+        public override bool CanHitPvp(Player target)
+        {
+            return false;
+        }
+        public override bool? CanHitNPC(NPC target)
+        {
+            return false;
+        }
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
             float num = 1.57079637f;
             Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
-            projectile.ai[0] += 1f;
-            float num23 = 0f;
-            int num3 = 6; //;)
-            int num4 = 1;
-            projectile.ai[1] += 1f;
-            bool flag = false;
-            if (projectile.ai[1] >= (float)(num3 - num4))
+
+            bool flag3 = player.channel && !player.noItems && !player.CCed;
+            if (projectile.frame != 6)
             {
-                projectile.ai[1] = 0f;
-                flag = true;
-            }
-            projectile.frameCounter += 4;
-            if (projectile.frameCounter >= 5)
-            {
-                projectile.frameCounter = 0;
-                projectile.frame++;
-                if (projectile.frame >= 5)
+                projectile.ai[0] += 0.05f;
+                projectile.ai[1] += 0.032f;
+                if (flag3)
                 {
-                    projectile.frame = 0;
+                    projectile.frameCounter += (int)projectile.ai[0];
+                }
+                if (projectile.frameCounter >= 40)
+                {
+                    shotsLeft += 2;
+                    projectile.frameCounter = 0;
+                    projectile.frame += 1;
                 }
             }
-            if (projectile.soundDelay <= 0)
+            if (projectile.frame == 6)
             {
-                projectile.soundDelay = num3 - num4;
-                if (projectile.ai[0] != 1f)
+                if (projectile.ai[0] > 0)
                 {
-                    Main.PlaySound(SoundID.Item36, projectile.position);
+                    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 93); //zap sound
+                    projectile.ai[0] = 0;
+                }
+                if (projectile.ai[0] <= 0)
+                {
+                    projectile.ai[0] -= 0.1f;
                 }
             }
-            if (projectile.ai[1] == 1f && projectile.ai[0] != 1f)
+
+            int num16 = 0;
+            Vector2 vector13 = Vector2.UnitX * 45f;
+            vector13 = vector13.RotatedBy((double)(projectile.rotation - 1.57079637f), default(Vector2));
+            Vector2 value6 = projectile.Center + vector13;
+            if (projectile.ai[1] > 0)
             {
-                Vector2 vector2 = Vector2.UnitX * 24f;
-                vector2 = vector2.RotatedBy((double)(projectile.rotation - 1.57079637f), default(Vector2));
-                Vector2 value = projectile.Center + vector2;
-                for (int i = 0; i < 2; i++)
+                for (int k = 0; k < num16 + 1; k++)
                 {
-                    int num5 = Dust.NewDust(value - Vector2.One * 8f, 16, 16, 89, projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 100, default(Color), 1f);
-                    Main.dust[num5].velocity *= 0.66f;
-                    Main.dust[num5].noGravity = true;
-                    Main.dust[num5].scale = 1.4f;
+                    int num18 = mod.DustType("Shadegasm");
+                    float num19 = 1.1f;
+                    Vector2 vector14 = value6 + ((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * ((11f * projectile.ai[1]) - (float)(num16 * 2));
+                    int num20 = Dust.NewDust(vector14 - Vector2.One * 8f, 16, 16, num18, projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 0, default(Color), 0.6f);
+                    Main.dust[num20].velocity = Vector2.Normalize(value6 - vector14) * 1.5f * (10f - (float)num16 * 2f) / 10f;
+                    Main.dust[num20].noGravity = true;
+                    Main.dust[num20].scale = num19;
+                    Main.dust[num20].customData = player;
                 }
             }
-            if (flag && Main.myPlayer == projectile.owner)
+            if (Main.myPlayer == projectile.owner) //triggers for shooting
             {
-                bool flag2 = player.channel && player.HasAmmo(player.inventory[player.selectedItem], true) && !player.noItems && !player.CCed;
-                if (flag2)
+                if (flag3)
                 {
+                    if (projectile.ai[1] >= 0.25f)
+                    {
+                        damage = projectile.ai[1];
+                    }
+
                     float scaleFactor = player.inventory[player.selectedItem].shootSpeed * projectile.scale;
                     Vector2 vector3 = vector;
                     Vector2 value2 = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY) - vector3;
@@ -94,27 +114,44 @@ namespace EnduriumMod.Projectiles
                         projectile.netUpdate = true;
                     }
                     projectile.velocity = vector4;
-                    int num6 = mod.ProjectileType("Shadegasm");
-                    float scaleFactor2 = 15f;
-                    int num7 = 9;
-                    for (int j = 0; j < 1; j++)
+                }
+                if (!flag3)
+                {
+                    projectile.ai[1] -= 0.3f;
+                    if (projectile.ai[1] <= -10f)
                     {
-                        vector3 = projectile.Center + new Vector2((float)Main.rand.Next(-num7, num7 + 1), (float)Main.rand.Next(-num7, num7 + 1));
-                        Vector2 vector5 = Vector2.Normalize(projectile.velocity) * scaleFactor2;
-                        vector5 = vector5.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default(Vector2));
-                        if (float.IsNaN(vector5.X) || float.IsNaN(vector5.Y))
+                        projectile.Kill();
+                    }
+                    float scaleFactor = player.inventory[player.selectedItem].shootSpeed * projectile.scale;
+                    Vector2 vector3 = vector;
+                    Vector2 value2 = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY) - vector3;
+                    float spread1 = 0.002f;
+                    float scaleFactor2 = 15f;
+                    int num6 = mod.ProjectileType("Shadegasm");
+                    int num7 = 6;
+                    if (projectile.ai[1] <= 0f)
+                    {
+                        if (shotsLeft != 0)
                         {
-                            vector5 = -Vector2.UnitY;
+                            shotsLeft -= 1;
+                            projectile.ai[0] = 4f;
+                            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 92); //charged zap sound
+                            for (int j = 0; j < 1; j++)
+                            {
+                                vector3 = projectile.Center + new Vector2((float)Main.rand.Next(-num7, num7 + 1), (float)Main.rand.Next(-num7, num7 + 1));
+                                Vector2 vector5 = Vector2.Normalize(projectile.velocity) * scaleFactor2;
+                                vector5 = vector5.RotatedBy(Main.rand.NextDouble() * 0.1f - 0.1f / 2, default(Vector2));
+                                if (float.IsNaN(vector5.X) || float.IsNaN(vector5.Y))
+                                {
+                                    vector5 = -Vector2.UnitY;
+                                }
+                                Projectile.NewProjectile(value6.X, value6.Y, vector5.X, vector5.Y, num6, (projectile.damage / 2) * (int)damage, projectile.knockBack, projectile.owner, 0f, damage);
+                                Main.PlaySound(SoundID.Item11, projectile.position);
+                            }
                         }
-                        Projectile.NewProjectile(vector3.X, vector3.Y, vector5.X, vector5.Y, num6, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                     }
                 }
-                else
-                {
-                    projectile.Kill();
-                }
             }
-
             projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - projectile.Size / 2f;
             projectile.rotation = projectile.velocity.ToRotation() + num;
             projectile.spriteDirection = projectile.direction;
@@ -124,8 +161,6 @@ namespace EnduriumMod.Projectiles
             player.itemTime = 2;
             player.itemAnimation = 2;
             player.itemRotation = (float)Math.Atan2((double)(projectile.velocity.Y * (float)projectile.direction), (double)(projectile.velocity.X * (float)projectile.direction));
-
-
         }
     }
 }

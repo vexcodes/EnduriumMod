@@ -53,7 +53,7 @@ namespace EnduriumMod.Projectiles
                 projectile.velocity.Y = perturbedSpeed.Y;
                 projectile.velocity.X = perturbedSpeed.X;
             }
-            if (projectile.ai[0] > 60)
+            if (projectile.ai[0] >= 60)
             {
                 projectile.ai[0] = 0;
             }

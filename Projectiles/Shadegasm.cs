@@ -25,28 +25,23 @@ namespace EnduriumMod.Projectiles
 
         public override void AI()
         {
-            projectile.ai[1] += 1;
-            if (projectile.ai[1] >= 5)
-            {
-                int num3;
-                for (int num93 = 0; num93 < 4; num93 = num3 + 1)
-                {
-                    float num94 = projectile.velocity.X / 3f * (float)num93;
-                    float num95 = projectile.velocity.Y / 3f * (float)num93;
-                    int num96 = 4;
-                    int num97 = Dust.NewDust(new Vector2(projectile.position.X + (float)num96, projectile.position.Y + (float)num96), projectile.width - num96 * 2, projectile.height - num96 * 2, 89, 0f, 0f, 100, default(Color), 0.7f);
-                    Main.dust[num97].noGravity = true;
-                    Dust dust3 = Main.dust[num97];
-                    dust3.velocity *= 0.1f;
-                    dust3 = Main.dust[num97];
-                    dust3.velocity += projectile.velocity * 0.1f;
-                    Dust dust6 = Main.dust[num97];
-                    dust6.position.X = dust6.position.X - num94;
-                    Dust dust7 = Main.dust[num97];
-                    dust7.position.Y = dust7.position.Y - num95;
-                    num3 = num93;
-                }
-            }
+            projectile.velocity.X *= 1.04f;
+            projectile.velocity.Y *= 1.04f;
+
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
+            float num94 = projectile.velocity.X / 3f;
+            float num95 = projectile.velocity.Y / 3f;
+            int num96 = 4;
+            int num97 = Dust.NewDust(new Vector2(projectile.position.X + (float)num96, projectile.position.Y + (float)num96), projectile.width - num96 * 2, projectile.height - num96 * 2, mod.DustType("Shadegasm"), 0f, 0f, 0, default(Color), 1f);
+            Main.dust[num97].noGravity = true;
+            Dust dust3 = Main.dust[num97];
+            dust3.velocity *= 0.1f;
+            dust3 = Main.dust[num97];
+            dust3.velocity += projectile.velocity * 0.1f;
+            Dust dust6 = Main.dust[num97];
+            dust6.position.X = dust6.position.X - num94;
+            Dust dust7 = Main.dust[num97];
+            dust7.position.Y = dust7.position.Y - num95;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

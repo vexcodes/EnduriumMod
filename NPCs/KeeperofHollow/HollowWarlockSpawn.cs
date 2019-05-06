@@ -47,7 +47,7 @@ namespace EnduriumMod.NPCs.KeeperofHollow
 
 
             }
-            if (Main.expertMode && Main.netMode != 1)
+            if (Main.netMode != 1)
             {
                 NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, mod.NPCType("TheKeeperofHollow2"));
                 projectile.netUpdate = true;

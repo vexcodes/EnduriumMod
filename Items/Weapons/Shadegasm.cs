@@ -19,7 +19,7 @@ namespace EnduriumMod.Items.Weapons
             item.knockBack = 2f;
             item.width = 20;
             item.height = 12;
-            item.damage = 30;
+            item.damage = 60;
             item.rare = 10;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.noMelee = true;
