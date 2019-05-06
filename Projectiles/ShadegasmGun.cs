@@ -77,7 +77,7 @@ namespace EnduriumMod.Projectiles
             {
                 for (int k = 0; k < num16 + 1; k++)
                 {
-                    int num18 = mod.DustType("Shadegasm");
+                    int num18 = 89;
                     float num19 = 1.1f;
                     Vector2 vector14 = value6 + ((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * ((11f * projectile.ai[1]) - (float)(num16 * 2));
                     int num20 = Dust.NewDust(vector14 - Vector2.One * 8f, 16, 16, num18, projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 0, default(Color), 0.6f);

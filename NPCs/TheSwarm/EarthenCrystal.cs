@@ -47,77 +47,82 @@ namespace EnduriumMod.NPCs.TheSwarm
             npc.damage = 80;
             npc.defense = 10;
         }
-        float charge = 0f;
+        double dist = 110;
         public override bool PreAI()
         {
+            Player player = Main.player[npc.target];
+            npc.TargetClosest(true);
             npc.rotation = npc.velocity.X * 0.01f;
             if (npc.alpha >= 0)
             {
                 npc.alpha -= 6;
             }
-            if (charge <= 3f)
-            {
-                charge += 0.04f;
-            }
-            npc.TargetClosest(true);
-            if (npc.ai[2] <= 110)
-            {
-                npc.ai[2] += 1;
-            }
-            double deg = (double)npc.ai[1];
-            double rad = deg * (Math.PI / 180);
-            double dist = npc.ai[2];
             NPC p = Main.npc[(int)npc.ai[0]];
+            double deg = (double)npc.ai[1]; 
+            double rad = deg * (Math.PI / 180);
 
-            float num = 10f;
-            float num2 = 0.6f;
-            Vector2 vector = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-            double num4 = p.Center.X - (int)(Math.Cos(rad) * dist) - npc.width / 2;
-            double num5 = p.Center.Y - (int)(Math.Sin(rad) * dist) - npc.height / 2;
-            num4 = (float)((int)(num4 / 8f) * 8);
-            num5 = (float)((int)(num5 / 8f) * 8);
-            vector.X = (float)((int)(vector.X / 8f) * 8);
-            vector.Y = (float)((int)(vector.Y / 8f) * 8);
-            num4 -= vector.X;
-            num5 -= vector.Y;
-            float num6 = (float)Math.Sqrt((double)(num4 * num4 + num5 * num5));
-            float num7 = num6;
-            bool flag = false;
-            if (num6 > 600f)
+            npc.position.X = p.Center.X - (int)(Math.Cos(rad) * dist) - npc.width / 2;
+            npc.position.Y = p.Center.Y - (int)(Math.Sin(rad) * dist) - npc.height / 2;
+            if (p.ai[3] == 2 || p.ai[3] == 3)
             {
-                flag = true;
-            }
-            if (num6 == 0f)
-            {
-                num4 = npc.velocity.X;
-                num5 = npc.velocity.Y;
+                if (dist < 200)
+                {
+                    dist += 1;
+                }
+                if (dist >= 200)
+                {
+                    npc.ai[2] += 1;
+                    if (npc.ai[2] >= 60)
+                    {
+                        p.ai[1] += 1;
+                        npc.ai[2] = 0;
+                        if (p.ai[3] == 2)
+                        {
+                            float Speed = 8f;  // projectile speed
+                            Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                            int damage = 30;  // projectile damage
+                            int type = mod.ProjectileType("PlaguePursuit");  //put your projectile
+                            float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+                            int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                        }
+                        if (p.ai[3] == 3)
+                        {
+                            npc.netUpdate = true;
+                            Vector2 vector23 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                            float num147 = 12f;
+                            float num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
+                            float num149 = Math.Abs(num148) * 0.1f;
+                            float num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y - num149;
+                            float num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
+                            npc.netUpdate = true;
+                            num151 = num147 / num151;
+                            num148 *= num151;
+                            num150 *= num151;
+                            int num152 = 35;
+                            int num25;
+                            for (int num154 = 0; num154 < 3; num154 = num25 + 1)
+                            {
+                                num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
+                                num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y;
+                                num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
+                                num151 = 12f / num151;
+                                num148 += (float)Main.rand.Next(-100, 101);
+                                num150 += (float)Main.rand.Next(-100, 101);
+                                num148 *= num151;
+                                num150 *= num151;
+                                Projectile.NewProjectile(vector23.X, vector23.Y, num148, num150, mod.ProjectileType("PlagueEnergy"), 30, 0f, Main.myPlayer, 0f, 0f);
+                                num25 = num154;
+                            }
+                        }
+                    }
+                }
             }
             else
             {
-                num6 = num / num6;
-                num4 *= num6;
-                num5 *= num6;
-            }
-            if (Main.player[npc.target].dead)
-            {
-                num4 = (float)npc.direction * num / 2f;
-                num5 = -num / 2f;
-            }
-            if (npc.velocity.X < num4)
-            {
-                npc.velocity.X = npc.velocity.X + num2;
-            }
-            else if (npc.velocity.X > num4)
-            {
-                npc.velocity.X = npc.velocity.X - num2;
-            }
-            if (npc.velocity.Y < num5)
-            {
-                npc.velocity.Y = npc.velocity.Y + num2;
-            }
-            else if (npc.velocity.Y > num5)
-            {
-                npc.velocity.Y = npc.velocity.Y - num2;
+                if (dist > 110)
+                {
+                    dist -= 1;
+                }
             }
             if (p.life <= 0 || !p.active)
             {
@@ -126,7 +131,7 @@ namespace EnduriumMod.NPCs.TheSwarm
                 npc.checkDead();
                 npc.HitEffect();
             }
-            npc.ai[1] += charge;
+            npc.ai[1] += 1f;
             return false;
         }
     }
