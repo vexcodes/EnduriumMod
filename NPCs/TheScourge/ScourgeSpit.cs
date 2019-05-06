@@ -11,85 +11,84 @@ using Terraria.GameContent.Generation;
 
 namespace EnduriumMod.NPCs.TheScourge
 {
-    public class ScourgeSpit : ModNPC
+    public class ScourgeSpit : ModProjectile
     {
         public override void SetDefaults()
         {
-
-            npc.damage = 120;
-            npc.npcSlots = 1f;
-            npc.width = 18; //324
-            npc.height = 18; //216
-            npc.defense = 20;
-            npc.lifeMax = 75;
-            npc.aiStyle = -1; //new
-            aiType = -1; //new
-            npc.knockBackResist = 0f;
-            npc.noGravity = true;
-            npc.noTileCollide = true;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath6;
+            projectile.hostile = true;
+            projectile.width = 18; //324
+            projectile.height = 18; //216
+            projectile.tileCollide = false;
+            projectile.aiStyle = -1; //new
         }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Toxic Spit");
         }
         bool randomized = false;
+        bool velocity = false;
+        float ai2 = 0f;
+        float ai3 = 0f;
         public override bool PreAI()
         {
-            if (!randomized)
+            NPC p = Main.npc[(int)projectile.ai[0]];
+            if (!velocity)
             {
-                randomized = true;
-                npc.alpha += Main.rand.Next(1, 125);
-                npc.rotation += Main.rand.Next(1, 361);
-                npc.scale += Main.rand.NextFloat(-0.25f, 0.4f);
-                npc.ai[2] += Main.rand.NextFloat(-37f, 36f);
-                npc.ai[1] += Main.rand.NextFloat(1f, 361f);
-            }
-            if (npc.ai[3] == 0)
-            {
-                npc.ai[2] += 0.5f;
-                if (npc.ai[2] >= 30f)
+                if (!randomized)
                 {
-                    
-                    npc.ai[3] = 1;
+                    randomized = true;
+                    projectile.alpha += Main.rand.Next(1, 125);
+                    projectile.rotation += Main.rand.Next(1, 361);
+                    projectile.scale += Main.rand.NextFloat(-0.25f, 0.4f);
+                    ai2 += Main.rand.NextFloat(-37f, 36f);
+                    projectile.ai[1] += Main.rand.NextFloat(1f, 361f);
+                }
+                if (ai3 == 0)
+                {
+                    ai2 += 0.5f;
+                    if (ai2 >= 30f)
+                    {
+
+                        ai3 = 1;
+                    }
+                }
+                if (ai3 == 1)
+                {
+                    ai2 -= 2.5f;
+                    if (ai2 <= 10f)
+                    {
+                        ai3 = 0;
+                    }
+                }
+                if (p.active)
+                {
+                    double deg = (double)projectile.ai[1];
+                    double rad = deg * (Math.PI / 180);
+                    double dist = ai2;
+                    projectile.position.X = p.Center.X - (int)(Math.Cos(rad) * dist) - projectile.width / 2;
+                    projectile.position.Y = p.Center.Y - (int)(Math.Sin(rad) * dist) - projectile.height / 2;
                 }
             }
-            if (npc.ai[3] == 1)
-            {
-                npc.ai[2] -= 2.5f;
-                if (npc.ai[2] <= 10f)
-                {
-                    npc.ai[3] = 0;
-                }
-            }
-
-            npc.dontTakeDamage = true;
-            npc.TargetClosest(true);
-            Vector2 direction = Main.player[npc.target].Center - npc.Center;
-            npc.rotation = direction.ToRotation();  //To make this i modified a projectile that orbits around the player, modified it and got it working.
-
-            double deg = (double)npc.ai[1];
-            double rad = deg * (Math.PI / 180);
-            double dist = npc.ai[2];
-
-            NPC p = Main.npc[(int)npc.ai[0]];
-            npc.position.X = p.Center.X - (int)(Math.Cos(rad) * dist) - npc.width / 2;
-            npc.position.Y = p.Center.Y - (int)(Math.Sin(rad) * dist) - npc.height / 2;
             if (p.life <= 0 || !p.active)
             {
-                npc.active = false;
-                npc.life = 0;
-                npc.checkDead();
-                npc.HitEffect();
+                if (!velocity)
+                {
+                    velocity = true;
+                    float num628 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                    float num629 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                    num628 *= 10f;
+                    num629 *= 10f;
+                    projectile.velocity.X = num628;
+                    projectile.velocity.Y = num629;
+                }
             }
-            if (Main.rand.Next(4) == 0)
+            if (Main.rand.Next(3) == 0)
             {
-                npc.rotation += 0.08f;
-                npc.ai[1] += 1f;
+                projectile.rotation += 0.08f;
+                projectile.ai[1] += 1f;
             }
-                npc.rotation += 0.08f;
-            npc.ai[1] += 1f;
+            projectile.rotation += 0.08f;
+            projectile.ai[1] += 1f;
             return false;
         }
     }

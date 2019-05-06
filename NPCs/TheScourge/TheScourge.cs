@@ -41,26 +41,39 @@ namespace EnduriumMod.NPCs.TheScourge
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.ai[3] == 0 || npc.ai[3] == 4)
+            if (npc.ai[3] == 0)
             {
                 npc.frame.Y = 0 * frameHeight;
             }
-            if (npc.ai[3] >= 1 && npc.ai[3] <= 3)
+
+            if (npc.ai[3] == 10 || npc.ai[3] == 12)
             {
-                if (npc.ai[1] > 22)
+                npc.frame.Y = 1 * frameHeight;
+            }
+            if (npc.ai[3] == 11)
+            {
+                npc.frame.Y = 2 * frameHeight;
+            }
+            if (npc.ai[3] >= 1 && npc.ai[3] <= 2)
+            {
+                if (npc.ai[1] > 22 && npc.ai[1] < 327)
                 {
                     npc.frame.Y = 5 * frameHeight;
                 }
-                if (npc.ai[1] < 22 && npc.ai[1] > 11)
+                if ((npc.ai[1] < 22 && npc.ai[1] > 11) || (npc.ai[1] > 327 && npc.ai[1] < 338))
                 {
                     npc.frame.Y = 4 * frameHeight;
                 }
-                if (npc.ai[1] < 11)
+                if (npc.ai[1] < 11 || npc.ai[1] > 349)
                 {
                     npc.frame.Y = 3 * frameHeight;
                 }
             }
         }
+        float movementACCX = 0.12f;
+        float movementACCY = 0.23f;
+        float movementCAPX = 11f;
+        float movementCAPY = 14f;
 
         public override void AI()
         {
@@ -83,13 +96,8 @@ namespace EnduriumMod.NPCs.TheScourge
             {
                 npc.timeLeft = 1800;
             }
-            if (npc.ai[3] == 0)
+            if (npc.ai[3] == 0) //movement, shooting basic 2 projectiles, charging at the player and floating away to a position where they can do attack.
             {
-                float movementACCX = 0.12f;
-                float movementACCY = 0.23f;
-                float movementCAPX = 11f;
-                float movementCAPY = 14f;
-
                 if (npc.velocity.Y >= movementCAPY)
                 {
                     npc.velocity.Y = movementCAPY;
@@ -125,23 +133,85 @@ namespace EnduriumMod.NPCs.TheScourge
 
 
                 npc.ai[0] += 1f;
-                if (npc.ai[0] >= 280)
+                npc.ai[1] += 1f;
+                if (npc.ai[0] >= 340)
                 {
                     npc.velocity *= 0.8f;
                 }
+                else
+                {
+                    if (npc.ai[2] >= 0 && npc.ai[2] < 4 || npc.ai[2] >= 8 && npc.ai[2] < 12)
+                    {
+                        if (npc.ai[1] >= 60)
+                        {
 
-                if (npc.ai[0] >= 300)
+                            Main.PlaySound(SoundID.Item17, npc.position);
+                            float Speed = 12f;  // projectile speed
+                            Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 4), npc.position.Y + (npc.height / 4));
+                            int damage = 20;  // projectile damage
+                            int type = mod.ProjectileType("ScourgeBoltTiny");  //put your projectile
+                            float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+                            int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                            npc.netUpdate = true;
+
+                            npc.ai[1] = 0f;
+                            npc.ai[2] += 1f;
+
+                        }
+                    }
+
+                    if (npc.ai[2] >= 4 && npc.ai[2] < 8 || npc.ai[2] >= 12 && npc.ai[2] < 16)
+                    {
+                        if (npc.ai[1] >= 60)
+                        {
+
+                            Main.PlaySound(SoundID.Item17, npc.position);
+                            float Speed = 12f;  // projectile speed
+                            Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 4), npc.position.Y + (npc.height / 4));
+                            int damage = 20;  // projectile damage
+                            int type = mod.ProjectileType("ScourgeBolt");  //put your projectile
+                            float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+                            int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                            npc.netUpdate = true;
+
+                            npc.ai[1] = 0f;
+                            npc.ai[2] += 1f;
+
+                        }
+                    }
+                    if (npc.ai[2] >= 16)
+                    {
+                        npc.ai[0] = 0f;
+                        npc.ai[1] = 0f;
+                        npc.ai[2] = 0f;
+                        npc.ai[3] = 10f;
+                    }
+                }
+                if (npc.ai[0] >= 780)
                 {
                     npc.ai[0] = 0f;
-                    npc.ai[3] = 1 + Main.rand.Next(0, 2);
+                    npc.ai[1] = 0;
+                    npc.ai[3] = Main.rand.Next(1, 2);
                 }
+            } //normal shit
+            if (npc.ai[3] == 3) //chooses between 4 and 5
+            {
 
             }
-            if (npc.ai[3] >= 1 && npc.ai[3] <= 3) //1-3 depending on these he launches a different amount of projectiles at a time
+            if (npc.ai[3] == 4) //surronds player with rotating vine projectiles that randomly go towards player
+            {
+
+            }
+            if (npc.ai[3] == 5) //surrounds self with a lot of projectiles that quickly go towards the player, much like prism arcanum circles
+            {
+
+            }
+
+            if (npc.ai[3] >= 1 && npc.ai[3] <= 2) //1-3 depending on these he launches a different amount of projectiles at a time
             {
                 npc.ai[0] += 1f;
                 npc.ai[1] += 1f;
-                if (npc.ai[0] >= 60) //shoot projectile
+                if (npc.ai[0] >= 70) //shoot projectile
                 {
                     npc.ai[0] = 0;
                     for (int k = 0; k < npc.ai[3]; k++)
@@ -149,13 +219,13 @@ namespace EnduriumMod.NPCs.TheScourge
                         NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y - 60 + (float)(npc.height / 2)), mod.NPCType("ScourgeSpitNonOrbit"), npc.damage, 0f, Main.myPlayer, npc.whoAmI);
                     }
                 }
-                if (npc.ai[1] >= 260)
+                if (npc.ai[1] >= 360)
                 {
                     npc.ai[3] = 0;
                     npc.ai[1] = 0;
                     npc.ai[0] = 0;
                 }
-            }
+            } //normal shit but animated
 
             if (npc.ai[3] == 10)
             {
@@ -164,7 +234,9 @@ namespace EnduriumMod.NPCs.TheScourge
                 if (npc.ai[0] >= 60)
                 {
                     npc.ai[0] = 0f;
-                    npc.ai[3] = 2;
+                    npc.ai[1] = 0f;
+                    npc.ai[2] = 0f;
+                    npc.ai[3] = 11;
 
                     for (int k = 0; k < 20; k++)
                     {
@@ -182,22 +254,35 @@ namespace EnduriumMod.NPCs.TheScourge
             {
                 if (npc.ai[1] >= 30)
                 {
-                    if (npc.ai[0] <= 0.02f)
-                    {
-                        npc.ai[0] += 0.00006666666f;
-                    }
+                    npc.ai[2] += 0.004f;
                 }
-                npc.ai[2] += npc.ai[0] / 5;
+                npc.ai[0] += 1;
                 if (npc.ai[1] >= 1)
                 {
                     npc.ai[1] += 1f;
                 }
                 if (npc.ai[1] >= 620)
                 {
-                    npc.ai[3] = 3;
-                    npc.ai[1] = 0;
+                    npc.ai[3] = 12;
                     npc.ai[0] = 0;
                     npc.ai[2] = 0;
+                }
+                if (npc.ai[0] >= 60)
+                {
+                    npc.ai[0] = 0;
+                    Vector2 PlayerPosition = new Vector2(player.Center.X + Main.rand.Next(-50, 51) - npc.Center.X, player.Center.Y + Main.rand.Next(-50, 51) - npc.Center.Y);
+                    PlayerPosition.Normalize();
+                    float velocityX = PlayerPosition.X *= 6f;
+                    float velocityY = PlayerPosition.Y *= 6f;
+                    Vector2 spinningpoint = new Vector2(velocityX, velocityY);
+                    Vector2 center = npc.Center;
+                    float num = 0.7853982f;
+                    int num2 = 8;
+                    float num3 = -(num * 2f) / (float)(num2 - 1);
+                    for (int i = 0; i < num2; i++)
+                    {
+                        int num4 = Projectile.NewProjectile(center, spinningpoint.RotatedBy((double)(num + num3 * (float)i), default(Vector2)), mod.ProjectileType("ScourgeBoltTiny"), npc.damage, 1f, Main.myPlayer);
+                    }
                 }
                 if (npc.ai[1] == 0)
                 {
