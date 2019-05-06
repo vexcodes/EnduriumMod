@@ -134,7 +134,7 @@ namespace EnduriumMod.Projectiles
                         if (shotsLeft != 0)
                         {
                             shotsLeft -= 1;
-                            projectile.ai[0] = 4f;
+                            projectile.ai[0] = 8f;
                             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 92); //charged zap sound
                             for (int j = 0; j < 1; j++)
                             {
