@@ -49,27 +49,26 @@ namespace EnduriumMod.Projectiles
             }
             projectile.ai[0] += 1;
 
-            if (projectile.ai[0] <= 20)
+            if (projectile.ai[0] < 20)
             {
                 Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedBy(MathHelper.ToRadians(1));
                 projectile.velocity.Y = perturbedSpeed.Y;
                 projectile.velocity.X = perturbedSpeed.X;
-
             }
-            else if (projectile.ai[0] >= 20 && projectile.ai[0] <= 40)
+            else if (projectile.ai[0] >= 20 && projectile.ai[0] < 40)
             {
                 Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedBy(MathHelper.ToRadians(-2));
                 projectile.velocity.Y = perturbedSpeed.Y;
                 projectile.velocity.X = perturbedSpeed.X;
 
             }
-            else
+            if (projectile.ai[0] >= 40 && projectile.ai[0] < 60)
             {
                 Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedBy(MathHelper.ToRadians(1));
                 projectile.velocity.Y = perturbedSpeed.Y;
                 projectile.velocity.X = perturbedSpeed.X;
             }
-            if (projectile.ai[0] >= 60)
+            if (projectile.ai[0] > 60)
             {
                 projectile.ai[0] = 0;
             }

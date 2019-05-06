@@ -84,32 +84,30 @@ namespace EnduriumMod.NPCs.KeeperofHollow
         }
         public override void NPCLoot()
         {
-            if (Main.rand.Next(10) == 0)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PrismHood"));
-            }
             if (Main.expertMode)
             {
                 npc.DropBossBags();
             }
             else
             {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GemofHollow"), Main.rand.Next(12, 28));
+
                 int itemChoice = Main.rand.Next(4);
                 if (itemChoice == 0)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ArcanumPike"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TheNightfall"));
                 }
                 else if (itemChoice == 1)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FrozenCleaver"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("StormSword"));
                 }
                 else if (itemChoice == 2)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("IceClasper"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("StarFlowerStaff"));
                 }
                 else if (itemChoice == 3)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TheArcticWind"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FrostSlash"));
                 }
             }
         }

@@ -59,7 +59,7 @@ namespace EnduriumMod.Items.HollowWarlock
             }
             if (Main.rand.Next(3) == 0)
             {
-                player.QuickSpawnItem(mod.ItemType("GemofHollow"), Main.rand.Next(12, 28));
+                player.QuickSpawnItem(mod.ItemType("GemofHollow"), Main.rand.Next(4, 12));
             }
             player.QuickSpawnItem(mod.ItemType("ShardofNight"));
             player.QuickSpawnItem(mod.ItemType("GemofHollow"), Main.rand.Next(12, 28));
