@@ -36,7 +36,7 @@ namespace EnduriumMod.Projectiles
         public override bool PreAI()
         {
             int num3;
-            for (int num93 = 0; num93 < 5; num93 = num3 + 1)
+            for (int num93 = 0; num93 < 1; num93 = num3 + 1)
             {
                 float num94 = projectile.velocity.X / 3f * (float)num93;
                 float num95 = projectile.velocity.Y / 3f * (float)num93;

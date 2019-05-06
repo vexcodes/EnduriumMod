@@ -30,7 +30,7 @@ namespace EnduriumMod.Items.Weapons
             item.shoot = mod.ProjectileType("PoisonBolt");
             item.shootSpeed = 9f;
         }
-		        public override void SetStaticDefaults()
+        public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tropical Spore Staff");
             Tooltip.SetDefault("'The tropical paradise'");

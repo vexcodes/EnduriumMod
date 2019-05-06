@@ -25,7 +25,7 @@ namespace EnduriumMod.Items.EndurianWarlock
             item.rare = 8;
             item.UseSound = SoundID.Item43;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("PlagueFeather");
+            item.shoot = mod.ProjectileType("PlagueFeatherFriendly");
             item.shootSpeed = 18f;
         }
 

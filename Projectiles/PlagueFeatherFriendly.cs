@@ -9,9 +9,9 @@ using Terraria.ModLoader;
 using Terraria.World.Generation;
 using Terraria.GameContent.Generation;
 
-namespace EnduriumMod.NPCs.EndurianWarlock
+namespace EnduriumMod.Projectiles
 {
-    public class PlagueFeather : ModProjectile
+    public class PlagueFeatherFriendly : ModProjectile
     {
 
         public override void SetDefaults()
@@ -20,16 +20,16 @@ namespace EnduriumMod.NPCs.EndurianWarlock
             projectile.height = 28;
             projectile.aiStyle = 1;
             aiType = ProjectileID.Bullet;
-            projectile.friendly = false;
-            projectile.hostile = true;
+            projectile.friendly = true;
+            projectile.hostile = false;
             projectile.ignoreWater = true;
             projectile.penetrate = 2;
             projectile.alpha = 75;
             projectile.timeLeft = 220;
         }
-                public override void Kill(int timeLeft)
+        public override void Kill(int timeLeft)
         {
-            for (int num623 = 0; num623 < 25; num623++)
+            for (int num623 = 0; num623 < 15; num623++)
             {
                 int num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 89, 0f, 0f, 100, default(Color), 1.6f);
                 Main.dust[num624].noGravity = true;

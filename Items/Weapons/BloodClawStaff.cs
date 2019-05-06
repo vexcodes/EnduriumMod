@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.Weapons
         public override void SetDefaults()
         {
 
-            item.damage = 54;
+            item.damage = 44;
             item.magic = true;
             item.mana = 12;
             item.width = 62;
@@ -18,7 +18,7 @@ namespace EnduriumMod.Items.Weapons
             item.useTime = 39;
             item.useAnimation = 39;
             item.useStyle = 5;
-			        Item.staff[item.type] = true;
+            Item.staff[item.type] = true;
 
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 3.25f;
@@ -33,17 +33,27 @@ namespace EnduriumMod.Items.Weapons
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.CrimtaneBar, 20);
-        recipe.AddIngredient(ItemID.Vertebrae, 5);
-            recipe.AddIngredient(null, ("BloodDust"), 5);
+            recipe.AddIngredient(ItemID.Vertebrae, 5);
+            recipe.AddIngredient(ItemID.TissueSample, 12);
+            recipe.AddIngredient(null, ("BloodDust"), 75);
             recipe.AddIngredient(null, ("CursedHeart"));
             recipe.AddTile(null, "GraniteAltar");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 65f;
+            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+                position += muzzleOffset;
+            }
+            return true;
+        }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Vampire Claw Staff");
-            Tooltip.SetDefault("Creates a beam of blood energy\nUpon hitting an enemy the beam will split\nHitting an enemy has a chance to steal health");
+            DisplayName.SetDefault("The Leeching Claw");
+            Tooltip.SetDefault("Fires a leeching wave\nHitting enemies has a chance to recover health\nHitting enemies spawns extra beams around the player");
         }
     }
 }

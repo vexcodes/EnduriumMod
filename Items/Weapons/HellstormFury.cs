@@ -45,7 +45,7 @@ namespace EnduriumMod.Items.Weapons
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(25));
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X / 4, perturbedSpeed.Y / 4, mod.ProjectileType("HellstormBoltSmall"), damage, knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X / 2, perturbedSpeed.Y / 2, mod.ProjectileType("HellstormBoltSmall"), damage / 2, knockBack, player.whoAmI);
             }
             return true; //Makes sure to not fire the original projectile
 

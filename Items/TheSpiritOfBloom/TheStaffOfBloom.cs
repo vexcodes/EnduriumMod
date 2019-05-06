@@ -26,7 +26,7 @@ namespace EnduriumMod.Items.TheSpiritOfBloom
             item.UseSound = SoundID.Item43;
             item.autoReuse = true;
 			item.mana = 10;
-            item.shoot = mod.ProjectileType("PlagueFeather");
+            item.shoot = mod.ProjectileType("PlagueFeatherFriendly");
             item.shootSpeed = 19f;
             item.useTurn = false;
             item.consumable = false;

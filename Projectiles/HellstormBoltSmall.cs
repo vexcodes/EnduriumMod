@@ -15,7 +15,7 @@ namespace EnduriumMod.Projectiles
             projectile.height = 4;
             projectile.friendly = true;
             projectile.aiStyle = 1;
-            projectile.timeLeft = 20;
+            projectile.timeLeft = 40;
             aiType = ProjectileID.Bullet;
             projectile.tileCollide = true;
             projectile.ranged = true;

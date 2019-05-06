@@ -184,6 +184,10 @@ namespace EnduriumMod.NPCs
                 {
                     npc.lifeRegen = 0;
                 }
+                if (damage < 4)
+                {
+                    damage = 4;
+                }
                 npc.lifeRegen -= 30;
             }
             if (Voidflame)

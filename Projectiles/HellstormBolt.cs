@@ -12,10 +12,10 @@ namespace EnduriumMod.Projectiles
         public override void SetDefaults()
         {
             projectile.width = 10;
-            projectile.height = 72;
+            projectile.height = 10;
             projectile.friendly = true;
             projectile.aiStyle = 1;
-            projectile.timeLeft = 40;
+            projectile.timeLeft = 60;
             aiType = ProjectileID.Bullet;
             projectile.tileCollide = false;
             projectile.ranged = true;

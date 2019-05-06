@@ -28,13 +28,12 @@ namespace EnduriumMod.Items.Placeable
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Energy Altar");
-            Tooltip.SetDefault("Used to craft high tech items.");
+            Tooltip.SetDefault("");
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("GraniteEnergyCore"), 15);
-			recipe.AddIngredient(null, ("PrismShard"), 8);       
+			recipe.AddIngredient(null, ("PrismShard"), 22);       
 			recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
