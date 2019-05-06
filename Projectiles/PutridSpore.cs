@@ -28,7 +28,7 @@ namespace EnduriumMod.Projectiles
         }
         public override void AI()
         {
-            projectile.velocity *= 0.95f;
+            projectile.velocity *= 0.94f;
             Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 184, projectile.velocity.X * 0f, projectile.velocity.Y * 0f);
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
