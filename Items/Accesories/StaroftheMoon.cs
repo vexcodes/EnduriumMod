@@ -24,7 +24,7 @@ namespace EnduriumMod.Items.Accesories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Star of the Moonlight");
-            Tooltip.SetDefault("Increases max mana by 25\nGetting hit refils your mana to the maximum");
+            Tooltip.SetDefault("Increases max mana by 25\nGetting hit fully refills your mana");
         }
 
 

@@ -49,7 +49,6 @@ namespace EnduriumMod.NPCs.NecroMaster
                 if (choice == 0)
                 {
                     Terraria.Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TheGoliath"));
-
                 }
 
                 if (choice == 1)

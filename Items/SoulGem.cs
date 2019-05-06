@@ -17,13 +17,13 @@ namespace EnduriumMod.Items
             item.height = 57;
             item.maxStack = 999;
             item.value = Terraria.Item.sellPrice(0, 0, 0, 0);
-            item.rare = -12;
+            item.rare = 5;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Gem");
-            Tooltip.SetDefault("'An ancient form of currency'");
+            Tooltip.SetDefault("Used to trade with demons\nCan be found in hell");
         }
     }
 }

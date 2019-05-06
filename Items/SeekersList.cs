@@ -23,7 +23,7 @@ namespace EnduriumMod.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Seeker's List");
-            Tooltip.SetDefault("It says 'Hello, i am the seeker and i came from a far away land\nYou can't buy a lot from me using normal coins\nI use an ancient form of currency, it's precious to me\nI also have a supply action going on\nIn the place where i life these things are very precious\nGolden amber: carried by desert creatures,\nOdd gemstone: some ancient underground warriors must have it,\nWeird sludge: slimes! Slimes everywhere!\nMagic cherry: This is not that usefull to me, but it's my favourite food!");
+            Tooltip.SetDefault("It says 'Hello, i am the seeker and i came from a far away land\nYou can't buy a lot from me using normal coins\nI use an ancient form of currency, it's precious to me\nI also have a supply action going on\nIn the place where i life these things are very precious\nGolden amber: carried by desert creatures,\nOdd gemstone: some ancient underground warriors must have it,\nWeird sludge: slimes, Slimes everywhere!\nMagic cherry: my favourite meal, gimme!");
         }
     }
 }

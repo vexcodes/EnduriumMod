@@ -15,7 +15,7 @@ namespace EnduriumMod.Items.Weapons
         }
         public override void SetDefaults()
         {
-            item.damage = 90;
+            item.damage = 50;
             item.ranged = true;
             item.width = 66;
             item.height = 34;
@@ -32,6 +32,16 @@ namespace EnduriumMod.Items.Weapons
             item.autoReuse = false;
             item.shoot = mod.ProjectileType("NeoniteRifle");
             item.shootSpeed = 12f;
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(197);
+            recipe.AddIngredient(null, ("StarCrystal"), 5);
+            recipe.AddIngredient(null, ("HolySilver"), 5);
+            recipe.AddTile(null, "SoulForge");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
         public override Vector2? HoldoutOffset()
         {

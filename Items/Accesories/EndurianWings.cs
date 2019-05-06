@@ -54,7 +54,6 @@ namespace EnduriumMod.Items.Accesories
             {
                 Dust.NewDust(player.position, player.width, player.height, 89, 0, 0, 0, Color.Green, 0.95f);
                 base.WingUpdate(player, inUse);
-
             }
             return false;
         }

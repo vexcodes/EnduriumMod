@@ -19,8 +19,7 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.useStyle = 1;
             item.knockBack = 6;
             item.value = 100000;
-            item.rare = -12;
-            item.expert = true;
+            item.rare = 3;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }

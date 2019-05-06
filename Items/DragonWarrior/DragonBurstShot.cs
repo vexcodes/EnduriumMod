@@ -35,7 +35,7 @@ namespace EnduriumMod.Items.DragonWarrior
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragon Quickshot");
-            Tooltip.SetDefault("Rapidly Fires Bullets");
+            Tooltip.SetDefault("Rapidly Fires 5 Bullets");
         }
         public override void AddRecipes()
         {

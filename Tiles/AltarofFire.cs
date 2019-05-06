@@ -15,7 +15,7 @@ namespace EnduriumMod.Tiles
             Main.tileNoAttach[Type] = true;
             Main.tileTable[Type] = true;
             Main.tileLavaDeath[Type] = false;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             ModTranslation name = CreateMapEntryName();
             AddMapEntry(new Color(10, 255, 10), name);
             name.SetDefault("Altar of Fire");

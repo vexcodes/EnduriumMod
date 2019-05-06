@@ -29,7 +29,7 @@ namespace EnduriumMod.Items
 			recipe.AddIngredient(null, ("PrismShard"), 5);
             recipe.AddIngredient(null, ("TempleFragment"), 5);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 5);
+            recipe.SetResult(this, 15);
             recipe.AddRecipe();
         }
     }

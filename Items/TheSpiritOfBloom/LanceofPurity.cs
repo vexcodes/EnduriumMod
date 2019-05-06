@@ -36,7 +36,7 @@ namespace EnduriumMod.Items.TheSpiritOfBloom
             Tooltip.SetDefault("'Lance of a holy reaper'");
         }
 
-        public override void AddRecipes()
+        /*public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("SpiritSpear"));
@@ -45,6 +45,6 @@ namespace EnduriumMod.Items.TheSpiritOfBloom
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
+        }*/
     }
 }

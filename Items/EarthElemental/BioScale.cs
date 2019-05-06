@@ -21,7 +21,7 @@ namespace EnduriumMod.Items.EarthElemental
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Scale of Earth");
-      Tooltip.SetDefault("'Imbued with unknown power'");
+      Tooltip.SetDefault("'Imbued with earthen power'");
     }
     }
 }

@@ -19,9 +19,9 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.useStyle = 5;
             Item.staff[item.type] = true;
             item.noMelee = true; //so the item's animation doesn't do damage
-            item.knockBack = 6.25f;
+            item.knockBack = 2.25f;
             item.value = 45000;
-            item.rare = 6;
+            item.rare = 2;
             item.UseSound = SoundID.Item43;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("BloodOrb");
@@ -30,7 +30,7 @@ namespace EnduriumMod.Items.BloodlightShaman
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Vampire Portal Scepter");
-            Tooltip.SetDefault("Creates a portal of blood energy");
+            Tooltip.SetDefault("Creates an orb of blood energy\nOnly 1 orb can be active at a time");
         }
         public override void AddRecipes()
         {

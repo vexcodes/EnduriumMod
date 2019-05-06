@@ -21,7 +21,7 @@ namespace EnduriumMod.Items.HollowWarlock
             item.useStyle = 5;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 4f;
-            item.value = 1025000;
+            item.value = 102500;
             item.rare = 9;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
@@ -36,13 +36,13 @@ namespace EnduriumMod.Items.HollowWarlock
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Nightfall");
-            Tooltip.SetDefault("Fires rapid bolts of energy");
+            Tooltip.SetDefault("Fires bolts of energy");
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int gay = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FrostSparkle"), damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
             Main.projectile[gay].extraUpdates = 2;
-            Main.projectile[gay].melee = true;
+            Main.projectile[gay].ranged = true;
             Main.projectile[gay].magic = false;
             return true; //Makes sure to not fire the original projectile
         }

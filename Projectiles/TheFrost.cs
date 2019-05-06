@@ -15,8 +15,8 @@ namespace EnduriumMod.Projectiles
         {
             projectile.extraUpdates = 1;
             projectile.CloneDefaults(ProjectileID.TheEyeOfCthulhu);
-            projectile.width = 22;
-            projectile.height = 22;
+            projectile.width = 12;
+            projectile.height = 12;
             projectile.aiStyle = 99;
             projectile.friendly = true;
             projectile.scale = 1.25f;

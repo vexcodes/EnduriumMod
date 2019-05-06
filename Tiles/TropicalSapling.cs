@@ -43,7 +43,7 @@ namespace EnduriumMod.Tiles
 			num = fail ? 1 : 3;
 		}
 
-		public override void RandomUpdate(int i, int j)
+		/*public override void RandomUpdate(int i, int j)
 		{
 			if (WorldGen.genRand.Next(20) == 0)
 			{
@@ -54,7 +54,7 @@ namespace EnduriumMod.Tiles
 					WorldGen.TreeGrowFXCheck(i, j);
 				}
 			}
-		}
+		}*/ 
 
 		public override void SetSpriteEffects(int i, int j, ref SpriteEffects effects)
 		{

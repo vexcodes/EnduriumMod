@@ -18,7 +18,7 @@ namespace EnduriumMod.Items.Accesories
             item.height = 32;
             item.value = Terraria.Item.buyPrice(0, 10, 0, 0);
             item.rare = -12;
-			item.expert = true;
+            item.expert = true;
             item.accessory = true;
         }
 
@@ -44,10 +44,10 @@ namespace EnduriumMod.Items.Accesories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.statLifeMax2 = (int)((float)player.statLifeMax2 * 1.15f);
-			player.brainOfConfusion = true;
+            player.brainOfConfusion = true;
             player.lifeRegen += 2;
             ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).BloodMedalion = true;
-			            player.endurance += 0.15f;
+            player.endurance += 0.15f;
         }
     }
 }

@@ -40,14 +40,14 @@ namespace EnduriumMod.Items.Weapons
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("HellstormBolt"), damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
-            int numberProjectiles = Main.rand.Next(1, 4);
+            Projectile.NewProjectile(position.X, position.Y, speedX / 4, speedY / 4, mod.ProjectileType("HellstormBolt"), damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
+            int numberProjectiles = Main.rand.Next(1, 2);
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(25));
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("HellstormBoltSmall"), damage, knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X / 4, perturbedSpeed.Y / 4, mod.ProjectileType("HellstormBoltSmall"), damage, knockBack, player.whoAmI);
             }
-            return false; //Makes sure to not fire the original projectile
+            return true; //Makes sure to not fire the original projectile
 
         }
         public override void AddRecipes()

@@ -12,9 +12,10 @@ namespace EnduriumMod.Projectiles
         public override void SetDefaults()
         {
             projectile.width = 4;
-            projectile.height = 32;
+            projectile.height = 4;
             projectile.friendly = true;
             projectile.aiStyle = 1;
+            projectile.timeLeft = 20;
             aiType = ProjectileID.Bullet;
             projectile.tileCollide = true;
             projectile.ranged = true;
@@ -32,7 +33,7 @@ namespace EnduriumMod.Projectiles
             if (projectile.alpha <= 200)
             {
                 int num3;
-                for (int num20 = 0; num20 < 4; num20 = num3 + 1)
+                for (int num20 = 0; num20 < 1; num20 = num3 + 1)
                 {
                     float num21 = projectile.velocity.X / 4f * (float)num20;
                     float num22 = projectile.velocity.Y / 4f * (float)num20;
@@ -41,6 +42,8 @@ namespace EnduriumMod.Projectiles
                     Main.dust[num23].position.Y = projectile.Center.Y - num22;
                     Dust dust3 = Main.dust[num23];
                     dust3.velocity *= 0f;
+                    dust3.noGravity = true;
+                    dust3.position = projectile.Center;
                     Main.dust[num23].scale = 0.45f;
                     num3 = num20;
                 }

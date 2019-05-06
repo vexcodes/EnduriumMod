@@ -220,7 +220,7 @@ namespace EnduriumMod.NPCs.Dusk
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             Tile tile = Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY];
-            return spawnInfo.player.ZoneUnderworldHeight ? 0.07f : 0f;
+            return spawnInfo.player.ZoneUnderworldHeight && Main.hardMode ? 0.07f : 0f;
         }
     }
 }

@@ -79,6 +79,10 @@ namespace EnduriumMod.Projectiles
                 }
                 projectile.ai[1] = projectile.damage / 15 + Main.rand.Next(1, 4);
             }
+            if (projectile.ai[1] >= 12)
+            {
+                projectile.ai[1] = 12;
+            }
             int num492 = (int)projectile.ai[0];
             float num493 = 4f;
             Vector2 vector39 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);

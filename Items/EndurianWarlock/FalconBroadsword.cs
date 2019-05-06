@@ -58,7 +58,7 @@ namespace EnduriumMod.Items.EndurianWarlock
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Falcon Broadsword");
-            Tooltip.SetDefault("Fires 4 falcon blades in an even spread");
+            Tooltip.SetDefault("Fires 3 falcon blades in an even spread");
         }
     }
 }

@@ -15,12 +15,7 @@ namespace EnduriumMod.Items
             item.height = 32;
             item.maxStack = 20;
 
-            item.rare = -12;
-            item.useAnimation = 45;
-            item.useTime = 45;
-            item.useStyle = 4;
-            item.UseSound = SoundID.Item44;
-            item.consumable = true;
+            item.rare = 10;
         }
 
         public override void SetStaticDefaults()

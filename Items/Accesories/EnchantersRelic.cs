@@ -24,7 +24,7 @@ namespace EnduriumMod.Items.Accesories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Relic of Enchantment");
-            Tooltip.SetDefault("'Your soul is sealed within'\nIncreases damage by 18% at a cost.");
+            Tooltip.SetDefault("'Your soul is sealed within'\nIncreases damage by 18% at a cost of vitality");
         }
 
         public override void AddRecipes()
@@ -32,7 +32,7 @@ namespace EnduriumMod.Items.Accesories
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("ErodedPrism"));
             recipe.AddIngredient(null, ("EvilHeart"));
-            recipe.AddIngredient(ItemID.AvengerEmblem, 10);
+            recipe.AddIngredient(ItemID.AvengerEmblem);
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();

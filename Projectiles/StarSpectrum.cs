@@ -26,21 +26,16 @@ namespace EnduriumMod.Projectiles
         }
         public override void Kill(int timeLeft)
         {
-            for (int num621 = 0; num621 < 12; num621++)
-            {
-                int num622 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 156, 0f, 0f, 100, default(Color), 1.2f);
-                Main.dust[num622].velocity *= 3f;
-            }
             for (int num623 = 0; num623 < 15; num623++)
             {
                 int num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 156, 0f, 0f, 100, default(Color), 1.7f);
                 Main.dust[num624].noGravity = true;
                 Main.dust[num624].velocity *= 3f;
-                num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 156, 0f, 0f, 100, default(Color), 1f);
-                Main.dust[num624].velocity *= 1f;
-                Main.dust[num624].noGravity = true;
-                Main.dust[num624].fadeIn = 0.7f;
             }
+        }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("GraniteShatter"), 360);
         }
         public override void AI()
         {

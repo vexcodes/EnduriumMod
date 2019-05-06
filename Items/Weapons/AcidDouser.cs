@@ -28,11 +28,22 @@ namespace EnduriumMod.Items.Weapons
             item.channel = true;
             item.shoot = mod.ProjectileType("AcidDouser");
         }
-
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(175, 20);
+            recipe.AddIngredient(117, 25);
+            recipe.AddIngredient(522, 12);
+            recipe.AddIngredient(null, ("StarCrystal"), 5);
+            recipe.AddIngredient(null, ("HolySilver"), 5);
+            recipe.AddTile(null, "SoulForge");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Acid Douser");
-            Tooltip.SetDefault("Fires bolts of pure acid\nInflicts Venom\nDoesn't consume ammo");
+            Tooltip.SetDefault("Fires corroded darts\nDoesn't consume ammo");
         }
     }
 }

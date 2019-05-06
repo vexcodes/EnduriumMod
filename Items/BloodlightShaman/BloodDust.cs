@@ -14,7 +14,7 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.maxStack = 99;
 
             item.value = Terraria.Item.sellPrice(0, 0, 1, 0);
-            item.rare = 4;
+            item.rare = 2;
         }
 
         public override void SetStaticDefaults()

@@ -14,18 +14,18 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.maxStack = 99;
 
             item.value = Terraria.Item.sellPrice(0, 0, 15, 0);
-            item.rare = 4;
+            item.rare = 2;
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bloodlight Bar");
-        }    
-		public override void AddRecipes()
+            DisplayName.SetDefault("Bloodlight Crystal");
+        }
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("BloomlightBar"), 2);
-			            recipe.AddIngredient(null, ("BloodDust"), 2);
+            recipe.AddIngredient(null, ("BloodDust"), 2);
             recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this, 2);
             recipe.AddRecipe();

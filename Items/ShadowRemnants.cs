@@ -16,14 +16,14 @@ namespace EnduriumMod.Items
             item.width = 50;
             item.height = 57;
             item.maxStack = 99;
-            item.value = Terraria.Item.sellPrice(0, 0, 25, 0);
+            item.value = Terraria.Item.sellPrice(0, 0, 15, 0);
             item.rare = 4;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shadow Remnants");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("Magic of a necrotic being");
         }
     }
 }

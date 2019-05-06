@@ -38,13 +38,18 @@ namespace EnduriumMod.NPCs.TropicalParadise.HardMode
             DisplayName.SetDefault("Tropical Golem");
             Main.npcFrameCount[npc.type] = 7;
         }
-        public override void NPCLoot()
-        {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TropicalFragment"), Main.rand.Next(2, 4));
-        }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return Main.tile[(int)(spawnInfo.spawnTileX), (int)(spawnInfo.spawnTileY)].type == TileID.JungleGrass && Main.hardMode ? 0.009f : 0f;
+        }
+        public override void NPCLoot()
+        {
+            if (Main.rand.Next(2) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TropicalFeather"));
+            }
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TropicalFragment"));
+
         }
         public override void AI()
         {

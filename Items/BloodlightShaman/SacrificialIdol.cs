@@ -15,7 +15,7 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.height = 32;
             item.maxStack = 20;
 
-            item.rare = -12;
+            item.rare = 2;
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;

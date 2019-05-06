@@ -30,12 +30,12 @@ namespace EnduriumMod.Items.Weapons.Dusk
             item.shoot = mod.ProjectileType("EmberBubble");
             item.shootSpeed = 11f;
         }
-		        public override void SetStaticDefaults()
+        public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Hellfire Scepter");
             Tooltip.SetDefault("");
         }
-		        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int numberProjectiles = 4 + Main.rand.Next(4);
             for (int i = 0; i < numberProjectiles; i++)
@@ -45,11 +45,11 @@ namespace EnduriumMod.Items.Weapons.Dusk
             }
             return false;
         }
-	           public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("FieryTissue"), 15);
-						            recipe.AddIngredient(null, ("DuskSteel"), 15);
+            recipe.AddIngredient(null, ("DuskSteel"), 15);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

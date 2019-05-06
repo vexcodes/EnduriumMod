@@ -28,7 +28,7 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 2f;
             item.value = 50000;
-            item.rare = 8;
+            item.rare = 2;
             item.UseSound = SoundID.Item44;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("EyeMinion");

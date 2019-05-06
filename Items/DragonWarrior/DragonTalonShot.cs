@@ -47,7 +47,7 @@ namespace EnduriumMod.Items.DragonWarrior
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragon Talon Shot");
-            Tooltip.SetDefault("Every 3 shots your arrow will turn into a dragon's talon.");
+            Tooltip.SetDefault("Every other shot fire energy is fired");
         }
         public int Skiddadle = 0;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

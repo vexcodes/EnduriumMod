@@ -18,8 +18,7 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.channel = true;
             item.knockBack = 3f;
             item.value = Terraria.Item.sellPrice(0, 2, 25, 0);
-            item.rare = -12;
-			item.expert = true;
+            item.rare = 3;
             item.autoReuse = false;
             item.shoot = mod.ProjectileType("PlagueHeart");
             item.noUseGraphic = true;

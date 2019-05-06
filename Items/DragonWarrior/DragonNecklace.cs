@@ -24,7 +24,7 @@ namespace EnduriumMod.Items.DragonWarrior
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragon Medalion");
-            Tooltip.SetDefault("'Stores a powerfull being inside'\nEmpowers dragon weaponary");
+            Tooltip.SetDefault("'Stores a powerfull being inside'\nAll dragon weapons will fire faster");
         }
 
 

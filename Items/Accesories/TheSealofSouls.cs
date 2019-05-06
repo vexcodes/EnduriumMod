@@ -24,7 +24,7 @@ namespace EnduriumMod.Items.Accesories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Seal of Souls");
-            Tooltip.SetDefault("'The soul of fallen is sealed within'\nIncreases minion slots by 1\nIncreases minion damage by 14%\nIncreases minion knockback by 50%\nReduces life regeneration and max health slightly");
+            Tooltip.SetDefault("'The soul of fallen is sealed within'\nIncreases max minions by 1\nIncreases minion damage by 14%\nIncreases minion knockback by 50%\nReduces life regeneration and max health slightly");
         }
 
         public override void AddRecipes()

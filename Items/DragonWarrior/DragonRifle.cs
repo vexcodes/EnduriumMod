@@ -43,7 +43,7 @@ namespace EnduriumMod.Items.DragonWarrior
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragon Rifle");
-            Tooltip.SetDefault("Fires a burst of flame bolts");
+            Tooltip.SetDefault("Fires up to 3 piercing projectiles");
         }
         public override Vector2? HoldoutOffset()
         {

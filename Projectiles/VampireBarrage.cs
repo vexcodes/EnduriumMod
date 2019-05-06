@@ -31,6 +31,10 @@ namespace EnduriumMod.Projectiles
         }
         public override void AI()
         {
+            Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedByRandom(MathHelper.ToRadians(8));
+            projectile.velocity.Y = perturbedSpeed.Y;
+            projectile.velocity.X = perturbedSpeed.X;
+
             projectile.ai[1] += 1;
             if (projectile.ai[1] <= 5)
             {
@@ -44,6 +48,7 @@ namespace EnduriumMod.Projectiles
             Main.dust[num97].noGravity = true;
             Dust dust3 = Main.dust[num97];
             dust3.velocity *= 0.1f;
+            dust3.position = projectile.Center;
             dust3.noGravity = true;
             dust3 = Main.dust[num97];
             dust3.velocity += projectile.velocity * 0.1f;

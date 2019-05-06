@@ -28,7 +28,7 @@ namespace EnduriumMod.Items.DragonWarrior.Shop
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Dragun");
+            DisplayName.SetDefault("The Dragon");
             Tooltip.SetDefault("Fires flame shells at nearby enemies");
         }
     }

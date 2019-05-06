@@ -55,8 +55,11 @@ namespace EnduriumMod.NPCs.TownNPCs
         }
         public override bool CheckConditions(int left, int right, int top, int bottom)
         {
-
-            return true; //post plantera spawning add
+            if (NPC.downedPlantBoss)
+            {
+                return true; //post plantera spawning add
+            }
+            return false;
         }
 
         public override string TownNPCName()

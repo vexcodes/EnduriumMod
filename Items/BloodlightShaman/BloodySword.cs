@@ -17,9 +17,9 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.useTime = 28;
             item.useAnimation = 28;
             item.useStyle = 1;
-            item.knockBack = 9;
+            item.knockBack = 2;
             item.value = 50000;
-            item.rare = 6;
+            item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
         }
@@ -29,10 +29,10 @@ namespace EnduriumMod.Items.BloodlightShaman
             DisplayName.SetDefault("Bloodlight Blade");
             Tooltip.SetDefault("");
         }
-				        public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-			            recipe.AddIngredient(null, ("BloodlightBar"), 18);
+            recipe.AddIngredient(null, ("BloodlightBar"), 18);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

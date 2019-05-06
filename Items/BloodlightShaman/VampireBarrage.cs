@@ -23,7 +23,7 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 1;
             item.value = 100000;
-            item.rare = 7;
+            item.rare = 2;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 10f;
@@ -42,9 +42,13 @@ namespace EnduriumMod.Items.BloodlightShaman
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-9, 0);
+        }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int numberProjectiles = 2   ;
+            int numberProjectiles = 2;
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));

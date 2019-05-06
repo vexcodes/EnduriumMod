@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Terraria.ID;
 namespace EnduriumMod.Items.Accesories
 {
     public class CharmofSacrifises : ModItem
@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.Accesories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Charm of Sacrifises");
-            Tooltip.SetDefault("'Blood of your opponents fills you with vitality'\n'You can not live without it'");
+            Tooltip.SetDefault("Killing enemies recovers a small amount of health\nTurns you into a demonic being");
         }
 
         public override void SetDefaults()
@@ -18,11 +18,19 @@ namespace EnduriumMod.Items.Accesories
             item.width = 24;
             item.height = 28;
             item.accessory = true;
-            item.expert = true;
             item.value = 150000;
-            item.rare = 5;
+            item.rare = 6;
         }
-
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(527, 2);
+            recipe.AddIngredient(520, 25);
+            recipe.AddIngredient(521, 15);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             MyPlayer p = player.GetModPlayer<MyPlayer>();

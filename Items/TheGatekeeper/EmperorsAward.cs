@@ -45,7 +45,7 @@ namespace EnduriumMod.Items.TheGatekeeper
             {
                 player.endurance += 0.12f;
             }
-                if (player.statLife <= (player.statLifeMax2 * 0.75f))
+            if (player.statLife <= (player.statLifeMax2 * 0.75f))
             {
                 player.magicCrit += 8;
                 player.meleeCrit += 8;
@@ -91,8 +91,6 @@ namespace EnduriumMod.Items.TheGatekeeper
                     }
                 }
             }
-
-
         }
     }
 }

@@ -196,13 +196,22 @@ namespace EnduriumMod.NPCs.TheScourge
             } //normal shit
             if (npc.ai[3] == 3) //chooses between 4 and 5
             {
-
+                npc.ai[0] += 1f;
+                if (npc.ai[0] >= 80)
+                {
+                    npc.ai[0] = 0;
+                    npc.ai[3] = Main.rand.Next(4, 5);
+                }
             }
             if (npc.ai[3] == 4) //surronds player with rotating vine projectiles that randomly go towards player
             {
-
+                npc.ai[0] += 1f;
+                if (npc.ai[0] >= 240) //summons a single rune
+                {
+                    npc.ai[0] = 230;
+                }
             }
-            if (npc.ai[3] == 5) //surrounds self with a lot of projectiles that quickly go towards the player, much like prism arcanum circles
+            if (npc.ai[3] == 5) //rat attack with gun, 2 waves of projectiles with different speeds
             {
 
             }
@@ -304,7 +313,7 @@ namespace EnduriumMod.NPCs.TheScourge
                 if (npc.ai[0] >= 30)
                 {
                     npc.ai[0] = 0f;
-                    npc.ai[3] = 0;
+                    npc.ai[3] = 3;
                     for (int k = 0; k < 20; k++)
                     {
                         Dust.NewDust(npc.position, npc.width, npc.height, 3, 1f, 1f, 0, default(Color), 1f);

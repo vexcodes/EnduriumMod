@@ -31,7 +31,7 @@ namespace EnduriumMod.Items.Accesories
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("IronCross"));
             recipe.AddIngredient(null, ("ShadowRemnants"), 25);
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -26,7 +26,7 @@ namespace EnduriumMod.Items.DragonWarrior
             item.UseSound = SoundID.Item43;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("DragonBeam");
-            item.shootSpeed = 12f;
+            item.shootSpeed = 8f;
         }
         public override void AddRecipes()
         {

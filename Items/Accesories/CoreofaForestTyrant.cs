@@ -28,7 +28,7 @@ namespace EnduriumMod.Items.Accesories
             Tooltip.SetDefault("Attacks inflict Reaper Nature\nCritical strikes imbue you with spirit energy\nSummons two earthen crystals to protect you\nIncreases all stats\nThe rage of the tyrant is released upon getting hit\nTaking lethal damage will instead bring you back to 200 health as if nothing happened\nThis effect has a cooldown of 2 minutes, during that time life regeneration is slightly lowered");
         }
 
-		        public override void AddRecipes()
+		/*public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("TheCrownOfNature"));
@@ -38,7 +38,7 @@ namespace EnduriumMod.Items.Accesories
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
+        }*/
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
 		            if (player.immune)

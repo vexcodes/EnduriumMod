@@ -37,8 +37,9 @@ namespace EnduriumMod.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("FrigidFragment"), 20);
-            recipe.AddIngredient(null, ("Aquamarine"), 25);
+            recipe.AddIngredient(175, 20);
+            recipe.AddIngredient(117, 25);
+            recipe.AddIngredient(1332, 12);
             recipe.AddIngredient(null, ("StarCrystal"), 5);
             recipe.AddIngredient(null, ("HolySilver"), 5);
             recipe.AddTile(null, "SoulForge");

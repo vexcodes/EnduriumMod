@@ -18,9 +18,8 @@ namespace EnduriumMod.Items.BloodlightShaman
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 1;
-            item.expert = true;
             item.value = Terraria.Item.buyPrice(0, 3, 30, 0);
-            item.rare = -12;
+            item.rare = 3;
             item.UseSound = SoundID.Item11;
             item.autoReuse = true;
             item.shoot = 10;

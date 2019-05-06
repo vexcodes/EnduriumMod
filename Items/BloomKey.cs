@@ -18,7 +18,7 @@ namespace EnduriumMod.Items
             item.maxStack = 99;
             item.value = Terraria.Item.sellPrice(1, 0, 0, 0);
             item.rare = 4;
-			            item.consumable = false;
+            item.consumable = false;
         }
 
         public override void SetStaticDefaults()
@@ -26,15 +26,15 @@ namespace EnduriumMod.Items
             DisplayName.SetDefault("Tropical Key");
             Tooltip.SetDefault("");
         }
-				        public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.ShadowKey);
-			            recipe.AddIngredient(null, ("TropicalFragment"), 3);
-									            recipe.AddIngredient(null, ("TropicalFeather"), 2);
-															            recipe.AddIngredient(null, ("DarkDust"), 15);
-						            recipe.AddIngredient(ItemID.SoulofMight, 15);
-									            recipe.AddIngredient(ItemID.SoulofFright, 15);
+            recipe.AddIngredient(null, ("TropicalFragment"), 3);
+            recipe.AddIngredient(null, ("TropicalFeather"), 2);
+            recipe.AddIngredient(null, ("DarkDust"), 15);
+            recipe.AddIngredient(ItemID.SoulofMight, 15);
+            recipe.AddIngredient(ItemID.SoulofFright, 15);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

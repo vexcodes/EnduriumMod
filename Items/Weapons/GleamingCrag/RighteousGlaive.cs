@@ -154,7 +154,7 @@ namespace EnduriumMod.Items.Weapons.GleamingCrag
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Righteous Glaive");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("An incredibly oversized spear");
         }
     }
 }

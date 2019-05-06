@@ -121,7 +121,7 @@ namespace EnduriumMod.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blade of Balance");
-            Tooltip.SetDefault("'DAAAB'");
+            Tooltip.SetDefault("");
         }
     }
 }

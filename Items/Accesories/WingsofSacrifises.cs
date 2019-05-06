@@ -21,7 +21,17 @@ namespace EnduriumMod.Items.Accesories
             item.rare = 7;
             item.accessory = true;
         }
-
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(527, 2);
+            recipe.AddIngredient(520, 15);
+            recipe.AddIngredient(521, 15);
+            recipe.AddIngredient(575, 30);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bloodlight Wings");

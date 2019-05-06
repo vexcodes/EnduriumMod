@@ -29,7 +29,7 @@ namespace EnduriumMod.Items
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("Aquamarine"), 20);
+            recipe.AddIngredient(null, ("Aquamarine"), 5);
             recipe.AddIngredient(ItemID.FallenStar, 5);
             recipe.AddIngredient(ItemID.SoulofLight, 2);
             recipe.AddIngredient(ItemID.SoulofNight, 2);

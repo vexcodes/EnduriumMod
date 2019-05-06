@@ -37,7 +37,7 @@ namespace EnduriumMod.Items.Weapons.Acid
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Acid Bane");
-            Tooltip.SetDefault("Sometimes Turns arrows into acid arrows");
+            Tooltip.SetDefault("");
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
@@ -46,8 +46,6 @@ namespace EnduriumMod.Items.Weapons.Acid
             {
                 position += muzzleOffset;
             }
-            Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(4));
-            Projectile.NewProjectile(position.X, position.Y, (int)(perturbedSpeed.X *= 0.7f), (int)(perturbedSpeed.Y *= 0.7f), mod.ProjectileType("AccretionArrow"), damage, knockBack, player.whoAmI);
             return true; // return false because we don't want tmodloader to shoot projectile
         }
     }

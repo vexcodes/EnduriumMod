@@ -20,7 +20,6 @@ namespace EnduriumMod.Items.Accesories
             item.rare = 8;
             item.accessory = true;
             item.defense = 8;
-			item.expert = true;
         }
 
         public override void SetStaticDefaults()
