@@ -550,18 +550,26 @@ namespace EnduriumMod.NPCs.TheSwarm
                 {
                     if (!PlayerThings)
                     {
-                        int num1 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
-                        Main.npc[num1].ai[0] = player.whoAmI;
-                        Main.npc[num1].ai[1] = 90;
-                        int num2 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
-                        Main.npc[num2].ai[0] = player.whoAmI;
-                        Main.npc[num2].ai[1] = 180;
-                        int num3 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
-                        Main.npc[num3].ai[0] = player.whoAmI;
-                        Main.npc[num3].ai[1] = 270;
-                        int num4 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
-                        Main.npc[num4].ai[0] = player.whoAmI;
-                        Main.npc[num4].ai[1] = 360;
+                        if (Main.netMode != 1)
+                        {
+                            npc.netUpdate = true;
+                            int num1 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
+                            Main.npc[num1].ai[0] = player.whoAmI;
+                            Main.npc[num1].ai[1] = 90;
+                            Main.npc[num1].netUpdate = true;
+                            int num2 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
+                            Main.npc[num2].ai[0] = player.whoAmI;
+                            Main.npc[num2].ai[1] = 180;
+                            Main.npc[num2].netUpdate = true;
+                            int num3 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
+                            Main.npc[num3].ai[0] = player.whoAmI;
+                            Main.npc[num3].ai[1] = 270;
+                            Main.npc[num3].netUpdate = true;
+                            int num4 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
+                            Main.npc[num4].ai[0] = player.whoAmI;
+                            Main.npc[num4].ai[1] = 360;
+                            Main.npc[num4].netUpdate = true;
+                        }
                     }
                     npc.ai[0] = 300;
                     npc.ai[3] = 0;
