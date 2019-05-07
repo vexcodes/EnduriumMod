@@ -11,7 +11,7 @@ namespace EnduriumMod.Items.Weapons.Eroded
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eroded Staff");
-            Tooltip.SetDefault("Fires Eroded exploding energy");
+            Tooltip.SetDefault("Fires Eroded Energy\nUpon hitting an enemy the projectile has a chance to split");
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

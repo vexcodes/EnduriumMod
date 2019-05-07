@@ -15,8 +15,8 @@ namespace EnduriumMod.Items.Weapons.ShardofFlame
             item.mana = 12;
             item.width = 62;
             item.height = 64;
-            item.useTime = 39;
-            item.useAnimation = 39;
+            item.useTime = 41;
+            item.useAnimation = 41;
             item.useStyle = 5;
             Item.staff[item.type] = true;
 
@@ -32,9 +32,8 @@ namespace EnduriumMod.Items.Weapons.ShardofFlame
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.CrimtaneBar, 20);
-            recipe.AddIngredient(ItemID.Vertebrae, 5);
-            recipe.AddIngredient(null, ("MagmaCore"), 5);
+            recipe.AddIngredient(ItemID.HellstoneBar, 20);
+            recipe.AddIngredient(null, ("MagmaCore"), 12);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -42,7 +41,7 @@ namespace EnduriumMod.Items.Weapons.ShardofFlame
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tripmine Staff");
-            Tooltip.SetDefault("'Fires a bolt of magma energy");
+            Tooltip.SetDefault("Fires a bouncy projectile");
         }
     }
 }

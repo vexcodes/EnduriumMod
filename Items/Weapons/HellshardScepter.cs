@@ -15,14 +15,14 @@ namespace EnduriumMod.Items.Weapons
         }
         public override void SetDefaults()
         {
-            item.damage = 30;
+            item.damage = 24;
             item.magic = true;
-            item.mana = 8;
+            item.mana = 16;
             item.width = 52;
             item.height = 24;
             Item.staff[item.type] = true;
-            item.useAnimation = 40;
-            item.useTime = 8;
+            item.useAnimation = 45;
+            item.useTime = 9;
             item.UseSound = SoundID.Item43;
             item.reuseDelay = 10;
             item.useStyle = 5;

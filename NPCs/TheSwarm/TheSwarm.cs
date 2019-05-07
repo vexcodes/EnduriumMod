@@ -17,7 +17,7 @@ namespace EnduriumMod.NPCs.TheSwarm
         {
 
             npc.damage = 90;
-            npc.npcSlots = 1f;
+            npc.npcSlots = 0.5f;
             npc.width = 62; //324
             npc.height = 180; //216
             npc.defense = 20;
@@ -96,7 +96,15 @@ namespace EnduriumMod.NPCs.TheSwarm
             bool IsInBiome = player.ZoneJungle;
 
             bool MinionsDead = NPC.AnyNPCs(mod.NPCType("EarthenCrystal"));
-            bool Phase2 = (double)npc.life <= (double)npc.lifeMax * 0.5;
+
+            bool PlayerThings = NPC.AnyNPCs(mod.NPCType("EarthenCrystalCopy"));
+
+            bool Phase2 = (double)npc.life <= (double)npc.lifeMax * 0.9;
+            bool Phase3 = (double)npc.life <= (double)npc.lifeMax * 0.75;
+            bool Phase4 = (double)npc.life <= (double)npc.lifeMax * 0.5;
+            bool Phase5 = (double)npc.life <= (double)npc.lifeMax * 0.25;
+            bool Phase6 = (double)npc.life <= (double)npc.lifeMax * 0.1;
+
             npc.TargetClosest(true);
             if (Main.player[npc.target].dead)
             {
@@ -121,83 +129,161 @@ namespace EnduriumMod.NPCs.TheSwarm
                 {
                     if (num701 < 20f)
                     {
-                        num699 = npc.velocity.X;
-                        num700 = npc.velocity.Y;
+                        if (Main.netMode != 1)
+                        {
+                            num699 = npc.velocity.X;
+                            num700 = npc.velocity.Y;
+                        }
                     }
                     else
                     {
-                        num701 = num697 / num701;
-                        num699 *= num701;
-                        num700 *= num701;
+                        if (Main.netMode != 1)
+                        {
+                            num701 = num697 / num701;
+                            num699 *= num701;
+                            num700 *= num701;
+                        }
                     }
                     if (npc.velocity.X < num699)
                     {
-                        npc.velocity.X = npc.velocity.X + num698;
-                        if (npc.velocity.X < 0f && num699 > 0f)
+                        if (Main.netMode != 1)
                         {
-                            npc.velocity.X = npc.velocity.X + num698 * 2f;
+                            npc.netUpdate = true;
+                            npc.velocity.X = npc.velocity.X + num698;
+                            if (npc.velocity.X < 0f && num699 > 0f)
+                            {
+                                npc.velocity.X = npc.velocity.X + num698 * 2f;
+                            }
                         }
                     }
                     else if (npc.velocity.X > num699)
                     {
-                        npc.velocity.X = npc.velocity.X - num698;
-                        if (npc.velocity.X > 0f && num699 < 0f)
+                        if (Main.netMode != 1)
                         {
-                            npc.velocity.X = npc.velocity.X - num698 * 2f;
+                            npc.netUpdate = true;
+                            npc.velocity.X = npc.velocity.X - num698;
+                            if (npc.velocity.X > 0f && num699 < 0f)
+                            {
+                                npc.velocity.X = npc.velocity.X - num698 * 2f;
+                            }
                         }
                     }
                     if (npc.velocity.Y < num700)
                     {
-                        npc.velocity.Y = npc.velocity.Y + num698;
-                        if (npc.velocity.Y < 0f && num700 > 0f)
+                        if (Main.netMode != 1)
                         {
-                            npc.velocity.Y = npc.velocity.Y + num698 * 2f;
+                            npc.netUpdate = true;
+                            npc.velocity.Y = npc.velocity.Y + num698;
+                            if (npc.velocity.Y < 0f && num700 > 0f)
+                            {
+                                npc.velocity.Y = npc.velocity.Y + num698 * 2f;
+                            }
                         }
                     }
                     else if (npc.velocity.Y > num700)
                     {
-                        npc.velocity.Y = npc.velocity.Y - num698;
-                        if (npc.velocity.Y > 0f && num700 < 0f)
+                        if (Main.netMode != 1)
                         {
-                            npc.velocity.Y = npc.velocity.Y - num698 * 2f;
+                            npc.netUpdate = true;
+                            npc.velocity.Y = npc.velocity.Y - num698;
+                            if (npc.velocity.Y > 0f && num700 < 0f)
+                            {
+                                npc.velocity.Y = npc.velocity.Y - num698 * 2f;
+                            }
                         }
                     }
                 }
             }
+            else
+            {
+                npc.velocity *= 0.94f;
+            }
             npc.ai[0]++;
+            if (Phase2)
+            {
+                if (npc.ai[0] >= 280)
+                {
+                    npc.ai[0] += 0.4f;
+                }
+            }
+            if (Phase3)
+            {
+                if (npc.ai[0] >= 280)
+                {
+                    npc.ai[0] += 0.4f;
+                }
+            }
+            if (Phase4)
+            {
+                if (npc.ai[0] >= 280)
+                {
+                    npc.ai[0] += 0.4f;
+                }
+            }
+            if (Phase5)
+            {
+                if (npc.ai[0] >= 280)
+                {
+                    npc.ai[0] += 0.4f;
+                }
+                if (Main.expertMode)
+                {
+                    if (!MinionsDead)
+                    {
+                        npc.dontTakeDamage = false;
+                    }
+                    if (MinionsDead)
+                    {
+                        npc.dontTakeDamage = true;
+                        npc.localAI[1] = 1;
+                    }
+                    else if (npc.localAI[1] == 0)
+                    {
+                        npc.ai[0] = 0;
+                        npc.localAI[1] = 1;
+                    }
+                }
+            }
+            if (Phase6)
+            {
+                if (npc.ai[0] >= 280)
+                {
+                    npc.ai[0] += 0.4f;
+                }
+            }
+            
             if (Main.expertMode)
             {
-                if (npc.ai[0] == 1)
+                if (Main.netMode != 1)
                 {
-                    int num1 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystal"));
-                    Main.npc[num1].ai[0] = npc.whoAmI;
-                }
-                if (npc.ai[0] == 91)
-                {
-                    int num2 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystal"));
-                    Main.npc[num2].ai[0] = npc.whoAmI;
-                }
-                if (npc.ai[0] == 181)
-                {
-                    int num3 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystal"));
-                    Main.npc[num3].ai[0] = npc.whoAmI;
-                }
-                if (npc.ai[0] == 271)
-                {
-                    int num4 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystal"));
-                    Main.npc[num4].ai[0] = npc.whoAmI;
+                    if (npc.ai[0] == 1)
+                    {
+                        int num1 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystal"));
+                        Main.npc[num1].ai[0] = npc.whoAmI;
+                        Main.npc[num1].netUpdate = true;
+                    }
+                    if (npc.ai[0] == 91)
+                    {
+                        int num2 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystal"));
+                        Main.npc[num2].ai[0] = npc.whoAmI;
+                        Main.npc[num2].netUpdate = true;
+                    }
+                    if (npc.ai[0] == 181)
+                    {
+                        int num3 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystal"));
+                        Main.npc[num3].ai[0] = npc.whoAmI;
+                        Main.npc[num3].netUpdate = true;
+                    }
+                    if (npc.ai[0] == 271)
+                    {
+                        int num4 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystal"));
+                        Main.npc[num4].ai[0] = npc.whoAmI;
+                        Main.npc[num4].netUpdate = true;
+                    }
                 }
             }
             npc.noGravity = true;
             npc.TargetClosest(true);
-            if (!IsInBiome) //outside of biome rage
-            {
-                npc.dontTakeDamage = true;
-            }
-            else
-            {
-                npc.dontTakeDamage = false;
-            }
             if (Main.netMode != 1)
             {
                 if (npc.localAI[3] > 0f)
@@ -277,14 +363,18 @@ namespace EnduriumMod.NPCs.TheSwarm
             {
                 if (npc.ai[0] == 320 && !MinionsDead)
                 {
-                    if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].head))
+                    if (Main.netMode != 1)
                     {
-                        float Speed = 5f;  // projectile speed
-                        Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
-                        int damage = 30;  // projectile damage
-                        int type = mod.ProjectileType("StoneFossil");  //put your projectile
-                        float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
-                        int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                        if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].head))
+                        {
+                            npc.netUpdate = true;
+                            float Speed = 5f;  // projectile speed
+                            Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                            int damage = 30;  // projectile damage
+                            int type = mod.ProjectileType("StoneFossil");  //put your projectile
+                            float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+                            int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                        }
                     }
                 }
             }
@@ -292,14 +382,18 @@ namespace EnduriumMod.NPCs.TheSwarm
             {
                 if (npc.ai[0] >= 360)
                 {
-                    if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].head))
+                    if (Main.netMode != 1)
                     {
-                        float Speed = 8f;  // projectile speed
-                        Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
-                        int damage = 30;  // projectile damage
-                        int type = mod.ProjectileType("PlagueEnergy");  //put your projectile
-                        float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
-                        int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                        if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].head))
+                        {
+                            npc.netUpdate = true;
+                            float Speed = 8f;  // projectile speed
+                            Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                            int damage = 30;  // projectile damage
+                            int type = mod.ProjectileType("PlagueEnergy");  //put your projectile
+                            float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+                            int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                        }
                     }
                     npc.ai[1] += 1;
                     npc.ai[0] = 300;
@@ -308,21 +402,32 @@ namespace EnduriumMod.NPCs.TheSwarm
                 {
                     npc.ai[0] = 280;
                     npc.ai[1] = 0;
-                    npc.ai[3] = 1;
+                    if (npc.ai[2] != 2)
+                    {
+                        npc.ai[3] = 1;
+                    }
+                    else
+                    {
+                        npc.ai[3] = 4;
+                    }
                 }
             }
             if (npc.ai[3] == 1)
             {
                 if (npc.ai[0] >= 360)
                 {
-                    if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].head))
+                    if (Main.netMode != 1)
                     {
-                        float Speed = 8f;  // projectile speed
-                        Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
-                        int damage = 30;  // projectile damage
-                        int type = mod.ProjectileType("StoneFossil");  //put your projectile
-                        float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
-                        int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                        if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].head))
+                        {
+                            npc.netUpdate = true;
+                            float Speed = 8f;  // projectile speed
+                            Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                            int damage = 30;  // projectile damage
+                            int type = mod.ProjectileType("StoneFossil");  //put your projectile
+                            float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+                            int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                        }
                     }
                     npc.ai[1] += 1;
                     npc.ai[0] = 300;
@@ -335,7 +440,7 @@ namespace EnduriumMod.NPCs.TheSwarm
                     {
                         npc.ai[3] = 2;
                     }
-                    else 
+                    else
                     {
                         npc.ai[3] = 3;
                     }
@@ -346,33 +451,36 @@ namespace EnduriumMod.NPCs.TheSwarm
                 npc.velocity *= 0.9f;
                 if (!MinionsDead)
                 {
-                    if (npc.ai[0] == 360)
+                    if (Main.netMode != 1)
                     {
-                        npc.netUpdate = true;
-                        Vector2 vector23 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                        float num147 = 12f;
-                        float num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
-                        float num149 = Math.Abs(num148) * 0.1f;
-                        float num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y - num149;
-                        float num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
-                        npc.netUpdate = true;
-                        num151 = num147 / num151;
-                        num148 *= num151;
-                        num150 *= num151;
-                        int num152 = 35;
-                        int num25;
-                        for (int num154 = 0; num154 < 5; num154 = num25 + 1)
+                        if (npc.ai[0] == 360)
                         {
-                            num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
-                            num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y;
-                            num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
-                            num151 = 12f / num151;
-                            num148 += (float)Main.rand.Next(-100, 101);
-                            num150 += (float)Main.rand.Next(-100, 101);
+                            npc.netUpdate = true;
+                            Vector2 vector23 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                            float num147 = 12f;
+                            float num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
+                            float num149 = Math.Abs(num148) * 0.1f;
+                            float num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y - num149;
+                            float num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
+                            npc.netUpdate = true;
+                            num151 = num147 / num151;
                             num148 *= num151;
                             num150 *= num151;
-                            Projectile.NewProjectile(vector23.X, vector23.Y, num148, num150, mod.ProjectileType("PlagueEnergy"), 30, 0f, Main.myPlayer, 0f, 0f);
-                            num25 = num154;
+                            int num152 = 35;
+                            int num25;
+                            for (int num154 = 0; num154 < 5; num154 = num25 + 1)
+                            {
+                                num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
+                                num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y;
+                                num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
+                                num151 = 12f / num151;
+                                num148 += (float)Main.rand.Next(-100, 101);
+                                num150 += (float)Main.rand.Next(-100, 101);
+                                num148 *= num151;
+                                num150 *= num151;
+                                Projectile.NewProjectile(vector23.X, vector23.Y, num148, num150, mod.ProjectileType("PlagueEnergy"), 30, 0f, Main.myPlayer, 0f, 0f);
+                                num25 = num154;
+                            }
                         }
                     }
                     if (npc.ai[0] >= 380)
@@ -380,7 +488,7 @@ namespace EnduriumMod.NPCs.TheSwarm
                         npc.ai[1] = 1;
                     }
                 }
-                if (npc.ai[1] == 1)
+                if (npc.ai[1] >= 1)
                 {
                     npc.ai[0] = 280;
                     npc.ai[3] = 0;
@@ -427,12 +535,38 @@ namespace EnduriumMod.NPCs.TheSwarm
                         npc.ai[1] = 1;
                     }
                 }
-                if (npc.ai[1] == 1)
+                if (npc.ai[1] >= 1)
                 {
                     npc.ai[0] = 280;
                     npc.ai[3] = 0;
+                    npc.ai[2] += 1;
                     npc.ai[1] = 0;
+                }
+            }
+            if (npc.ai[3] == 4)
+            {
+                npc.ai[0] += 1;
+                if (npc.ai[0] >= 500)
+                {
+                    if (!PlayerThings)
+                    {
+                        int num1 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
+                        Main.npc[num1].ai[0] = player.whoAmI;
+                        Main.npc[num1].ai[1] = 90;
+                        int num2 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
+                        Main.npc[num2].ai[0] = player.whoAmI;
+                        Main.npc[num2].ai[1] = 180;
+                        int num3 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
+                        Main.npc[num3].ai[0] = player.whoAmI;
+                        Main.npc[num3].ai[1] = 270;
+                        int num4 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
+                        Main.npc[num4].ai[0] = player.whoAmI;
+                        Main.npc[num4].ai[1] = 360;
+                    }
+                    npc.ai[0] = 300;
+                    npc.ai[3] = 0;
                     npc.ai[2] = 0;
+                    npc.ai[1] = 0;
                 }
             }
         }

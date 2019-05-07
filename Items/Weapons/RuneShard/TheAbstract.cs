@@ -15,7 +15,7 @@ namespace EnduriumMod.Items.Weapons.RuneShard
         }
         public override void SetDefaults()
         {
-            item.damage = 40;
+            item.damage = 31;
             item.ranged = true;
             item.width = 30;
             item.height = 46;

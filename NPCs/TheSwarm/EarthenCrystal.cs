@@ -21,6 +21,7 @@ namespace EnduriumMod.NPCs.TheSwarm
             npc.width = 22; //324
             npc.height = 44; //216
             npc.defense = 10;
+            npc.alpha = 255;
             npc.lifeMax = 3000;
             npc.aiStyle = -1; //new
             aiType = -1; //new
@@ -76,42 +77,45 @@ namespace EnduriumMod.NPCs.TheSwarm
                     {
                         p.ai[1] += 1;
                         npc.ai[2] = 0;
-                        if (p.ai[3] == 2)
+                        if (Main.netMode != 1)
                         {
-                            float Speed = 8f;  // projectile speed
-                            Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
-                            int damage = 30;  // projectile damage
-                            int type = mod.ProjectileType("PlaguePursuit");  //put your projectile
-                            float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
-                            int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
-                        }
-                        if (p.ai[3] == 3)
-                        {
-                            npc.netUpdate = true;
-                            Vector2 vector23 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                            float num147 = 12f;
-                            float num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
-                            float num149 = Math.Abs(num148) * 0.1f;
-                            float num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y - num149;
-                            float num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
-                            npc.netUpdate = true;
-                            num151 = num147 / num151;
-                            num148 *= num151;
-                            num150 *= num151;
-                            int num152 = 35;
-                            int num25;
-                            for (int num154 = 0; num154 < 3; num154 = num25 + 1)
+                            if (p.ai[3] == 2)
                             {
-                                num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
-                                num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y;
-                                num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
-                                num151 = 12f / num151;
-                                num148 += (float)Main.rand.Next(-100, 101);
-                                num150 += (float)Main.rand.Next(-100, 101);
+                                npc.netUpdate = true;
+                                float Speed = 8f;  // projectile speed
+                                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                                int damage = 30;  // projectile damage
+                                int type = mod.ProjectileType("PlaguePursuit");  //put your projectile
+                                float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+                                int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
+                            }
+                            if (p.ai[3] == 3)
+                            {
+                                npc.netUpdate = true;
+                                Vector2 vector23 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                                float num147 = 12f;
+                                float num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
+                                float num149 = Math.Abs(num148) * 0.1f;
+                                float num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y - num149;
+                                float num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
+                                num151 = num147 / num151;
                                 num148 *= num151;
                                 num150 *= num151;
-                                Projectile.NewProjectile(vector23.X, vector23.Y, num148, num150, mod.ProjectileType("PlagueEnergy"), 30, 0f, Main.myPlayer, 0f, 0f);
-                                num25 = num154;
+                                int num152 = 35;
+                                int num25;
+                                for (int num154 = 0; num154 < 3; num154 = num25 + 1)
+                                {
+                                    num148 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector23.X;
+                                    num150 = Main.player[npc.target].position.Y + (float)Main.player[npc.target].height * 0.5f - vector23.Y;
+                                    num151 = (float)Math.Sqrt((double)(num148 * num148 + num150 * num150));
+                                    num151 = 12f / num151;
+                                    num148 += (float)Main.rand.Next(-100, 101);
+                                    num150 += (float)Main.rand.Next(-100, 101);
+                                    num148 *= num151;
+                                    num150 *= num151;
+                                    Projectile.NewProjectile(vector23.X, vector23.Y, num148, num150, mod.ProjectileType("PlagueEnergy"), 30, 0f, Main.myPlayer, 0f, 0f);
+                                    num25 = num154;
+                                }
                             }
                         }
                     }
@@ -121,7 +125,10 @@ namespace EnduriumMod.NPCs.TheSwarm
             {
                 if (dist > 110)
                 {
-                    dist -= 1;
+                    if (Main.netMode != 1)
+                    {
+                        dist -= 1;
+                    }
                 }
             }
             if (p.life <= 0 || !p.active)

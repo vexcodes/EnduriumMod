@@ -50,7 +50,7 @@ namespace EnduriumMod.NPCs.TheSwarm
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return NPC.AnyNPCs(mod.NPCType("TheSwarm")) ? 2f : 0f;
+            return NPC.AnyNPCs(mod.NPCType("TheSwarm")) ? 3f : 0f;
         }
         public override void AI()
         {

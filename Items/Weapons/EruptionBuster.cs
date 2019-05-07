@@ -13,6 +13,10 @@ namespace EnduriumMod.Items.Weapons
             DisplayName.SetDefault("Eruption Buster");
             Tooltip.SetDefault("Fires balls of rupturing fire\nHitting enemies creates a small afterblast");
         }
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-15, 0);
+        }
         public override void SetDefaults()
         {
 
@@ -43,10 +47,6 @@ namespace EnduriumMod.Items.Weapons
             recipe.AddTile(null, "SoulForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(15, 0);
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

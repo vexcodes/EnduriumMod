@@ -13,7 +13,7 @@ namespace EnduriumMod.NPCs.AncientBeetle
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Beetle");
+            DisplayName.SetDefault("Ancient Beetles");
         }
         public override void SetDefaults()
         {

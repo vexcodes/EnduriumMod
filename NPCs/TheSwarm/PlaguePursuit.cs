@@ -40,7 +40,7 @@ namespace EnduriumMod.NPCs.TheSwarm
             int a = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 89, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
             Main.dust[a].noGravity = true;
             Main.dust[a].velocity *= 0.1f;
-            Main.dust[a].scale *= 0.8f;
+            Main.dust[a].scale *= 1.2f;
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
             Player player = Main.player[Main.myPlayer];
             float closestDist = 10000; //this is just some player-finding code i got from randomzachofkindness, thats his name now afaik. You should be fine using it, since i have permission to use it and i made this ModProjectile class

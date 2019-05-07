@@ -11,7 +11,11 @@ namespace EnduriumMod.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blast Buster");
-            Tooltip.SetDefault("Fires flaming blasts that can quickly hit an enemy 2 times");
+            Tooltip.SetDefault("Fires flaming blasts that hit an enemy 2 times");
+        }
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-12, 0);
         }
         public override void SetDefaults()
         {

@@ -17,7 +17,7 @@ namespace EnduriumMod.Items.Weapons.Dusk
         public override void SetDefaults()
         {
 
-            item.damage = 40;
+            item.damage = 50;
             item.melee = true;
             item.width = 52;
             item.height = 22;
@@ -30,7 +30,7 @@ namespace EnduriumMod.Items.Weapons.Dusk
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("IceGlacier");
-            item.shootSpeed = 12f;
+            item.shootSpeed = 7f;
         }
         public override void AddRecipes()
         {
@@ -55,8 +55,17 @@ namespace EnduriumMod.Items.Weapons.Dusk
                 perturbedSpeed = perturbedSpeed * scale;
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI, Main.mouseX, Main.mouseY);
             }
-
-            return false;
+            if (Main.rand.Next(4) == 0)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(12)); // 30 degree spread.                                                                                         // If you want to randomize the speed to stagger the projectiles
+                    float scale = 1f - (Main.rand.NextFloat() * .3f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, 118, damage, knockBack, player.whoAmI, Main.mouseX, Main.mouseY);
+                }
+            }
+                return false;
         }
     }
 }

@@ -12,11 +12,11 @@ namespace EnduriumMod.Items.Weapons.Dusk
 
             item.damage = 64;
             item.magic = true;
-            item.mana = 20;
+            item.mana = 10;
             item.width = 46;
             item.height = 46;
-            item.useTime = 14;
-            item.useAnimation = 14;
+            item.useTime = 17;
+            item.useAnimation = 17;
             item.useStyle = 5;
             Item.staff[item.type] = true;
 
