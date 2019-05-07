@@ -209,20 +209,20 @@ public class EnduriumWorld : ModWorld
             tasks.Insert(num + 1, new PassLegacy("TropicalForestBiomeGen", delegate (GenerationProgress progress)
             {
                 progress.Message = "Hiding the Tropical Paradise";
-                int num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 160) : (Main.spawnTileX - 160);
+                int num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 120) : (Main.spawnTileX - 120);
                 int num3 = Raycast(num2, 200);
                 if (Main.maxTilesY == 1800)
                 {
-                    num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 1200) : (Main.spawnTileX - 1200);
+                    num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 240) : (Main.spawnTileX - 240);
                 }
                 if (Main.maxTilesY == 2400)
                 {
-                    num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 1700) : (Main.spawnTileX - 1700);
+                    num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 340) : (Main.spawnTileX - 340);
                 }
             
                 if (num3 < (int)Main.worldSurface - 50)
                 {
-                    num3 = Raycast(num2, (int)Main.worldSurface - 100) + 260;
+                    num3 = Raycast(num2, (int)Main.worldSurface - 100) + 240;
                 }
                 if (Main.tile[num2, Raycast(num2, num3)].type == 147)
                 {
@@ -380,7 +380,7 @@ public class EnduriumWorld : ModWorld
         bool flag4 = source.Any((int x) => x == Main.tile[i, k - 1].wall) && source.Any((int x) => x == Main.tile[i + 1, k - 1].wall);
         if (flag && flag2 && flag3 && flag4)
         {
-            WorldGen.PlaceChestDirect(i, k - 1, (ushort)base.mod.TileType("BloomChest"), 0, 0);
+            WorldGen.PlaceChestDirect(i, k - 1, (ushort)base.mod.TileType("BloomChest"), 0, 2);
             return true;
         }
         return false;

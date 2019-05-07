@@ -62,10 +62,5 @@ namespace EnduriumMod.Backgrounds
 				return -1;
 			}
 		}
-
-		public override int ChooseCloseTexture(ref float scale, ref double parallax, ref float a, ref float b)
-		{
-			return mod.GetBackgroundSlot("Backgrounds/ExampleBiomeSurfaceClose");
-		}
 	}
 }

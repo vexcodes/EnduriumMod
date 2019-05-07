@@ -562,7 +562,7 @@ namespace EnduriumMod.NPCs.TheSwarm
                             Main.npc[num2].ai[1] = 180;
                             Main.npc[num2].netUpdate = true;
                             int num3 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));
-                            Main.npc[num3].ai[0] = player.whoAmI;
+                            Main.npc[num3].ai[0] = player.whoAmI;   
                             Main.npc[num3].ai[1] = 270;
                             Main.npc[num3].netUpdate = true;
                             int num4 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y - 80, mod.NPCType("EarthenCrystalCopy"));

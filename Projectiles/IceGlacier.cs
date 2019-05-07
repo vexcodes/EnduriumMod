@@ -53,7 +53,7 @@ namespace EnduriumMod.Projectiles //We need this to basically indicate the folde
             projectile.netUpdate = true;
             for (int num2 = 0; num2 < 12; num2++)
             {
-                int num = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 89, 0f, 0f, 20, default(Color), 1.1f);
+                int num = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 156, 0f, 0f, 20, default(Color), 1.1f);
                 Main.dust[num].velocity *= 1f;
                 Main.dust[num].noGravity = true;
             }
