@@ -209,7 +209,7 @@ public class EnduriumWorld : ModWorld
             tasks.Insert(num + 1, new PassLegacy("TropicalForestBiomeGen", delegate (GenerationProgress progress)
             {
                 progress.Message = "Hiding the Tropical Paradise";
-                int num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 120) : (Main.spawnTileX - 120);
+                int num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 40) : (Main.spawnTileX - 40);
                 int num3 = Raycast(num2, 200);
                 if (Main.maxTilesY == 1800)
                 {
@@ -222,11 +222,11 @@ public class EnduriumWorld : ModWorld
             
                 if (num3 < (int)Main.worldSurface - 50)
                 {
-                    num3 = Raycast(num2, (int)Main.worldSurface - 100) + 240;
+                    num3 = Raycast(num2, (int)Main.worldSurface - 100) + 260;
                 }
                 if (Main.tile[num2, Raycast(num2, num3)].type == 147)
                 {
-                    num2 += ((num2 < Main.spawnTileX) ? (-500) : 500);
+                    num2 += ((num2 < Main.spawnTileX) ? (-300) : 300);
                 }
                 if (Main.tile[num2, Raycast(num2, num3)].type == 41 || (Main.tile[num2, Raycast(num2, num3)].type == 43 || (Main.tile[num2, Raycast(num2, num3)].type == 44)))
                 {
