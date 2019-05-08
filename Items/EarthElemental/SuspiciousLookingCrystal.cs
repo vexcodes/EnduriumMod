@@ -1,12 +1,12 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace EnduriumMod.Items.TheSpiritOfBloom
+namespace EnduriumMod.Items.EarthElemental
 {
-    public class TheBloomingFire : ModItem
+    public class SuspiciousLookingCrystal : ModItem
     {
         public override void SetDefaults()
         {
@@ -15,7 +15,7 @@ namespace EnduriumMod.Items.TheSpiritOfBloom
             item.height = 32;
             item.maxStack = 20;
 
-            item.rare = 3;
+            item.rare = 6;
             item.useAnimation = 45;
             item.useTime = 45;
             item.useStyle = 4;
@@ -25,29 +25,25 @@ namespace EnduriumMod.Items.TheSpiritOfBloom
         }
         public override bool CanUseItem(Player player)
         {
-            return Main.dayTime && !NPC.AnyNPCs(mod.NPCType("TheSpiritOfBloom"));
+            return Main.dayTime && player.ZoneJungle && !NPC.AnyNPCs(mod.NPCType("TheSwarm"));
         }
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("TheSpiritOfBloom"));
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("TheSwarm"));
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Blooming Fire");
-            Tooltip.SetDefault("Summons the guardian of the forest\nUse in the light of the sun");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(9, 7));
-            ItemID.Sets.ItemIconPulse[item.type] = true;
-            ItemID.Sets.ItemNoGravity[item.type] = true;
+            DisplayName.SetDefault("An ancient rock");
+            Tooltip.SetDefault("Summons an ancient elemental\nUse in the light of the sun while at the jungle");
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Emerald, 2);
-            recipe.AddRecipeGroup("PlatinumBars", 6);
-            recipe.AddIngredient(null, ("NatureEssence"), 8);
+            recipe.AddRecipeGroup("PlatinumBars", 8);
+            recipe.AddIngredient(null, ("TropicalFragment"), 2);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

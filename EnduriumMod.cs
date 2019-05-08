@@ -89,7 +89,7 @@ namespace EnduriumMod
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
             if (bossChecklist != null)
             {
-                //bossChecklist.Call("AddBossWithInfo", "The Swarm", 6.4f, (Func<bool>)(() => EnduriumWorld.downedBio), "Use a [i:" + this.ItemType("SuspiciousLookingCrystal") + "] In the jungle biome");
+                bossChecklist.Call("AddBossWithInfo", "The Earth Elemental", 6.4f, (Func<bool>)(() => EnduriumWorld.downedBio), "Use a [i:" + this.ItemType("SuspiciousLookingCrystal") + "] In the jungle biome at day");
                 bossChecklist.Call("AddBossWithInfo", "Keeper of Hollow", 8.2f, (Func<bool>)(() => EnduriumWorld.downedHollow), "Use a [i:" + this.ItemType("SigilofHollow") + "] In the hollow biome - unfinished spawn conditions");
                 bossChecklist.Call("AddBossWithInfo", "The Prism Arcanum", 4.5f, (Func<bool>)(() => EnduriumWorld.downedPrismArcanum), "Use a [i:" + this.ItemType("FrozenMonolith") + "] In the ice biome during night time - unfinished spawn conditions");
                 bossChecklist.Call("AddBossWithInfo", "Tyrant of Bloom", 2.8f, (Func<bool>)(() => EnduriumWorld.downedBloom), "Use [i:" + this.ItemType("TheBloomingFire") + "] Anywhere during day time");
