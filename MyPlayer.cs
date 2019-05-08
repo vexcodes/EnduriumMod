@@ -720,9 +720,6 @@ namespace EnduriumMod
                     Main.dust[num732].noGravity = true;
                     Dust dust = Main.dust[num732];
                     dust.velocity *= 3f;
-                    num732 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 133, 0f, 0f, 100, default(Color), 1.2f);
-                    dust = Main.dust[num732];
-                    dust.velocity *= 2f;
                     num3 = num731;
                 }
                 player.AddBuff(mod.BuffType("SwiftDodge"), 70);
