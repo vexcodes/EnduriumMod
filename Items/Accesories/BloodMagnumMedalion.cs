@@ -24,8 +24,8 @@ namespace EnduriumMod.Items.Accesories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infected Medalion");
-            Tooltip.SetDefault("Hitting enemies occasionally gives you the Blood Blessing buff");
+            DisplayName.SetDefault("Infested Medalion");
+            Tooltip.SetDefault("Hitting enemies has a small chance of giving you the Blessed Blood buff\nIf you critically strike an enemy with the buff active a small portion of health will be restored");
         }
 
 

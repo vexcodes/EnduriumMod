@@ -11,8 +11,8 @@ namespace EnduriumMod.Buffs
         public override void SetDefaults()
         {
             Main.buffNoTimeDisplay[Type] = false;
-            DisplayName.SetDefault("Blood Rage");
-            Description.SetDefault("Your Blood Is Blessed");
+            DisplayName.SetDefault("Blessed blood");
+            Description.SetDefault("Increases life regeneration");
 			            Main.debuff[Type] = true;   //Tells the game if this is a buf or not.
             Main.pvpBuff[Type] = true;  //Tells the game if pvp buff or not. 
             Main.buffNoSave[Type] = true;

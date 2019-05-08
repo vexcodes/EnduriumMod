@@ -25,19 +25,19 @@ namespace EnduriumMod.Items.Accesories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Eroded Tooth Necklace");
-            Tooltip.SetDefault("Hitting enemies occasionally gives you the Blood Blessing buff\nIncreases armor penetration by 8\nDecreases damage slightly\nIncreases life regeneration");
+            Tooltip.SetDefault("Hitting enemies occasionally gives you the Blood Blessing buff\nIncreases armor penetration by 8\nDecreases damage by 5%\nIncreases life regeneration");
         }
 
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-				player.meleeDamage *= 0.95f;
-    	    player.thrownDamage *= 0.95f;
-						            player.lifeRegen = +2;
-    	    player.rangedDamage *= 0.95f;
-    	    player.magicDamage *= 0.95f;
-    	    player.minionDamage *= 0.95f;
-             player.armorPenetration += 8;
+            player.meleeDamage *= 0.95f;
+            player.thrownDamage *= 0.95f;
+            player.lifeRegen = +2;
+            player.rangedDamage *= 0.95f;
+            player.magicDamage *= 0.95f;
+            player.minionDamage *= 0.95f;
+            player.armorPenetration += 8;
             ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).BloodFang = true;
         }
         public override void AddRecipes()

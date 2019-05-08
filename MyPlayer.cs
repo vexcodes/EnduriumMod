@@ -891,6 +891,11 @@ namespace EnduriumMod
             }
             if (BloodFangBuff)
             {
+                player.meleeCrit += 10;
+                player.rangedCrit += 10;
+                player.magicCrit += 10;
+                player.thrownCrit += 10;
+
                 player.lifeRegen = +12;
             }
             if (Overgrowth3)
@@ -1187,11 +1192,23 @@ namespace EnduriumMod
 
             }
 
-            if (BloodFang)
+            if (BloodFangBuff)
             {
-                if (Main.rand.Next(25) == 0)
+                if (crit)
                 {
-                    player.AddBuff(mod.BuffType("BloodFangFlame"), Main.rand.Next(80, 100));
+                    Player player = Main.player[proj.owner];
+                    player.AddBuff(mod.BuffType("BloodFangFlame"), 0);
+                    int healAmount = 5;
+                    player.HealEffect(healAmount);
+                    player.statLife += healAmount;
+
+                }
+            }
+            if (BloodFang && !BloodFangBuff)
+            {
+                if (Main.rand.Next(20) == 0)
+                {
+                    player.AddBuff(mod.BuffType("BloodFangFlame"), 60);
                 }
             }
             if (Lightning)
@@ -1314,11 +1331,22 @@ namespace EnduriumMod
                     player.AddBuff(mod.BuffType("Overgrowth3"), Main.rand.Next(80, 100));
                 }
             }
-            if (BloodFang)
+            if (BloodFangBuff)
             {
-                if (Main.rand.Next(25) == 0)
+                if (crit)
                 {
-                    player.AddBuff(mod.BuffType("BloodFangFlame"), Main.rand.Next(80, 100));
+                    player.AddBuff(mod.BuffType("BloodFangFlame"), 0);
+                    int healAmount = 5;
+                    player.HealEffect(healAmount);
+                    player.statLife += healAmount;
+
+                }
+            }
+            if (BloodFang && !BloodFangBuff)
+            {
+                if (Main.rand.Next(20) == 0)
+                {
+                    player.AddBuff(mod.BuffType("BloodFangFlame"), 60);
                 }
             }
             if (Lightning)
@@ -1342,11 +1370,6 @@ namespace EnduriumMod
             if (Lightning)
             {
                 player.AddBuff(mod.BuffType("Lightning"), 300);
-
-            }
-            if (BloodFang)
-            {
-                player.AddBuff(mod.BuffType("BloodFangFlame"), 300);
 
             }
             if (EthernalNecklace)
