@@ -19,7 +19,9 @@ namespace EnduriumMod.Buffs
             bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("EarthTurret")] <= 0;
             if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer)
             {
-                Projectile.NewProjectile(player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, mod.ProjectileType("EarthTurret"), 0, 0f, player.whoAmI, 0f, 0f);
+                int num1 = Projectile.NewProjectile(player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, mod.ProjectileType("EarthTurret"), 0, 0f, player.whoAmI, 0f, 0f);
+                int num2 = Projectile.NewProjectile(player.position.X + (float)(player.width / 2), player.position.Y + (float)(player.height / 2), 0f, 0f, mod.ProjectileType("EarthTurret"), 0, 0f, player.whoAmI, 0f, 0f);
+                Main.projectile[num1].ai[1] = 180;
             }
         }
     }

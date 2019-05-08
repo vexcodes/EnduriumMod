@@ -977,11 +977,11 @@ namespace EnduriumMod
             }
             if (BiologicalCrit && crit)
             {
-                player.AddBuff(mod.BuffType("SpiritEnergy"), 20);
+                player.AddBuff(mod.BuffType("SpiritEnergy"), 60);
             }
             if (BiologicalCrit)
             {
-                target.AddBuff(mod.BuffType("ReaperNature"), 10);
+                target.AddBuff(mod.BuffType("ReaperNature"), 60);
             }
             if (ErodedSet && proj.thrown)
             {
@@ -1075,29 +1075,6 @@ namespace EnduriumMod
                 {
                     Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, 0f, mod.ProjectileType("SoulCrowOrbit"), 50, 1f, 0);
                 }
-
-            }
-            if (PoisonRune)
-            {
-                target.AddBuff(BuffID.Poisoned, 100);
-
-            }
-            if (FireRune)
-            {
-                target.AddBuff(BuffID.OnFire, 100);
-
-            }
-            if (FrostRune)
-            {
-                target.AddBuff(BuffID.Frostburn, 100);
-
-
-            }
-            if (ElementalRune)
-            {
-                target.AddBuff(BuffID.Poisoned, 200);
-                target.AddBuff(BuffID.OnFire, 200);
-                target.AddBuff(BuffID.Frostburn, 200);
 
             }
             if (TropicEruption)
@@ -1281,6 +1258,14 @@ namespace EnduriumMod
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
+            if (BiologicalCrit && crit)
+            {
+                player.AddBuff(mod.BuffType("SpiritEnergy"), 60);
+            }
+            if (BiologicalCrit)
+            {
+                target.AddBuff(mod.BuffType("ReaperNature"), 60);
+            }
             if (StormShield)
             {
                 StormShieldCharge += 0.015f;

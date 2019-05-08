@@ -25,17 +25,17 @@ namespace EnduriumMod.Items.EarthElemental
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Plague Scale");
-            Tooltip.SetDefault("Attacks inflict Reaper Nature\nCritical strikes imbue you with spirit energy\nIncreases critical strike chance by 10%\nSummons two earthen crystals to protect you");
+            Tooltip.SetDefault("Attacks inflict Reaper Nature\nCritically striking an enemy increases damage for a short time\nIncreases critical strike chance by 5%\nSummons two earthen crystals to protect you");
         }
 
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.magicCrit += 10;
+            player.magicCrit += 5;
             player.AddBuff(mod.BuffType("EarthTurret"), 1);
-            player.meleeCrit += 10;
-            player.rangedCrit += 10;
-            player.thrownCrit += 10;
+            player.meleeCrit += 5;
+            player.rangedCrit += 5;
+            player.thrownCrit += 5;
             ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).BiologicalCrit = true;
             ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).EarthTurret = true;
         }
