@@ -18,7 +18,7 @@ namespace EnduriumMod.Items.Accesories
             item.width = 24;
             item.height = 28;
             item.value = Terraria.Item.buyPrice(0, 10, 50, 0);
-            item.rare = 8;
+            item.rare = 6;
             item.accessory = true;
             item.defense = 5;
         }
@@ -26,21 +26,21 @@ namespace EnduriumMod.Items.Accesories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endurian Glove");
-              Tooltip.SetDefault("Increases throwing velocity by 35%");
-      }
+            Tooltip.SetDefault("Increases throwing velocity by 60%");
+        }
 
-	  					           public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("AcidCore"), 25);
-						            recipe.AddIngredient(null, ("DarkDust"), 8);
+            recipe.AddIngredient(null, ("DarkDust"), 8);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.thrownVelocity += 0.35f;
+            player.thrownVelocity += 0.60f;
         }
     }
 }
