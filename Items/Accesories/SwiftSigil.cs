@@ -16,29 +16,29 @@ namespace EnduriumMod.Items.Accesories
 
             item.width = 30;
             item.height = 32;
-            item.value = Terraria.Item.buyPrice(0, 5, 50, 0);
-            item.rare = 4;
+            item.value = Terraria.Item.buyPrice(0, 5, 0, 0);
+            item.rare = 2;
             item.accessory = true;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Divine Swift Sigil");
-            Tooltip.SetDefault("Increases movement speed\nGetting hit might boost your speed for a short amount of time.\nDuring that time you will dodge any attack.");
+            Tooltip.SetDefault("Increases movement speed\nGetting hit has a chance to grant a boost to your movement capabilities for a short time\nDuring that time you are immune to damage");
         }
 
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.moveSpeed += 0.25f;
-          ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).SwiftEmblem = true;
+            ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).SwiftEmblem = true;
         }
-				        public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-						            recipe.AddIngredient(null, ("GraniteEnergyCore"), 5);
-			            recipe.AddIngredient(null, ("MagicPowder"), 15);
-			            recipe.AddIngredient(null, ("IronCross"));
+            recipe.AddIngredient(null, ("GraniteEnergyCore"), 5);
+            recipe.AddIngredient(null, ("MagicPowder"), 15);
+            recipe.AddIngredient(null, ("IronCross"));
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -32,7 +32,7 @@ namespace EnduriumMod.Projectiles
         public override bool PreAI()
         {
             int num3;
-            for (int num20 = 0; num20 <16; num20 = num3 + 3)
+            for (int num20 = 0; num20 < 16; num20 = num3 + 3)
             {
                 float num21 = projectile.velocity.X / 4f * (float)num20;
                 float num22 = projectile.velocity.Y / 4f * (float)num20;
@@ -139,7 +139,7 @@ namespace EnduriumMod.Projectiles
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 127, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.3f);
             }
         }
-		        public override bool OnTileCollide(Vector2 oldVelocity)
+        public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();
             return true;

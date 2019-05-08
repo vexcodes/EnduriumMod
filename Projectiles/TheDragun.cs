@@ -44,7 +44,6 @@ namespace EnduriumMod.Projectiles
 
         public override void AI()
         {
-
             if (projectile.ai[0] == 0f)
             {
                 projectile.ai[0] = projectile.velocity.X;
@@ -86,10 +85,6 @@ namespace EnduriumMod.Projectiles
                 }
                 num3 = num435;
             }
-            if (projectile.timeLeft < 30)
-            {
-                flag14 = false;
-            }
             if (flag14)
             {
                 int num439 = Main.rand.Next(num433);
@@ -111,10 +106,6 @@ namespace EnduriumMod.Projectiles
                     num443 *= num445;
                     num444 *= num445;
                     int num1111 = Projectile.NewProjectile(vector32.X, vector32.Y, num443, num444, mod.ProjectileType("FireBlast"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                    Main.projectile[num1111].timeLeft = 40;
-                    Main.projectile[num1111].melee = true;
-                    Main.projectile[num1111].magic = false;
-                    Main.projectile[num1111].penetrate = 1;
                     return;
                 }
 

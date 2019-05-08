@@ -30,15 +30,15 @@ namespace EnduriumMod.Items.Accesories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.statLifeMax2 += 30;
-			            player.lifeRegen = +3;
-          ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).TropicalBlushV2 = true;
+            player.statLifeMax2 += 25;
+            player.lifeRegen = +2;
+            ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).TropicalBlushV2 = true;
         }
-				        public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-			            recipe.AddIngredient(null, ("BloomlightBar"), 15);
-			            recipe.AddIngredient(null, ("CharmofLive"));
+            recipe.AddIngredient(null, ("BloomlightBar"), 15);
+            recipe.AddIngredient(null, ("CharmofLive"));
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();

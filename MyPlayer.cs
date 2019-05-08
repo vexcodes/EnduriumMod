@@ -662,21 +662,47 @@ namespace EnduriumMod
             }
             if (TropicalBlush && Main.rand.Next(4) == 0)
             {
-                player.AddBuff(mod.BuffType("TropicalAura"), Main.rand.Next(80, 100));
+                int num3;
+                for (int num731 = 0; num731 < 12; num731 = num3 + 1)
+                {
+                    int num732 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 89, 0f, 0f, 100, default(Color), 1.6f);
+                    Main.dust[num732].noGravity = true;
+                    Dust dust = Main.dust[num732];
+                    num3 = num731;
+                }
+                player.AddBuff(mod.BuffType("TropicalAura"), 80);
                 Main.PlaySound(25, (int)player.position.X, (int)player.position.Y, 0);
             }
             if (TropicalBlushV2 && Main.rand.Next(3) == 0)
             {
-                player.AddBuff(mod.BuffType("TropicalAura"), Main.rand.Next(100, 120));
+                int num3;
+                for (int num731 = 0; num731 < 12; num731 = num3 + 1)
+                {
+                    int num732 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 89, 0f, 0f, 100, default(Color), 1.6f);
+                    Main.dust[num732].noGravity = true;
+                    Dust dust = Main.dust[num732];
+                    dust.velocity *= 3f;
+                    num3 = num731;
+                }
+                player.AddBuff(mod.BuffType("TropicalAura"), 120);
                 Main.PlaySound(25, (int)player.position.X, (int)player.position.Y, 0);
             }
             if (SwiftDodge)
             {
                 return false;
             }
-            if (SwiftEmblem && Main.rand.Next(5) == 0)
+            if (SwiftEmblem && Main.rand.Next(2) == 0)
             {
-                player.AddBuff(mod.BuffType("SwiftDodge"), Main.rand.Next(35, 36));
+                int num3;
+                for (int num731 = 0; num731 < 12; num731 = num3 + 1)
+                {
+                    int num732 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 133, 0f, 0f, 100, default(Color), 1.6f);
+                    Main.dust[num732].noGravity = true;
+                    Dust dust = Main.dust[num732];
+                    dust.velocity *= 3f;
+                    num3 = num731;
+                }
+                player.AddBuff(mod.BuffType("SwiftDodge"), 50);
                 player.immune = true;
                 player.immuneTime = player.longInvince ? 80 : 60;
                 for (int k = 0; k < player.hurtCooldowns.Length; k++)
@@ -685,9 +711,21 @@ namespace EnduriumMod
                 }
                 Main.PlaySound(25, (int)player.position.X, (int)player.position.Y, 0);
             }
-            if (SwiftEmblemV2 && Main.rand.Next(3) == 0)
+            if (SwiftEmblemV2)
             {
-                player.AddBuff(mod.BuffType("SwiftDodge"), Main.rand.Next(35, 36));
+                int num3;
+                for (int num731 = 0; num731 < 12; num731 = num3 + 1)
+                {
+                    int num732 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 133, 0f, 0f, 100, default(Color), 1.6f);
+                    Main.dust[num732].noGravity = true;
+                    Dust dust = Main.dust[num732];
+                    dust.velocity *= 3f;
+                    num732 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, 133, 0f, 0f, 100, default(Color), 1.2f);
+                    dust = Main.dust[num732];
+                    dust.velocity *= 2f;
+                    num3 = num731;
+                }
+                player.AddBuff(mod.BuffType("SwiftDodge"), 70);
                 player.immune = true;
                 player.immuneTime = player.longInvince ? 80 : 60;
                 for (int k = 0; k < player.hurtCooldowns.Length; k++)

@@ -12,7 +12,7 @@ namespace EnduriumMod.Buffs
         {
             Main.buffNoTimeDisplay[Type] = false;
             DisplayName.SetDefault("Tropical Aura");
-            Description.SetDefault("'Magical'");
+            Description.SetDefault("Increases life regen");
 			            Main.debuff[Type] = false;   //Tells the game if this is a buf or not.
             Main.pvpBuff[Type] = true;  //Tells the game if pvp buff or not. 
             Main.buffNoSave[Type] = true;

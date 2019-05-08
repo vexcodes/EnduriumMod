@@ -16,7 +16,7 @@ namespace EnduriumMod.Items.Accesories
             item.height = 26;
 
             item.value = Terraria.Item.buyPrice(0, 15, 0, 0);
-            item.rare = 7;
+            item.rare = 1;
             item.accessory = true;
 
         }
