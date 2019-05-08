@@ -45,7 +45,20 @@ namespace EnduriumMod.NPCs.TheScourge
             {
                 npc.frame.Y = 0 * frameHeight;
             }
-
+            if (npc.ai[3] == 4 || npc.ai[3] == 5)
+            {
+                if (npc.ai[0] >= 60)
+                {
+                    npc.frame.Y = 3 * frameHeight;
+                }
+            }
+            if (npc.ai[3] == 6)
+            {
+                if (npc.ai[0] >= 10)
+                {
+                    npc.frame.Y = 3 * frameHeight;
+                }
+            }
             if (npc.ai[3] == 10 || npc.ai[3] == 12)
             {
                 npc.frame.Y = 1 * frameHeight;
@@ -187,34 +200,13 @@ namespace EnduriumMod.NPCs.TheScourge
                         npc.ai[3] = 10f;
                     }
                 }
-                if (npc.ai[0] >= 780)
+                if (npc.ai[0] >= 380)
                 {
                     npc.ai[0] = 0f;
-                    npc.ai[1] = 0;
-                    npc.ai[3] = Main.rand.Next(1, 2);
+                    npc.ai[1] = Main.rand.Next(1, 2);
+                    npc.ai[3] = 6;
                 }
             } //normal shit
-            if (npc.ai[3] == 3) //chooses between 4 and 5
-            {
-                npc.ai[0] += 1f;
-                if (npc.ai[0] >= 80)
-                {
-                    npc.ai[0] = 0;
-                    npc.ai[3] = Main.rand.Next(4, 5);
-                }
-            }
-            if (npc.ai[3] == 4) //surronds player with rotating vine projectiles that randomly go towards player
-            {
-                npc.ai[0] += 1f;
-                if (npc.ai[0] >= 240) //summons a single rune
-                {
-                    npc.ai[0] = 230;
-                }
-            }
-            if (npc.ai[3] == 5) //rat attack with gun, 2 waves of projectiles with different speeds
-            {
-
-            }
 
             if (npc.ai[3] >= 1 && npc.ai[3] <= 2) //1-3 depending on these he launches a different amount of projectiles at a time
             {
@@ -235,6 +227,69 @@ namespace EnduriumMod.NPCs.TheScourge
                     npc.ai[0] = 0;
                 }
             } //normal shit but animated
+
+            if (npc.ai[3] == 3) //chooses between 4 and 5
+            {
+                npc.ai[0] += 1f;
+                if (npc.ai[0] >= 80)
+                {
+                    npc.ai[0] = 0;
+                    npc.ai[1] = Main.rand.Next(4, 5);
+                    npc.ai[3] = 6;
+                }
+            }
+            if (npc.ai[3] == 4) //surronds player with rotating vine projectiles that randomly go towards player
+            {
+                npc.ai[0] += 1f;
+                if (npc.ai[0] >= 120) //summons a single rune
+                {
+                    int num1 = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ScourgeRune"));
+                    Main.npc[num1].ai[0] = player.whoAmI;
+                    Main.npc[num1].netUpdate = true;
+
+                    npc.ai[0] = 112;
+                    npc.ai[1] += 1;
+                }
+                if (npc.ai[1] >= 20)
+                {
+                    npc.ai[0] = 0;
+                    npc.ai[1] = 0;
+                    npc.ai[2] = 0;
+                    npc.ai[3] = 6;
+                }
+            }
+            if (npc.ai[3] == 5)
+            {
+                npc.ai[0] += 1f;
+                if (npc.ai[0] >= 180) //summons homing projectiles
+                {
+                    npc.ai[0] = 0;
+                    npc.ai[1] = 0;
+                    npc.ai[2] = 0;
+                    npc.ai[3] = 6;
+                }
+            }
+            if (npc.ai[3] != 6) //teleport cancel
+            {
+                if (npc.alpha >= 0)
+                {
+                    npc.alpha -= 10;
+                }
+            }
+            if (npc.ai[3] == 6) //teleport
+            {
+                npc.velocity *= 0.9f;
+                npc.ai[0] += 1;
+                npc.alpha += 5;
+                if (npc.ai[0] >= 50)
+                {
+                    npc.position.Y = player.position.Y + (float)Main.rand.Next(-200, 201);
+                    npc.position.X = player.position.X + (float)Main.rand.Next(-200, 201);
+                    npc.ai[3] = npc.ai[1];
+                    npc.ai[0] = 0;
+                    npc.ai[1] = 0;
+                }
+            }
 
             if (npc.ai[3] == 10)
             {
