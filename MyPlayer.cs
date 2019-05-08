@@ -1417,44 +1417,53 @@ namespace EnduriumMod
             }
             if (NuclearHurt)
             {
-                int i;
-                int Damage = 30;
+                int Damage = 60;
+                float num628 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                float num629 = (float)Main.rand.Next(-35, 36) * 0.02f;
+                num628 *= 8f;
+                num629 *= 8f;
+                int num1 = 2;
+                if (Main.rand.Next(3) == 0)
                 {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 2f, 2f, mod.ProjectileType("NuclearPlague"), Damage, 0.5f, Main.myPlayer, 0f, 0f);
+                    num1 += 1;
+                }
+                if (Main.rand.Next(3) == 0)
+                {
+                    num1 += 1;
+                }
+                for (int i = 0; i < num1; i++)
+                {
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, num628, num629, mod.ProjectileType("NuclearPlague"), Damage, 0.5f, Main.myPlayer, 0f, 0f);
                 }
             }
             if (EtherArmorBonus)
             {
-                int i;
                 int Damage = 30;
+                int num1 = 2;
+                if (Main.rand.Next(3) == 0)
                 {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 2f, 2f, mod.ProjectileType("EtherBolt"), Damage, 0.5f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 2f, 2f, mod.ProjectileType("EtherBolt"), Damage, 0.5f, Main.myPlayer, 0f, 0f);
-
+                    num1 += 1;
                 }
                 if (Main.rand.Next(3) == 0)
                 {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 2f, 2f, mod.ProjectileType("EtherBolt"), Damage, 0.5f, Main.myPlayer, 0f, 0f);
-
+                    num1 += 1;
                 }
-                if (Main.rand.Next(3) == 0)
+                for (int i = 0; i < num1; i++)
                 {
                     Projectile.NewProjectile(player.Center.X, player.Center.Y, 2f, 2f, mod.ProjectileType("EtherBolt"), Damage, 0.5f, Main.myPlayer, 0f, 0f);
-
                 }
             }
             if (DemonicHurt)
             {
-                {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, -2f, -2f, mod.ProjectileType("DemonOrbit"), 50, 0f, 0);
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, -2f, -2f, mod.ProjectileType("DemonOrbit"), 50, 0f, 0);
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, -2f, -2f, mod.ProjectileType("DemonOrbit"), 50, 0f, 0);
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, -2f, -2f, mod.ProjectileType("DemonOrbit"), 50, 0f, 0);
-                }
-                if (ManaRefill)
-                {
-                    player.statMana = player.statManaMax2;
-                }
+                Projectile.NewProjectile(player.Center.X, player.Center.Y, -2f, -2f, mod.ProjectileType("DemonOrbit"), 50, 0f, 0);
+                Projectile.NewProjectile(player.Center.X, player.Center.Y, -2f, -2f, mod.ProjectileType("DemonOrbit"), 50, 0f, 0);
+                Projectile.NewProjectile(player.Center.X, player.Center.Y, -2f, -2f, mod.ProjectileType("DemonOrbit"), 50, 0f, 0);
+                Projectile.NewProjectile(player.Center.X, player.Center.Y, -2f, -2f, mod.ProjectileType("DemonOrbit"), 50, 0f, 0);
+            }
+
+            if (ManaRefill)
+            {
+                player.statMana = player.statManaMax2;
             }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)

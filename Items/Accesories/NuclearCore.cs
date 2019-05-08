@@ -24,24 +24,24 @@ namespace EnduriumMod.Items.Accesories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Nuclear Gauntlet");
-              Tooltip.SetDefault("Grants immunity to Cursed Inferno, Slow and Acid plague super debuff\nGetting hit releases a burst of acid energy");
-      }
+            DisplayName.SetDefault("Nuclear Plating");
+            Tooltip.SetDefault("Grants immunity to Cursed Inferno, Slow and the Acid Plague debuffs\nGetting hit releases acid");
+        }
 
-	  					           public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("AcidCore"), 17);
-						            recipe.AddIngredient(null, ("DarkDust"), 5);
+            recipe.AddIngredient(null, ("AcidCore"), 18);
+            recipe.AddIngredient(null, ("DarkDust"), 5);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-		            player.buffImmune[BuffID.CursedInferno] = true;
-							            player.buffImmune[BuffID.Slow] = true;
-			            player.buffImmune[mod.BuffType("AcidPlague")] = true;
+            player.buffImmune[BuffID.CursedInferno] = true;
+            player.buffImmune[BuffID.Slow] = true;
+            player.buffImmune[mod.BuffType("AcidPlague")] = true;
             ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).NuclearHurt = true;
         }
     }
