@@ -22,8 +22,8 @@ namespace EnduriumMod.Items
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Iron Cross");
-            Tooltip.SetDefault("Fused with the essence of pure light");
+            DisplayName.SetDefault("Runic Cross");
+            Tooltip.SetDefault("A remenant of an otherworldy religion");
         }
     }
 }
