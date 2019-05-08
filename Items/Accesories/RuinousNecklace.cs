@@ -31,15 +31,15 @@ namespace EnduriumMod.Items.Accesories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).EthernalNecklace = true;
-			player.longInvince = true;
-						            player.buffImmune[BuffID.OnFire] = true;
+            player.longInvince = true;
+            player.buffImmune[BuffID.OnFire] = true;
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-						recipe.AddIngredient(ItemID.CrossNecklace);
-												recipe.AddIngredient(ItemID.MagmaStone);
-			            recipe.AddIngredient(null, ("AngelFeather"), 8);
+            recipe.AddIngredient(ItemID.CrossNecklace);
+            recipe.AddIngredient(ItemID.MagmaStone);
+            recipe.AddIngredient(null, ("AngelFeather"), 8);
             recipe.AddIngredient(null, ("BloodEnergy"), 5);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

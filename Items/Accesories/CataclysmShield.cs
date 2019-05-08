@@ -26,7 +26,7 @@ namespace EnduriumMod.Items.Accesories
         {
             DisplayName.SetDefault("Cataclysm Bulwark");
             Tooltip.SetDefault("Grants immunity to knockback and fire blocks\nGrants immunity to most debuffs\nIncreases movement speed and length of invincibility after taking damage\nAll attacks inflict On Fire!\nGetting hit releases demonic energy");
-        }// and Dragon's Breath Super Debuff
+        }
 
 
         public override void UpdateAccessory(Player player, bool hideVisual)

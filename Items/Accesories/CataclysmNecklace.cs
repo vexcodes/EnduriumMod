@@ -25,7 +25,7 @@ namespace EnduriumMod.Items.Accesories
         {
             DisplayName.SetDefault("Cataclysm Necklace");
             Tooltip.SetDefault("Grants immunity to On Fire\nIncreases length of invincibility after taking damage\nAll attacks inflict On Fire!\nGetting hit releases demonic energy");
-        }// and Dragon's Breath Super Debuff
+        }
 
 
         public override void UpdateAccessory(Player player, bool hideVisual)

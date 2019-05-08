@@ -1102,7 +1102,6 @@ namespace EnduriumMod
             if (EthernalNecklace)
             {
                 target.AddBuff(BuffID.OnFire, 100);
-
             }
             if (SoulCrow & proj.thrown)
             {
@@ -1395,7 +1394,6 @@ namespace EnduriumMod
             if (EthernalNecklace)
             {
                 target.AddBuff(BuffID.OnFire, 100);
-
             }
             if (VoidflameImbue)
             {
