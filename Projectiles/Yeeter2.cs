@@ -124,6 +124,7 @@ namespace EnduriumMod.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            target.AddBuff(39, 300);
             Player player = Main.player[projectile.owner];
             MyPlayer modPlayer = (MyPlayer)player.GetModPlayer(mod, "MyPlayer");
             projectile.ai[0] = 1;
@@ -141,8 +142,9 @@ namespace EnduriumMod.Projectiles
                         array2[num28++] = new Point(l, Main.projectile[l].timeLeft);
                         if (num28 >= array2.Length)
                         {
-                            Projectile.NewProjectile(target.Center.X + Main.rand.Next(-15, 16), target.Center.Y + Main.rand.Next(-15, 16), 0f, 0f, mod.ProjectileType("Yeeter2Explosion"), 150, 0f, Main.myPlayer, 0f, 0f);
+                            Projectile.NewProjectile(target.Center.X + Main.rand.Next(-15, 16), target.Center.Y + Main.rand.Next(-15, 16), 0f, 0f, mod.ProjectileType("Yeeter2Explosion"), 300, 0f, Main.myPlayer, 0f, 0f);
                             modPlayer.SpearBoom = 8;
+                            target.immune[projectile.owner] = 1;
                             break;
                         }
                     }

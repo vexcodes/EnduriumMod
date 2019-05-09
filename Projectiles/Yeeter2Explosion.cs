@@ -21,7 +21,7 @@ namespace EnduriumMod.Projectiles
             projectile.height = 60;
             projectile.tileCollide = false;
             projectile.friendly = true;
-            projectile.penetrate = 3;
+            projectile.penetrate = 2;
             projectile.timeLeft = 6;
             projectile.thrown = true;
         }

@@ -40,7 +40,7 @@ namespace EnduriumMod.Items.Weapons.Dusk
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Thornvile");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("Sticks to enemies\nStacking enough javelins in an enemy causes an eruption");
         }
     }
 }

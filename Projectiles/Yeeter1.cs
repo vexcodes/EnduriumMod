@@ -129,6 +129,7 @@ namespace EnduriumMod.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            target.AddBuff(69, 300);
             Player player = Main.player[projectile.owner];
             MyPlayer modPlayer = (MyPlayer)player.GetModPlayer(mod, "MyPlayer");
             projectile.ai[0] = 1;
@@ -147,6 +148,7 @@ namespace EnduriumMod.Projectiles
                         if (num28 >= array2.Length)
                         {
                             modPlayer.SpearBoom = 8;
+                            target.immune[projectile.owner] = 1;
                             break;
                         }
                     }
