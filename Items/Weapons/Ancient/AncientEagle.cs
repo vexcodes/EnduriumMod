@@ -61,7 +61,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("AncientMandible"), 13);
+            recipe.AddIngredient(null, ("AncientMandible"), 8);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

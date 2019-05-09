@@ -21,6 +21,8 @@ namespace EnduriumMod.Tiles
             name.SetDefault("Ancient Altar");
             disableSmartCursor = true;
             TileObjectData.addTile(Type);
+            minPick = 200;
+            mineResist = 5f;
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num)
@@ -34,9 +36,9 @@ namespace EnduriumMod.Tiles
             g = 3f;
             b = 0.5f;
         }
-        /*     public override void KillMultiTile(int i, int j, int frameX, int frameY)
-             {
-                 Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("AncientAltar"));
-             }*/
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("AncientAltar"));
+        }
     }
 }

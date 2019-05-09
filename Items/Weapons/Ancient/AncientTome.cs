@@ -17,7 +17,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
 
             item.damage = 18;
             item.magic = true;
-            item.mana = 10;
+            item.mana = 7;
             item.width = 46;
             item.height = 46;
             item.useTime = 26;
@@ -37,7 +37,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("AncientMandible"), 11);
+            recipe.AddIngredient(null, ("AncientMandible"), 8);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

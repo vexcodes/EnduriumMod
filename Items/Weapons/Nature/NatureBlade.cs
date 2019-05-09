@@ -20,7 +20,7 @@ namespace EnduriumMod.Items.Weapons.Nature
 
             item.knockBack = 1;
             item.value = 25000;
-            item.rare = 4;
+            item.rare = 1;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }
@@ -33,7 +33,7 @@ namespace EnduriumMod.Items.Weapons.Nature
 					        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("NatureEssence"), 16);
+            recipe.AddIngredient(null, ("NatureEssence"), 5);
             recipe.AddIngredient(null, ("ThornWood"), 20);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

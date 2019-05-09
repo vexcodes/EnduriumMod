@@ -21,7 +21,7 @@ namespace EnduriumMod.Items.Weapons.Nature
             item.noMelee = true;
             item.knockBack = 4;
             item.value = Terraria.Item.buyPrice(0, 1, 25, 0);
-            item.rare = 3;
+            item.rare = 1;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shoot = 10;
@@ -37,7 +37,7 @@ namespace EnduriumMod.Items.Weapons.Nature
 					        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("NatureEssence"), 17);
+            recipe.AddIngredient(null, ("NatureEssence"), 6);
             recipe.AddIngredient(null, ("ThornWood"), 20);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

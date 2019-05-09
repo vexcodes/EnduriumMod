@@ -1,5 +1,5 @@
 author = KittyCatKittyCat
-version = 0.9.3
+version = 0.9.4
 
 displayName = The Endurium Mod
 homepage = https://forums.terraria.org/index.php?threads/the-endurium-mod.64620/

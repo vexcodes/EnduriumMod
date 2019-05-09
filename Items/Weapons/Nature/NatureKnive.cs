@@ -21,7 +21,7 @@ namespace EnduriumMod.Items.Weapons.Nature
             item.useStyle = 1;
             item.knockBack = 9;
             item.value = Terraria.Item.buyPrice(0, 0, 3, 50);
-            item.rare = 4;
+            item.rare = 1;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("NatureKnive");
@@ -41,10 +41,10 @@ namespace EnduriumMod.Items.Weapons.Nature
 					        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("NatureEssence"), 5);
+            recipe.AddIngredient(null, ("NatureEssence"), 2);
             recipe.AddIngredient(null, ("ThornWood"), 5);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 75);
+            recipe.SetResult(this, 150);
             recipe.AddRecipe();
         }
     }

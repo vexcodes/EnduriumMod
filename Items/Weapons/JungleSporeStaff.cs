@@ -30,6 +30,14 @@ namespace EnduriumMod.Items.Weapons
             item.shoot = mod.ProjectileType("PoisonBolt");
             item.shootSpeed = 9f;
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("NatureEssence"), 15);
+            recipe.AddTile(mod.TileType("AncientAltar"));
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tropical Spore Staff");

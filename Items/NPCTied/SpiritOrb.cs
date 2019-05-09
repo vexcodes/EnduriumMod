@@ -33,6 +33,14 @@ namespace EnduriumMod.Items.NPCTied
             item.shoot = mod.ProjectileType("SpiritOrb");
             item.shootSpeed = 0f;
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("NatureEssence"), 15);
+            recipe.AddTile(mod.TileType("AncientAltar"));
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override bool CanUseItem(Player player)
         {
             if (player.altFunctionUse == 2)

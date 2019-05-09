@@ -380,7 +380,7 @@ public class EnduriumWorld : ModWorld
         bool flag4 = source.Any((int x) => x == Main.tile[i, k - 1].wall) && source.Any((int x) => x == Main.tile[i + 1, k - 1].wall);
         if (flag && flag2 && flag3 && flag4)
         {
-            WorldGen.PlaceChestDirect(i, k - 1, (ushort)base.mod.TileType("BloomChest"), 0, 2);
+           // WorldGen.PlaceChestDirect(i, k - 1, (ushort)base.mod.TileType("BloomChest"), 0, 2);
             return true;
         }
         return false;
@@ -599,21 +599,36 @@ public class EnduriumWorld : ModWorld
         }
         int roomSide = WorldGen.genRand.Next(2) == 0 ? -1 : 1; //Left or right of the trunk, respectively. ~ Gabe
         int roomX = roomSide == 1 ? 10 : -20; //Added X pos of the room. ~ Gabe
-        int roomY = leafMiddle.Y + WorldGen.genRand.Next(80, 100); //Y pos of the room. ~ Gabe
+        int roomY = leafMiddle.Y + WorldGen.genRand.Next(10, 15); //Y pos of the room. ~ Gabe
         Point bottomCorner = MakeRuin(new Point(leafMiddle.X + roomX, roomY), mod.TileType("TropicalTrunk"), WallID.LivingWood, false); //Makes the room. ~ Gabe
+        //ChangeSpawn(leafMiddle.X + (5 * roomSide), bottomCorner.Y - 3);
+
         for (int i = 0; i < Math.Abs(roomX + 2); ++i) //X repeats. ~ Gabe
         {
             for (int k = 0; k < 3; ++k) //Y repeats. ~ Gabe
             {
                 WorldGen.KillTile(leafMiddle.X + (i * roomSide), bottomCorner.Y - k - 1); //Makes tunnel. ~ Gabe
-                if (WorldGen.genRand.Next(4) == 0)
+                if (WorldGen.genRand.Next(3) == 0)
                     WorldGen.PlaceTile(leafMiddle.X + (i * roomSide), bottomCorner.Y - k - 1, TileID.Cobweb); //Adds some cobwebs.
             }
         }
     }
-
-    public void SmoothWallRunner(Point position, int size, int wallID)
+    /*public bool ChangeSpawn(int i, int j)
     {
+        for (int playerIndex = 0; playerIndex < 255; playerIndex++)
+        {
+            if (Main.player[playerIndex].active)
+            {
+                Player player = Main.player[playerIndex];
+                MyPlayer modPlayer = (MyPlayer)player.GetModPlayer(mod, "MyPlayer");
+                player.SpawnX = i;
+                player.SpawnY = j;
+            }
+        }
+        return true;
+    }*/
+    public void SmoothWallRunner(Point position, int size, int wallID)
+    { 
         for (int i = position.X - size; i <= position.X + size; i++)
         {
             for (int j = position.Y - size; j <= position.Y + size; j++)

@@ -30,6 +30,14 @@ namespace EnduriumMod.Items.Weapons.ForestChest
             item.shoot = mod.ProjectileType("LeafStorm");
             item.shootSpeed = 12f;
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("NatureEssence"), 15);
+            recipe.AddTile(mod.TileType("AncientAltar"));
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Leaf Storm");

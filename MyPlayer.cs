@@ -44,6 +44,10 @@ namespace EnduriumMod
         public float StarExcalibur = 1f;
         public int SanguineGoliathOffSet = -10;
         public int SanguineGoliathDirection = -1;
+        public int SpearBoom = 0;
+        public static int SpawnX;
+        public static int SpawnY;
+        public bool hasSpawned = false;
         /*
         		public override Texture2D GetMapBackgroundImage()
 		{
@@ -801,9 +805,13 @@ namespace EnduriumMod
         }
         public override void UpdateBadLifeRegen()
         {
+            if (SpearBoom > 0)
+            {
+                SpearBoom -= 1;
+            }
             if (player.HeldItem.type == mod.ItemType("Tyrfing"))
             {
-                player.armorPenetration += 99999;
+                player.armorPenetration += 9999999;
             }
                 if (StormShield)
             {

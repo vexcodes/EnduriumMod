@@ -21,7 +21,14 @@ namespace EnduriumMod.Items.Accesories
             item.accessory = true;
             item.defense = 1;
         }
-
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("NatureEssence"), 15);
+            recipe.AddTile(mod.TileType("AncientAltar"));
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ember Scale");

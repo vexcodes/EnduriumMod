@@ -16,8 +16,8 @@ namespace EnduriumMod.Projectiles //We need this to basically indicate the folde
         }
         public override void SetDefaults()
         {
-            projectile.width = 64;
-            projectile.height = 64;
+            projectile.width = 24;
+            projectile.height = 24;
             projectile.timeLeft = 1200;
             projectile.scale *= 0.9f;
             projectile.penetrate = -1;

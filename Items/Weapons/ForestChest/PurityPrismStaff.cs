@@ -18,7 +18,7 @@ namespace EnduriumMod.Items.Weapons.ForestChest
             item.magic = true;
             item.width = 48;
             item.height = 22;
-            item.mana = 9;
+            item.mana = 4;
             item.useTime = 24;
             item.useAnimation = 24;
             item.useStyle = 5;
@@ -31,7 +31,14 @@ namespace EnduriumMod.Items.Weapons.ForestChest
             item.shootSpeed = 11f;
             item.shoot = mod.ProjectileType("BloomCard");
         }
-
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("NatureEssence"), 15);
+            recipe.AddTile(mod.TileType("AncientAltar"));
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override bool AltFunctionUse(Player player)
         {
             return true;
