@@ -19,7 +19,7 @@ namespace EnduriumMod.Items.Weapons
             item.crit = 15;
             item.useAnimation = 24;
             item.useStyle = 1;
-            item.knockBack = 9;
+            item.knockBack = 2;
             item.value = Terraria.Item.buyPrice(0, 0, 4, 0);
             item.rare = 3;
             item.UseSound = SoundID.Item1;
@@ -44,7 +44,7 @@ namespace EnduriumMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.GoldBar, 3);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 75);
+            recipe.SetResult(this, 100);
             recipe.AddRecipe();
         }
     }
