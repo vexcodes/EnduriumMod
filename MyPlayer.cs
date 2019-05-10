@@ -883,9 +883,9 @@ namespace EnduriumMod
                 {
                     player.accRunSpeed = 0f;
                 }
-                if (player.moveSpeed >= 0.5f)
+                if (player.moveSpeed >= 0.2f)
                 {
-                    player.moveSpeed = 0.5f;
+                    player.moveSpeed = 0.2f;
                 }
                 player.accRunSpeed = 0f;
                 player.eocDash = 0;

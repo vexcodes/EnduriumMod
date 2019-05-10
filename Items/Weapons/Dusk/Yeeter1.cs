@@ -10,14 +10,14 @@ namespace EnduriumMod.Items.Weapons.Dusk
         public override void SetDefaults()
         {
 
-            item.damage = 46;
+            item.damage = 42;
             item.thrown = true;
             item.noMelee = false;
             item.width = 14;
             item.height = 36;
-            item.useTime = 20;
-            item.crit = 35;
-            item.useAnimation = 20;
+            item.useTime = 17;
+            item.crit = 25;
+            item.useAnimation = 17;
             item.useStyle = 1;
             item.knockBack = 4;
             item.value = Terraria.Item.buyPrice(0, 25, 0, 0);

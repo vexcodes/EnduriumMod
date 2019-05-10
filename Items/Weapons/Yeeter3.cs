@@ -3,28 +3,28 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace EnduriumMod.Items.Weapons.Dusk
+namespace EnduriumMod.Items.Weapons
 {
-    public class Yeeter2 : ModItem
+    public class Yeeter3 : ModItem
     {
         public override void SetDefaults()
         {
 
-            item.damage = 52;
+            item.damage = 65;
             item.thrown = true;
             item.noMelee = false;
             item.width = 14;
             item.height = 36;
-            item.useTime = 28;
-            item.crit = 35;
-            item.useAnimation = 28;
+            item.useTime = 21;
+            item.crit = 40;
+            item.useAnimation = 21;
             item.useStyle = 1;
-            item.knockBack = 4;
-            item.value = Terraria.Item.buyPrice(0, 25, 0, 0);
-            item.rare = 5;
+            item.knockBack = 5;
+            item.value = Terraria.Item.buyPrice(0, 32, 0, 0);
+            item.rare = 7;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("Yeeter2");
+            item.shoot = mod.ProjectileType("Yeeter3");
             item.shootSpeed = 12f;
             item.useTurn = true;
             item.maxStack = 1;
@@ -39,8 +39,8 @@ namespace EnduriumMod.Items.Weapons.Dusk
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Bloodstain");
-            Tooltip.SetDefault("Sticks to enemies\nStacking enough javelins in an enemy causes an eruption");
+            DisplayName.SetDefault("The Prophecy");
+            Tooltip.SetDefault("Sticks to enemies\nStacking enough javelins in an enemy creates homing shards");
         }
     }
 }

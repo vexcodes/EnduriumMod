@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace EnduriumMod.Projectiles
 {
-    public class Yeeter2 : ModProjectile
+    public class Yeeter3 : ModProjectile
     {
 
         public override void SetDefaults()
@@ -18,14 +18,15 @@ namespace EnduriumMod.Projectiles
             projectile.friendly = true;
             projectile.thrown = true;
             projectile.penetrate = 2;
-            projectile.timeLeft = 450;
+            projectile.extraUpdates = 1;
+            projectile.timeLeft = 800;
         }
 
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[projectile.type] = 6;
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
-            DisplayName.SetDefault("The Bloodstain");
+            DisplayName.SetDefault("The Prophecy");
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
@@ -54,6 +55,7 @@ namespace EnduriumMod.Projectiles
             {
                 projectile.alpha = 0;
             }
+            int num987 = (int)projectile.ai[1];
             if (projectile.ai[0] == 1f)
             {
                 projectile.ignoreWater = true;
@@ -66,7 +68,6 @@ namespace EnduriumMod.Projectiles
                 {
                     flag54 = true;
                 }
-                int num987 = (int)projectile.ai[1];
                 if (projectile.localAI[0] >= (float)(60 * num986))
                 {
                     flag53 = true;
@@ -77,7 +78,7 @@ namespace EnduriumMod.Projectiles
                 }
                 else if (Main.npc[num987].active && !Main.npc[num987].dontTakeDamage)
                 {
-                    projectile.Center = Main.npc[num987].Center - projectile.velocity * 1.4f;
+                    projectile.Center = Main.npc[num987].Center - projectile.velocity * 1.7f;
                     projectile.gfxOffY = Main.npc[num987].gfxOffY;
                     if (flag54)
                     {
@@ -105,7 +106,7 @@ namespace EnduriumMod.Projectiles
             }
             if (projectile.ai[0] == 0)
             {
-                int a = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 170, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+                int a = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 267, projectile.oldVelocity.X, projectile.oldVelocity.Y, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 0.9f);
                 Main.dust[a].noGravity = true;
                 Main.dust[a].velocity *= 0.15f;
                 Main.dust[a].scale *= 0.8f;
@@ -116,6 +117,7 @@ namespace EnduriumMod.Projectiles
             {
                 if (modPlayer.SpearBoom != 0)
                 {
+                    Projectile.NewProjectile(player.position.X + Main.rand.Next(-500, 501), player.position.Y + Main.rand.Next(-500, 501), 0f, 0f, mod.ProjectileType("Yeeter3Explosion"), 80, 0f, projectile.owner, 0f, Main.npc[num987].whoAmI);
                     projectile.Kill();
                 }
             }
@@ -127,7 +129,6 @@ namespace EnduriumMod.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(69, 300);
             Player player = Main.player[projectile.owner];
             MyPlayer modPlayer = (MyPlayer)player.GetModPlayer(mod, "MyPlayer");
             projectile.ai[0] = 1;
@@ -145,7 +146,6 @@ namespace EnduriumMod.Projectiles
                         array2[num28++] = new Point(l, Main.projectile[l].timeLeft);
                         if (num28 >= array2.Length)
                         {
-                            Projectile.NewProjectile(target.Center.X + Main.rand.Next(-15, 16), target.Center.Y + Main.rand.Next(-15, 16), 0f, 0f, mod.ProjectileType("Yeeter2Explosion"), 300, 0f, Main.myPlayer, 0f, 0f);
                             modPlayer.SpearBoom = 8;
                             target.immune[projectile.owner] = 1;
                             break;
@@ -172,22 +172,13 @@ namespace EnduriumMod.Projectiles
             MyPlayer modPlayer = (MyPlayer)player.GetModPlayer(mod, "MyPlayer");
             if (modPlayer.SpearBoom == 0)
             {
-                int num3;
-                for (int num731 = 0; num731 < 22; num731 = num3 + 1)
+                for (int i = 4; i < 31; i++)
                 {
-                    float x = projectile.velocity.X * (20f / num731);
-                    float y = projectile.velocity.Y * (20f / num731);
-                    int num732 = Dust.NewDust(new Vector2(projectile.oldPosition.X - x, projectile.oldPosition.Y - y), projectile.width, projectile.height, 170, 0f, 0f, 100, default(Color), 1.5f);
-                    Main.dust[num732].noGravity = true;
-                    Dust dust = Main.dust[num732];
-                    dust.velocity.X *= 1.8f;
-                    dust.velocity.Y *= 2.2f;
-                    num732 = Dust.NewDust(new Vector2(projectile.oldPosition.X - x, projectile.oldPosition.Y - y), projectile.width, projectile.height, 170, 0f, 0f, 100, default(Color), 0.8f);
-                    dust = Main.dust[num732];
-                    dust.velocity.X *= 1.8f;
-                    dust.noGravity = true;
-                    dust.velocity.Y *= 2.2f;
-                    num3 = num731;
+                    float x = projectile.oldVelocity.X * (20f / i);
+                    float y = projectile.oldVelocity.Y * (20f / i);
+                    int newDust = Dust.NewDust(new Vector2(projectile.oldPosition.X - x, projectile.oldPosition.Y - y), 8, 8, 267, projectile.oldVelocity.X, projectile.oldVelocity.Y, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.5f);
+                    Main.dust[newDust].noGravity = true;
+                    Main.dust[newDust].velocity *= 0.5f;
                 }
             }
         }
