@@ -12,7 +12,7 @@ namespace EnduriumMod.Projectiles
         public override void SetDefaults()
         {
             projectile.width = 10;
-            projectile.height = 34;
+            projectile.height = 10;
             projectile.friendly = true;
             projectile.aiStyle = 1;
             projectile.thrown = true;
