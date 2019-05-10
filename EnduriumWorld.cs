@@ -209,15 +209,15 @@ public class EnduriumWorld : ModWorld
             tasks.Insert(num + 1, new PassLegacy("TropicalForestBiomeGen", delegate (GenerationProgress progress)
             {
                 progress.Message = "Hiding the Tropical Paradise";
-                int num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 40) : (Main.spawnTileX - 40);
+                int num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 60) : (Main.spawnTileX - 60);
                 int num3 = Raycast(num2, 200);
                 if (Main.maxTilesY == 1800)
                 {
-                    num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 240) : (Main.spawnTileX - 240);
+                    num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 90) : (Main.spawnTileX - 90);
                 }
                 if (Main.maxTilesY == 2400)
                 {
-                    num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 340) : (Main.spawnTileX - 340);
+                    num2 = (WorldGen.dungeonX > Main.spawnTileX) ? (Main.spawnTileX + 110) : (Main.spawnTileX - 110);
                 }
             
                 if (num3 < (int)Main.worldSurface - 50)
@@ -226,7 +226,7 @@ public class EnduriumWorld : ModWorld
                 }
                 if (Main.tile[num2, Raycast(num2, num3)].type == 147)
                 {
-                    num2 += ((num2 < Main.spawnTileX) ? (-300) : 300);
+                    num2 += ((num2 < Main.spawnTileX) ? (-460) : 460);
                 }
                 if (Main.tile[num2, Raycast(num2, num3)].type == 41 || (Main.tile[num2, Raycast(num2, num3)].type == 43 || (Main.tile[num2, Raycast(num2, num3)].type == 44)))
                 {

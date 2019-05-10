@@ -20,6 +20,7 @@ namespace EnduriumMod.NPCs.TropicalParadise
             npc.width = 8;
             npc.height = 8;
             npc.defense = 0;
+            npc.hostile = true;
             npc.lavaImmune = true;
             npc.noTileCollide = true;
             npc.noGravity = true;
@@ -42,13 +43,11 @@ namespace EnduriumMod.NPCs.TropicalParadise
             {
                 npc.spriteDirection = -1;
             }
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead)
-            {
                 npc.TargetClosest(true);
-            }
+            
             Vector2 vector102 = new Vector2(npc.Center.X, npc.Center.Y);
-            float num791 = Main.player[npc.target].Center.X - vector102.X;
-            float num792 = Main.player[npc.target].Center.Y - vector102.Y;
+            float num791 = P.Center.X - vector102.X;
+            float num792 = P.Center.Y - vector102.Y;
             float num793 = (float)Math.Sqrt((double)(num791 * num791 + num792 * num792));
             float num794 = 6f;
             num793 = num794 / num793;
@@ -66,17 +65,16 @@ namespace EnduriumMod.NPCs.TropicalParadise
                 num = num1446;
             }
             Lighting.AddLight((int)((npc.position.X + (float)(npc.width / 2)) / 16f), (int)((npc.position.Y + (float)(npc.height / 2)) / 16f), 0f, 0.75f, 0.25f);
-            int num492 = (int)npc.ai[0];
             float num493 = 4f;
             Vector2 vector39 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-            float num494 = Main.player[num492].Center.X - vector39.X;
-            float num495 = Main.player[num492].Center.Y - vector39.Y;
+            float num494 = P.Center.X - vector39.X;
+            float num495 = P.Center.Y - vector39.Y;
             float num496 = (float)Math.Sqrt((double)(num494 * num494 + num495 * num495));
-            if (num496 < 50f && npc.position.X < Main.player[num492].position.X + (float)Main.player[num492].width && npc.position.X + (float)npc.width > Main.player[num492].position.X && npc.position.Y < Main.player[num492].position.Y + (float)Main.player[num492].height && npc.position.Y + (float)npc.height > Main.player[num492].position.Y)
+            if (num496 < 50f && npc.position.X < P.position.X + (float)P.width && npc.position.X + (float)npc.width > P.position.X && npc.position.Y < P.position.Y + (float)P.height && npc.position.Y + (float)npc.height > P.position.Y)
             {
                 int num497 = 25;
-                Main.player[num492].HealEffect(num497, false);
-                Player player = Main.player[num492];
+                P.HealEffect(num497, false);
+                Player player = P;
                 player.statLife += num497;
                 NetMessage.SendData(66, -1, -1, null, num492, (float)num497, 0f, 0f, 0, 0, 0);
                 npc.active = false;
