@@ -706,7 +706,7 @@ namespace EnduriumMod
                     dust.velocity *= 3f;
                     num3 = num731;
                 }
-                player.AddBuff(mod.BuffType("SwiftDodge"), 50);
+                player.AddBuff(mod.BuffType("SwiftDodge"), 30);
                 player.immune = true;
                 player.immuneTime = player.longInvince ? 80 : 60;
                 for (int k = 0; k < player.hurtCooldowns.Length; k++)
@@ -726,7 +726,7 @@ namespace EnduriumMod
                     dust.velocity *= 3f;
                     num3 = num731;
                 }
-                player.AddBuff(mod.BuffType("SwiftDodge"), 70);
+                player.AddBuff(mod.BuffType("SwiftDodge"), 40);
                 player.immune = true;
                 player.immuneTime = player.longInvince ? 80 : 60;
                 for (int k = 0; k < player.hurtCooldowns.Length; k++)

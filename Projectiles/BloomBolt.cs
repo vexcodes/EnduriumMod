@@ -39,14 +39,7 @@ namespace EnduriumMod.Projectiles
             Main.dust[num33].scale = 1.2f;
             Main.dust[num33].velocity *= 0.7f;
             Main.dust[num33].position = projectile.Center;
-            if (Main.rand.Next(2) == 0)
-            {
                 Main.dust[num33].noGravity = true;
-            }
-            else
-            {
-                Main.dust[num33].noGravity = false;
-            }
             if (projectile.ai[0] >= 30f)
             {
                 float num166 = (float)Math.Sqrt((double)(projectile.velocity.X * projectile.velocity.X + projectile.velocity.Y * projectile.velocity.Y));
