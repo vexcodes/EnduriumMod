@@ -10,16 +10,16 @@ namespace EnduriumMod.Items.Weapons
         public override void SetDefaults()
         {
 
-            item.damage = 24;
+            item.damage = 25;
             item.thrown = true;
             item.noMelee = true;
             item.width = 14;
             item.height = 36;
-            item.useTime = 31;
-            item.crit = 26;
-            item.useAnimation = 31;
+            item.useTime = 28;
+            item.crit = 25;
+            item.useAnimation = 28;
             item.useStyle = 1;
-            item.knockBack = 9;
+            item.knockBack = 3;
             item.value = Terraria.Item.buyPrice(0, 0, 10, 0);
             item.rare = 5;
             item.UseSound = SoundID.Item1;
