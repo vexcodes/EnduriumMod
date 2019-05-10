@@ -38,12 +38,12 @@ namespace EnduriumMod.Items.Accesories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.buffImmune[BuffID.Poisoned] = true;
-                player.moveSpeed += 0.20f;
-		int num998 = Dust.NewDust(player.position, player.width, player.height, 89, 0, 0, 0, Color.Green, 0.35f);
-		Dust dust3 = Main.dust[num998];
-		dust3.velocity.Y *= 3.1f;
-		Main.dust[num998].noGravity = true;
-		Main.dust[num998].fadeIn = 0.8f;
+            player.moveSpeed += 0.20f;
+            int num998 = Dust.NewDust(player.position, player.width, player.height, 89, 0, 0, 0, Color.Green, 0.5f);
+            Dust dust3 = Main.dust[num998];
+            dust3.velocity.Y *= 3.1f;
+            Main.dust[num998].noGravity = true;
+            Main.dust[num998].fadeIn = 0.8f;
+        }
     }
-}
 }

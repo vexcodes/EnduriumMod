@@ -30,7 +30,7 @@ namespace EnduriumMod.Items.Accesories
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Natrue Charm");
+            DisplayName.SetDefault("Nature Charm");
             Tooltip.SetDefault("Regenerates and increases health\nGetting hit has a 25% chance to boost your live regeneration for a short while.");
         }
 
