@@ -20,7 +20,7 @@ namespace EnduriumMod.Items.Weapons.Rift
             item.useAnimation = 7;
             item.useStyle = 1;
             item.knockBack = 9;
-            item.value = Terraria.Item.buyPrice(0, 8, 0, 0);
+            item.value = Terraria.Item.buyPrice(0, 0, 12, 0);
             item.rare = 8;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
@@ -43,7 +43,7 @@ namespace EnduriumMod.Items.Weapons.Rift
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shadow Shiv");
-            Tooltip.SetDefault("'Corrupting everyone who went in his path'");
+            Tooltip.SetDefault("A shortlived dagger");
         }
     }
 }

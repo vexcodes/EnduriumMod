@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.Weapons.Rift
         public override void SetDefaults()
         {
 
-            item.damage = 112;
+            item.damage = 75;
             item.mana = 10;
             item.magic = true;
             item.width = 70;
@@ -19,7 +19,7 @@ namespace EnduriumMod.Items.Weapons.Rift
             item.useTime = 56;
             item.useAnimation = 56;
             item.knockBack = 5f;
-            item.UseSound = SoundID.Item1;
+            item.UseSound = SoundID.Item67;
             item.noMelee = true;
             item.useTurn = false;
             Item.staff[item.type] = true;
@@ -33,7 +33,7 @@ namespace EnduriumMod.Items.Weapons.Rift
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Void Rift Staff");
-            Tooltip.SetDefault("'Releasing souls of thousents'");
+            Tooltip.SetDefault("Fires a slow moving rift of energy\nThe rift will fire at nearby enemies");
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
@@ -41,9 +41,8 @@ namespace EnduriumMod.Items.Weapons.Rift
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
             {
                 position += muzzleOffset;
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
             }
-            return false;
+            return true;
         }
         public override void AddRecipes()
         {

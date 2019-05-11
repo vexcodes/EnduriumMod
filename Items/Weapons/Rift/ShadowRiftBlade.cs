@@ -27,22 +27,30 @@ namespace EnduriumMod.Items.Weapons.Rift
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("VoidBlade");
-            item.shootSpeed = 8f;
+            item.shootSpeed = 22f;
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fate Blade");
-            Tooltip.SetDefault("'Cutting their lives short'");
+            DisplayName.SetDefault("Blade of Fate");
+            Tooltip.SetDefault("Fires a burst of shortlived projectiles\nHitting enemies with the sword creates shadowflame");
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int numberProjectiles = 1; // 4 or 5 shots
+            int numberProjectiles = 5; // 4 or 5 shots
             for (int i = 0; i < numberProjectiles; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X *= 1.5f, perturbedSpeed.Y *= 1.5f, type, damage, knockBack, player.whoAmI);
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(40));
+                float scale = 1f - (Main.rand.NextFloat() * .5f);
+                perturbedSpeed = perturbedSpeed * scale;
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X *= 1.25f, perturbedSpeed.Y *= 1.25f, type, damage, knockBack, player.whoAmI);
             }
             return false;
+        }
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(153, 300);
+            Main.PlaySound(3, (int)target.position.X, (int)target.position.Y, 1, 1f, 0f);
+            Projectile.NewProjectile(target.position.X + target.width / 2, target.position.Y + target.height / 2, 0f, 0f, mod.ProjectileType("FearlessInferno"), (int)(item.damage * player.meleeDamage), item.knockBack, Main.myPlayer, 0f, 0f);
         }
         public override void AddRecipes()
         {

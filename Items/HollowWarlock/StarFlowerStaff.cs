@@ -23,7 +23,7 @@ namespace EnduriumMod.Items.HollowWarlock
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 4f;
             item.value = 1000000;
-            item.rare = -12;
+            item.rare = 5;
             item.mana = 20;
             item.UseSound = SoundID.Item67;
             item.autoReuse = true;

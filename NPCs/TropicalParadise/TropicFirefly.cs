@@ -15,12 +15,15 @@ namespace EnduriumMod.NPCs.TropicalParadise
         {
             DisplayName.SetDefault("Tropic Firefly");
         }
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        {
+            return false;
+        }
         public override void SetDefaults()
         {
             npc.width = 8;
             npc.height = 8;
             npc.defense = 0;
-            npc.hostile = true;
             npc.lavaImmune = true;
             npc.noTileCollide = true;
             npc.noGravity = true;
@@ -64,6 +67,8 @@ namespace EnduriumMod.NPCs.TropicalParadise
                 dust3.velocity *= 0f;
                 num = num1446;
             }
+            int num492 = P.whoAmI;
+
             Lighting.AddLight((int)((npc.position.X + (float)(npc.width / 2)) / 16f), (int)((npc.position.Y + (float)(npc.height / 2)) / 16f), 0f, 0.75f, 0.25f);
             float num493 = 4f;
             Vector2 vector39 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);

@@ -32,13 +32,13 @@ namespace EnduriumMod.Items.Weapons.Rift
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int numberProjectiles = 3 + Main.rand.Next(1);
+            int numberProjectiles = 2 + Main.rand.Next(1);
             for (int i = 0; i < numberProjectiles; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("RiftArrow"), damage, knockBack, player.whoAmI);
+                Vector2 perturbedSpeed = new Vector2(speedX / 7, speedY / 7).RotatedByRandom(MathHelper.ToRadians(24));
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("RiftArrow"), damage / 2, knockBack, player.whoAmI, Main.mouseX, Main.mouseY);
             }
-            return false;
+            return true;
         }
         public override void AddRecipes()
         {
@@ -51,7 +51,7 @@ namespace EnduriumMod.Items.Weapons.Rift
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Night Piercer");
-            Tooltip.SetDefault("'Piercing their skulls with his power'");
+            Tooltip.SetDefault("On top of fireing normal arrows, fires shadowflame arrows");
         }
 
     }

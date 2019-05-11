@@ -31,7 +31,12 @@ namespace EnduriumMod.Items.Weapons.Rift
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Void Caller");
-            Tooltip.SetDefault("'A collector of souls'");
+            Tooltip.SetDefault("Hitting an enemy marks it\nHomes in on marked enemies, except like not cause kitty didnt finish it");
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            int data = Projectile.NewProjectile(position.X, position.Y -= 14, speedX, speedY, item.shoot, damage, knockBack, player.whoAmI); //This is spawning a projectile of type FrostburnArrow using the original stats
+            return false;
         }
         public override void AddRecipes()
         {

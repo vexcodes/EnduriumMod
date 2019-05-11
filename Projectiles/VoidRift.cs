@@ -26,7 +26,7 @@ namespace EnduriumMod.Projectiles
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
-            for (int num623 = 0; num623 < 30; num623++)
+            for (int num623 = 0; num623 < 10; num623++)
             {
                 int num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 21, 0f, 0f, 100, default(Color), 1.7f);
                 Main.dust[num624].noGravity = true;
@@ -67,7 +67,7 @@ namespace EnduriumMod.Projectiles
             }
             int[] array = new int[20];
             int num433 = 0;
-            float num434 = 600f;
+            float num434 = 800f;
             bool flag14 = false;
             for (int num435 = 0; num435 < 200; num435 = num3 + 1)
             {
@@ -100,7 +100,7 @@ namespace EnduriumMod.Projectiles
                 float num440 = Main.npc[num439].position.X + (float)(Main.npc[num439].width / 2);
                 float num441 = Main.npc[num439].position.Y + (float)(Main.npc[num439].height / 2);
                 projectile.localAI[0] += 1f;
-                if (projectile.localAI[0] > 24f)
+                if (projectile.localAI[0] > 10f)
                 {
                     projectile.penetrate--;
                     projectile.localAI[0] = 0f;

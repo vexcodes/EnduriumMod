@@ -12,7 +12,7 @@ namespace EnduriumMod.Items.Weapons.SkyLament
 
             item.damage = 29;
             item.magic = true;
-            item.mana = 18;
+            item.mana = 12;
             item.width = 46;
             item.height = 46;
             item.useTime = 27;
@@ -30,7 +30,7 @@ namespace EnduriumMod.Items.Weapons.SkyLament
             item.shoot = mod.ProjectileType("HeavenBlast");
             item.shootSpeed = 11f;
         }
-		        public override void SetStaticDefaults()
+        public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sky Glament");
             Tooltip.SetDefault("");

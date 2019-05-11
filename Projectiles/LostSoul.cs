@@ -22,11 +22,32 @@ namespace EnduriumMod.Projectiles
             projectile.penetrate = 1;
             projectile.timeLeft = 120;
             projectile.ranged = true;
+            projectile.extraUpdates = 10;
         }
         public override void AI()
         {
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
+            int num;
+            if (projectile.localAI[0] == 0f)
+            {
+                projectile.localAI[0] = 1f;
+                for (int l = 0; l < 12; l = num + 1)
+                {
+                    Vector2 vector3 = Vector2.UnitX * -(float)projectile.width / 2f;
+                    vector3 += -Vector2.UnitY.RotatedBy((double)((float)l * 3.14159274f / 6f), default(Vector2)) * new Vector2(8f, 16f);
+                    vector3 = vector3.RotatedBy((double)(projectile.rotation - 1.57079637f), default(Vector2));
+                    int num9 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 21, 0f, 0f, 100, default(Color), 1.25f);
+
+                    Main.dust[num9].scale = 1.4f;
+                    Main.dust[num9].noGravity = true;
+                    Main.dust[num9].position = projectile.Center + vector3;
+                    Main.dust[num9].velocity = projectile.velocity * 0.25f;
+                    Main.dust[num9].velocity = Vector2.Normalize(projectile.Center - projectile.velocity * 3f - Main.dust[num9].position) * 1.25f;
+                    num = l;
+                }
+            }
             int num3;
-            for (int num93 = 0; num93 < 5; num93 = num3 + 1)
+            for (int num93 = 0; num93 < 2; num93 = num3 + 1)
             {
                 float num94 = projectile.velocity.X / 3f * (float)num93;
                 float num95 = projectile.velocity.Y / 3f * (float)num93;
@@ -49,7 +70,7 @@ namespace EnduriumMod.Projectiles
             }
             else
             {
-                projectile.extraUpdates = 0;
+                projectile.extraUpdates = 2;
             }
             if (projectile.alpha < 0)
             {
