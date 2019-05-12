@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.Weapons.ForestChest
         public override void SetDefaults()
         {
 
-            item.damage = 12;
+            item.damage = 10;
             item.melee = true;  
             item.useTime = 29;  
             item.useAnimation = 29; 

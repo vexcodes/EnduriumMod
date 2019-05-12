@@ -22,11 +22,11 @@ namespace EnduriumMod.NPCs.TropicalParadise
             npc.damage = 25;
             npc.defense = 10;
             npc.aiStyle = -1;
-            npc.lifeMax = 80;
+            npc.lifeMax = 70;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 60f;
-            npc.knockBackResist = 0.3f;
+            npc.knockBackResist = 0.5f;
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
@@ -114,7 +114,7 @@ namespace EnduriumMod.NPCs.TropicalParadise
         }
         public override void NPCLoot()
         {
-            Terraria.Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NatureEssence"), Main.rand.Next(1, 3));
+            Terraria.Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NatureEssence"), Main.rand.Next(2, 4));
         }
     }
 }
