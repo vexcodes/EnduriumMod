@@ -34,28 +34,26 @@ namespace EnduriumMod.Projectiles
         }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {                                                           // sound that the projectile make when hiting the terrain
-            {
-                projectile.Kill();
-          
-                Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 10);
-            }
+            projectile.Kill();
+            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 10);
             return false;
         }
         public override void Kill(int timeLeft)
         {
+            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, mod.ProjectileType("AOE"), (int)((double)projectile.damage * 0.75f), projectile.knockBack, projectile.owner);
             Main.PlaySound(SoundID.Item62, projectile.position);
             projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
             projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
             projectile.width = 24;
             projectile.height = 24;
             int num3;
-            for (int num731 = 0; num731 < 5; num731 = num3 + 1)
+            for (int num731 = 0; num731 < 8; num731 = num3 + 1)
             {
-                int num732 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 121, 0f, 0f, 100, default(Color), 2.5f);
+                int num732 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 121, 0f, 0f, 100, default(Color), 1.5f);
                 Main.dust[num732].noGravity = true;
                 Dust dust = Main.dust[num732];
                 dust.velocity *= 1.5f;
-                num732 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 1.5f);
+                num732 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 2.5f);
                 dust = Main.dust[num732];
                 Main.dust[num732].noGravity = true;
                 dust.velocity *= 2f;

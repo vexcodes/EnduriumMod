@@ -31,7 +31,7 @@ namespace EnduriumMod.Items
             recipe.AddIngredient(null, ("SkyLamentOre"), 4);
 			recipe.AddIngredient(null, ("MagicPowder"));
             recipe.AddTile(TileID.Furnaces);
-            recipe.SetResult(this, 2);
+            recipe.SetResult(this, 3);
             recipe.AddRecipe();
         }
     }

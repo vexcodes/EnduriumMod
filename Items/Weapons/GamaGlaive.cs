@@ -34,7 +34,7 @@ namespace EnduriumMod.Items.Weapons
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gama Glaive");
+            DisplayName.SetDefault("Gamma Glaive");
             Tooltip.SetDefault("Releases star shards upon contact");
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

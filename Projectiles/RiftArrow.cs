@@ -60,7 +60,10 @@ namespace EnduriumMod.Projectiles
                 projectile.velocity = Vector2.Normalize(value11 - projectile.Center) * 18;
             }
         }
-
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(153, 300);
+        }
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 60);

@@ -38,8 +38,7 @@ namespace EnduriumMod.NPCs.ShadowStorm
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             Tile tile = Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY];
-            return spawnInfo.player.ZoneOverworldHeight && !Main.dayTime && !Main.bloodMoon && !spawnInfo.playerInTown && !spawnInfo.player.ZoneTowerStardust && !spawnInfo.player.ZoneTowerSolar && !spawnInfo.player.ZoneTowerVortex && !spawnInfo.player.ZoneTowerNebula && NPC.downedBoss1 ? 0.07f : 0f;
-
+            return spawnInfo.player.ZoneOverworldHeight && !Main.dayTime && !Main.bloodMoon && !spawnInfo.playerInTown && !spawnInfo.player.ZoneTowerStardust && !spawnInfo.player.ZoneTowerSolar && !spawnInfo.player.ZoneTowerVortex && !spawnInfo.player.ZoneTowerNebula && NPC.downedBoss2 ? 0.07f : 0f;
         }
         public override void NPCLoot()
         {

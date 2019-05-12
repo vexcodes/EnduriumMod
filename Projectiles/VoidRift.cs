@@ -20,6 +20,7 @@ namespace EnduriumMod.Projectiles
             projectile.height = 68;
             projectile.friendly = true;
             projectile.penetrate = 12;
+            projectile.tileCollide = false;
             projectile.timeLeft = 200;
             projectile.magic = true;
         }
@@ -35,6 +36,7 @@ namespace EnduriumMod.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            target.AddBuff(153, 300);
             target.immune[projectile.owner] = 12;
         }
         public override void AI()
@@ -106,7 +108,7 @@ namespace EnduriumMod.Projectiles
                     projectile.localAI[0] = 0f;
                     float num442 = 6f;
                     Vector2 vector32 = new Vector2(projectile.position.X + (float)projectile.width, projectile.position.Y + (float)projectile.height);
-                    vector32 += projectile.velocity * 4f;
+                    vector32 += projectile.velocity * 1f;
                     float num443 = num440 - vector32.X;
                     float num444 = num441 - vector32.Y;
                     float num445 = (float)Math.Sqrt((double)(num443 * num443 + num444 * num444));

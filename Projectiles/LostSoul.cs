@@ -155,7 +155,10 @@ namespace EnduriumMod.Projectiles
                 }
             }
         }
-
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(153, 300);
+        }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
 

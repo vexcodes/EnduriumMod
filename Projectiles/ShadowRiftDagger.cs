@@ -43,6 +43,7 @@ namespace EnduriumMod.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
+            target.AddBuff(153, 300);
             target.immune[projectile.owner] = 7;
             for (int num623 = 0; num623 < 4; num623++)
             {

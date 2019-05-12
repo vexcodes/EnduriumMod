@@ -66,7 +66,10 @@ namespace EnduriumMod.Projectiles
             projectile.velocity *= 0.86f;
             projectile.rotation += 0.17f;
         }
-
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(153, 300);
+        }
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             projectile.Kill();
