@@ -13,7 +13,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
     {
         public override void SetDefaults()
         {
-            item.damage = 16;
+            item.damage = 10;
             item.crit += 2;
             item.ranged = true;
             item.width = 22;
@@ -25,7 +25,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
             item.knockBack = 7;
             item.UseSound = SoundID.Item5;
             item.value = 900000;
-            item.rare = 11;
+            item.rare = 1;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("DesertPierce");
             item.shootSpeed = 20f;
@@ -35,7 +35,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Vultures Talon");
-            Tooltip.SetDefault("Fires a mysterious arrow every third shot");
+            Tooltip.SetDefault("Fires a desert arrow every third shot");
         }
         public override void AddRecipes()
         {

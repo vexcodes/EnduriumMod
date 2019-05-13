@@ -9,7 +9,7 @@ namespace EnduriumMod.Items.Weapons.RuneShard
         public override void SetDefaults()
         {
 
-            item.damage = 52;
+            item.damage = 49;
             item.magic = true;
             item.mana = 16;
             item.width = 60;

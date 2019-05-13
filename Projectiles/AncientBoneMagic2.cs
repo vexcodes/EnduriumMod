@@ -17,7 +17,7 @@ namespace EnduriumMod.Projectiles
             projectile.aiStyle = 1;
             projectile.magic = true;
             projectile.penetrate = 1;      //this is how many enemy this projectile penetrate before desapear 
-            projectile.extraUpdates = 1;
+            projectile.extraUpdates = 2;
         }
 
         public override void SetStaticDefaults()

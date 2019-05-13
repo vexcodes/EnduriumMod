@@ -13,14 +13,14 @@ namespace EnduriumMod.Items.Weapons.Ancient
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Primeval Wand");
-            Tooltip.SetDefault("'Summons a sand spirit to fight for you'");
+            Tooltip.SetDefault("'Summons a sand spirit to fight for you'\nWhile weak the minion takes up half a slot");
         }
         public override void SetDefaults()
         {
 
-            item.damage = 18;
+            item.damage = 11;
             item.summon = true;
-            item.mana = 14;
+            item.mana = 10;
             item.width = 46;
             item.height = 46;
             item.useTime = 37;
@@ -32,7 +32,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 3.25f;
             item.value = 20000;
-            item.rare = 4;
+            item.rare = 1;
             item.UseSound = SoundID.Item72;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("SandSpirit");

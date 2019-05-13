@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.BloodlightShaman
         public override void SetDefaults()
         {
 
-            item.damage = 30;
+            item.damage = 34;
             item.melee = true;
             item.width = 44;
             item.height = 50;

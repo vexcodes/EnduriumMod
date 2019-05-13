@@ -39,7 +39,7 @@ namespace EnduriumMod.NPCs.TheSpiritOfBloom
             npc.lifeMax = 6800;
             npc.width = 250;
             npc.height = 198;
-            npc.damage = 38;
+            npc.damage = 32;
             npc.boss = true;
             npc.defense = 4;
 
@@ -100,7 +100,7 @@ namespace EnduriumMod.NPCs.TheSpiritOfBloom
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.7f * bossLifeScale);
-            npc.damage = 44;
+            npc.damage = 41;
             npc.defense = 8;
         }
         float AI2 = 0;
@@ -502,7 +502,7 @@ namespace EnduriumMod.NPCs.TheSpiritOfBloom
                     Main.PlaySound(SoundID.Item17, npc.position);
                     float Speed = 12f;  // projectile speed
                     Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 4), npc.position.Y + (npc.height / 4));
-                    int damage = 20;  // projectile damage
+                    int damage = 14;  // projectile damage
                     int type = mod.ProjectileType("MiniLeaf");  //put your projectile
                     float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
                     int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
@@ -672,7 +672,7 @@ namespace EnduriumMod.NPCs.TheSpiritOfBloom
                     npc.netUpdate = true;
                     float Speed = 14f;  // projectile speed
                     Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 4), npc.position.Y + (npc.height / 4));
-                    int damage = 16;  // projectile damage
+                    int damage = 18;  // projectile damage
                     int type = mod.ProjectileType("FalconLeaf");  //put your projectile
                     float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
                     int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
@@ -736,7 +736,7 @@ namespace EnduriumMod.NPCs.TheSpiritOfBloom
                     npc.ai[0] = 0;
                     float Speed = 11f;  // projectile speed
                     Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 4), npc.position.Y + (npc.height / 4));
-                    int damage = 21;  // projectile damage
+                    int damage = 18;  // projectile damage
                     int type = mod.ProjectileType("Leaf");  //put your projectile
                     float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
                     int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
@@ -793,7 +793,7 @@ namespace EnduriumMod.NPCs.TheSpiritOfBloom
                     npc.netUpdate = true;
                     float Speed = 14f;  // projectile speed
                     Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 4), npc.position.Y + (npc.height / 4));
-                    int damage = 16;  // projectile damage
+                    int damage = 18;  // projectile damage
                     int type = mod.ProjectileType("FalconLeaf");  //put your projectile
                     float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
                     int num54 = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, Main.myPlayer);
@@ -911,7 +911,7 @@ namespace EnduriumMod.NPCs.TheSpiritOfBloom
                 {
                     Times += 0.05f;
                 }
-                if (Times > 12f)
+                if (Times > 15f)
                 {
                     if (Main.netMode != 1)
                     {
@@ -1023,6 +1023,7 @@ namespace EnduriumMod.NPCs.TheSpiritOfBloom
 
         public override void HitEffect(int hitDirection, double damage)
         {
+            EnduriumWorld.downedBloom = true;
             for (int k = 0; k < 10; k++)
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, 3, hitDirection, -1f, 0, default(Color), 1f);

@@ -32,7 +32,7 @@ namespace EnduriumMod.Items.Weapons.SkyLament
         }
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sky Glament");
+            DisplayName.SetDefault("Sky Lament");
             Tooltip.SetDefault("");
         }
         public override void AddRecipes()

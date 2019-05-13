@@ -13,13 +13,13 @@ namespace EnduriumMod.Items.Weapons.Ancient
             item.ranged = true;
             item.width = 42;
             item.height = 26;
-            item.useTime = 12;
-            item.useAnimation = 12;
+            item.useTime = 16;
+            item.useAnimation = 16;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2;
             item.value = Terraria.Item.buyPrice(0, 1, 30, 0);
-            item.rare = 3;
+            item.rare = 1;
             item.UseSound = SoundID.Item11;
             item.autoReuse = false;
             item.shoot = 10;
@@ -44,7 +44,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(8));
                 float scale = 1f - (Main.rand.NextFloat() * .3f);
                 perturbedSpeed = perturbedSpeed * scale;
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("AncientEagle"), damage, knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("AncientEagle"), damage / 2, knockBack, player.whoAmI);
             }
             return true;
         }

@@ -19,8 +19,8 @@ namespace EnduriumMod.Items.Armor
             item.height = 22;
 
             item.value = 12000;
-            item.rare = 4;
-            item.defense = 5; //42
+            item.rare = 2;
+            item.defense = 4; //42
         }
 
         public override void SetStaticDefaults()

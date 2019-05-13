@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tropic Blades");
-            Tooltip.SetDefault("A huge double sided katana");
+            Tooltip.SetDefault("A huge double sided blade");
         }
 
         public override void SetDefaults()

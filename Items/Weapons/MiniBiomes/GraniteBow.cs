@@ -40,25 +40,16 @@ namespace EnduriumMod.Items.Weapons.MiniBiomes
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 35f;
+            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+                position += muzzleOffset;
+            }
             if (Main.rand.Next(4) == 0)
             {
-                Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 35f;
-                if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-                {
-                    position += muzzleOffset;
-                }
                 Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("GraniteBolt"), damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
-
-                return false; //Makes sure to not fire the original projectile
-
             }
-            else
-            {
-
-
-                return true; //Makes sure to not fire the original projectile
-            }
+            return true;
         }
         public override void AddRecipes()
         {

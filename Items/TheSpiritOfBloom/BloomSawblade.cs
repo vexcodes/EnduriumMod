@@ -27,7 +27,7 @@ namespace EnduriumMod.Items.TheSpiritOfBloom
             item.shoot = mod.ProjectileType("BloomSawblade");
             item.shootSpeed = 10f;
             item.useTurn = true;
-            item.consumable = false;
+            item.consumable = true;
             item.noUseGraphic = true;
 
         }

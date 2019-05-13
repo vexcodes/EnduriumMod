@@ -7,7 +7,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
 {
     public class AncientStaff : ModItem
     {
-	        public override void SetStaticDefaults()
+        public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Primeval Staff");
             Tooltip.SetDefault("");
@@ -15,13 +15,13 @@ namespace EnduriumMod.Items.Weapons.Ancient
         public override void SetDefaults()
         {
 
-            item.damage = 21;
+            item.damage = 18;
             item.magic = true;
-            item.mana = 14;
+            item.mana = 8;
             item.width = 46;
             item.height = 46;
-            item.useTime = 39;
-            item.useAnimation = 39;
+            item.useTime = 42;
+            item.useAnimation = 42;
             item.useStyle = 5;
             Item.staff[item.type] = true;
 
@@ -29,15 +29,15 @@ namespace EnduriumMod.Items.Weapons.Ancient
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 3.25f;
             item.value = 20000;
-            item.rare = 4;
+            item.rare = 1;
             item.UseSound = SoundID.Item72;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("AncientBoneMagic2");
-            item.shootSpeed = 11f;
+            item.shootSpeed = 5f;
         }
-		        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 10f;
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 30f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
             {
                 position += muzzleOffset;
@@ -50,7 +50,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
             }
             return false;
         }
-				        public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("AncientMandible"), 8);

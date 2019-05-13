@@ -24,7 +24,7 @@ namespace EnduriumMod.Items.Accesories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Talisman of Prophecies");
-            Tooltip.SetDefault("'Your mind is sealed within'\nIncreases minion damage by 16% and minion slots by 1\nBoosts your max health by 40");
+            Tooltip.SetDefault("'Your mind is sealed within'\nIncreases damage by 16% and max minions by 1\nBoosts your max health by 40");
         }
 
         public override void AddRecipes()
@@ -42,6 +42,10 @@ namespace EnduriumMod.Items.Accesories
             player.statLifeMax2 += 40;
             player.maxMinions += 1;
             player.minionDamage *= 1.16f;
+            player.rangedDamage *= 1.16f;
+            player.magicDamage *= 1.16f;
+            player.meleeDamage *= 1.16f;
+            player.thrownDamage *= 1.16f;
         }
     }
 }

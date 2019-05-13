@@ -15,7 +15,7 @@ namespace EnduriumMod.Items.Weapons.RuneShard
         }
         public override void SetDefaults()
         {
-            item.damage = 31;
+            item.damage = 32;
             item.ranged = true;
             item.width = 30;
             item.height = 46;
@@ -53,7 +53,7 @@ namespace EnduriumMod.Items.Weapons.RuneShard
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("TheAbstract"), damage, knockBack, player.whoAmI, Main.mouseX, Main.mouseY);
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("TheAbstract"), damage / 2, knockBack, player.whoAmI, Main.mouseX, Main.mouseY);
             }
             return false;
         }

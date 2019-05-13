@@ -26,17 +26,14 @@ namespace EnduriumMod.Projectiles
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            int num414 = (int)(target.Center.X);
-            int num415 = (int)(target.Center.Y);
-            Projectile.NewProjectile((float)num414, (float)num415, -5f, -5f, mod.ProjectileType("BoneSpear2"), 10, 0f, projectile.owner);
-            Projectile.NewProjectile((float)num414, (float)num415, -5f, 5f, mod.ProjectileType("BoneSpear2"), 10, 0f, projectile.owner);
-            Projectile.NewProjectile((float)num414, (float)num415, 5f, -5f, mod.ProjectileType("BoneSpear2"), 10, 0f, projectile.owner);
-            Projectile.NewProjectile((float)num414, (float)num415, 5f, 5f, mod.ProjectileType("BoneSpear2"), 10, 0f, projectile.owner);
-            Projectile.NewProjectile((float)num414, (float)num415, 0f, -5f, mod.ProjectileType("BoneSpear2"), 10, 0f, projectile.owner);
-            Projectile.NewProjectile((float)num414, (float)num415, 0f, 5f, mod.ProjectileType("BoneSpear2"), 10, 0f, projectile.owner);
-            Projectile.NewProjectile((float)num414, (float)num415, 5f, 0f, mod.ProjectileType("BoneSpear2"), 10, 0f, projectile.owner);
-            Projectile.NewProjectile((float)num414, (float)num415, -5f, 0f, mod.ProjectileType("BoneSpear2"), 10, 0f, projectile.owner);
-            return;
+            Player player = Main.player[projectile.owner];
+            for (int num623 = 0; num623 < 4; num623++)
+            {
+                int num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 0.4f);
+                Main.dust[num624].noGravity = true;
+                Main.dust[num624].velocity *= 4f;
+            }
+            Projectile.NewProjectile(player.Center.X + Main.rand.Next(-50, 51), player.Center.Y + Main.rand.Next(-50, 51), 0f, 0f, mod.ProjectileType("BoneSpear2"), projectile.damage / 2, 0f, projectile.owner, target.whoAmI);
         }
         public override void SetStaticDefaults()
         {

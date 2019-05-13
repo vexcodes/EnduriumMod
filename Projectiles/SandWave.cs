@@ -11,12 +11,12 @@ namespace EnduriumMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sand Wave ");
+            DisplayName.SetDefault("Sand Wave");
         }
         public override void SetDefaults()
         {
             projectile.width = 16;
-            projectile.height = 34;
+            projectile.height = 16;
             projectile.friendly = true;
             projectile.penetrate = 1;
             projectile.timeLeft /= 2;
@@ -26,42 +26,30 @@ namespace EnduriumMod.Projectiles
         {
 
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
-            if (projectile.alpha <= 0)
+            int num;
+            for (int num143 = 0; num143 < 2; num143 = num + 1)
             {
-                int num;
-                for (int num108 = 0; num108 < 3; num108 = num + 1)
+                if (projectile.alpha <= 0)
                 {
-                    int num109 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 133, 0f, 0f, 0, default(Color), 0.8f);
+                    int num144 = Utils.SelectRandom<int>(Main.rand, new int[]
+                    {
+                    269,
+                    268,
+                    38
+                    });
+                    int num109 = Dust.NewDust(projectile.position, projectile.width, projectile.height, num144, 0f, 0f, 0, default(Color), 1.1f);
                     Main.dust[num109].noGravity = true;
                     Dust dust3 = Main.dust[num109];
                     dust3.velocity *= 0f;
-                    Main.dust[num109].noLight = true;
-                    num = num108;
                 }
+                num = num143;
             }
             if (projectile.alpha > 0)
             {
-                projectile.alpha -= 55;
-                projectile.scale = 1.3f;
+                projectile.alpha -= 10;
                 if (projectile.alpha < 0)
                 {
                     projectile.alpha = 0;
-                    float num110 = 16f;
-                    int num111 = 0;
-                    while ((float)num111 < num110)
-                    {
-                        Vector2 vector14 = Vector2.UnitX * 0f;
-                        vector14 += -Vector2.UnitY.RotatedBy((double)((float)num111 * (6.28318548f / num110)), default(Vector2)) * new Vector2(1f, 4f);
-                        vector14 = vector14.RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2));
-                        int num112 = Dust.NewDust(projectile.Center, 0, 0, 269, 0f, 0f, 0, default(Color), 1f);
-                        Main.dust[num112].scale = 1.5f;
-                        Main.dust[num112].noLight = true;
-                        Main.dust[num112].noGravity = true;
-                        Main.dust[num112].position = projectile.Center + vector14;
-                        Main.dust[num112].velocity = Main.dust[num112].velocity * 4f + projectile.velocity * 0.3f;
-                        int num = num111;
-                        num111 = num + 1;
-                    }
                 }
             }
             if (projectile.alpha > 0)

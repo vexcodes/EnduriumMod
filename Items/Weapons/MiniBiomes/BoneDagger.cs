@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.Weapons.MiniBiomes
         public override void SetDefaults()
         {
 
-            item.damage = 23;
+            item.damage = 12;
             item.thrown = true;
             item.noMelee = true;
             item.width = 24;

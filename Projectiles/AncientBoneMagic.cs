@@ -12,6 +12,8 @@ namespace EnduriumMod.Projectiles //We need this to basically indicate the folde
     {
         public override void SetStaticDefaults()
         {
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
+            ProjectileID.Sets.TrailingMode[projectile.type] = 0;
             DisplayName.SetDefault("Ancient Bone Magic");
         }
         public override void SetDefaults()
@@ -19,13 +21,14 @@ namespace EnduriumMod.Projectiles //We need this to basically indicate the folde
             projectile.width = 10;
             projectile.height = 22;
             projectile.timeLeft = 120;
-            projectile.penetrate = 1;
+            projectile.penetrate = 2;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = true;
             projectile.ignoreWater = false;
             projectile.magic = true;
             projectile.alpha = 20;
+            projectile.extraUpdates = 1;
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
@@ -43,7 +46,15 @@ namespace EnduriumMod.Projectiles //We need this to basically indicate the folde
                 projectile.velocity.X *= 1.04f;
                 projectile.velocity.Y *= 1.04f;
             }
-
+            int num144 = Utils.SelectRandom<int>(Main.rand, new int[]
+{
+                    269,
+                    268
+});
+            int a = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, num144, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+            Main.dust[a].scale = 0.5f;
+            Main.dust[a].position = projectile.Center;
+            Main.dust[a].velocity *= 0f;
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
 
             Player owner = Main.player[projectile.owner]; //Makes a player variable of owner set as the player using the projectile
@@ -72,9 +83,14 @@ namespace EnduriumMod.Projectiles //We need this to basically indicate the folde
             oldVelocity.Normalize();
             vector19 += oldVelocity * 16f;
             int num3;
-            for (int num355 = 0; num355 < 8; num355 = num3 + 1)
+            for (int num355 = 0; num355 < 12; num355 = num3 + 1)
             {
-                int num356 = Dust.NewDust(vector19, projectile.width, projectile.height, 269, 0f, 0f, 0, default(Color), 1f);
+                int num144 = Utils.SelectRandom<int>(Main.rand, new int[]
+{
+                        269,
+                        268
+});
+                int num356 = Dust.NewDust(vector19, projectile.width, projectile.height, num144, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[num356].position = (Main.dust[num356].position + projectile.Center) / 2f;
                 Dust dust = Main.dust[num356];
                 dust.velocity += projectile.oldVelocity * 1.4f;

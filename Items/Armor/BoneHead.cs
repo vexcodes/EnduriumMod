@@ -41,14 +41,14 @@ namespace EnduriumMod.Items.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases damage resistance by 10%";
-					            player.endurance += 0.05f;
+            player.setBonus = "Increases damage resistance by 10% while underground\nIf an enemy hits you stalactites will fall on it";
+            player.endurance += 0.1f;
         }
 
         public override void UpdateEquip(Player player)
         {
-                        player.meleeCrit += 8;
-			player.meleeSpeed += 0.08f;
+            player.meleeCrit += 8;
+            player.meleeSpeed += 0.08f;
         }
         public override void AddRecipes()
         {

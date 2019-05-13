@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.Weapons.BloodFang
         public override void SetDefaults()
         {
 
-            item.damage = 19;
+            item.damage = 17;
             item.ranged = true;
             item.width = 26;
             item.height = 50;
@@ -40,7 +40,7 @@ namespace EnduriumMod.Items.Weapons.BloodFang
             for (int i = 0; i < numberProjectiles; i++)
             {
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BloodClot"), damage, knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("BloodClot"), damage / 3, knockBack, player.whoAmI);
             }
             return true;
         }

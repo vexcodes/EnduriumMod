@@ -156,14 +156,6 @@ namespace EnduriumMod.NPCs.TownNPCs
             shop.item[nextSlot].shopCustomPrice = new int?(10);  //this is the custom price, so this item will cost 20 custom Currency
             shop.item[nextSlot].shopSpecialCurrency = EnduriumMod.BronzeCoinID;  //this make so to use the CustomCurrency             
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("DragonCandle"));      //this defines what item to sell .
-            shop.item[nextSlot].shopCustomPrice = new int?(20);  //this is the custom price, so this item will cost 20 custom Currency
-            shop.item[nextSlot].shopSpecialCurrency = EnduriumMod.BronzeCoinID;  //this make so to use the CustomCurrency             
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("FlamingCarrot"));      //this defines what item to sell .
-            shop.item[nextSlot].shopCustomPrice = new int?(20);  //this is the custom price, so this item will cost 20 custom Currency
-            shop.item[nextSlot].shopSpecialCurrency = EnduriumMod.BronzeCoinID;  //this make so to use the CustomCurrency             
-            nextSlot++;
             if (NPC.downedBoss1)
             {
                 shop.item[nextSlot].SetDefaults(mod.ItemType("MechanicalChip"));      //this defines what item to sell .

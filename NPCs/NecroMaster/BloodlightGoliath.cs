@@ -23,7 +23,7 @@ namespace EnduriumMod.NPCs.NecroMaster
             npc.height = 62; //216
             npc.defense = 10;
             npc.value = 600f;
-            npc.lifeMax = 600;
+            npc.lifeMax = 500;
             npc.knockBackResist = 0f;
             Main.npcFrameCount[npc.type] = 4;
             npc.value = Item.buyPrice(0, 4, 0, 0);
@@ -72,7 +72,7 @@ namespace EnduriumMod.NPCs.NecroMaster
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return Main.bloodMoon && !NPC.AnyNPCs(mod.NPCType("NecroMaster")) ? 0.013f : 0f;
+            return Main.bloodMoon && !NPC.AnyNPCs(mod.NPCType("BloodlightGoliath")) ? 0.013f : 0f;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -130,7 +130,7 @@ namespace EnduriumMod.NPCs.NecroMaster
                 if (num3 >= 75)
                 {
                     num3 = 0;
-                    float Speed = 12f;  // projectile speed
+                    float Speed = 5f;  // projectile speed
                     if (Main.rand.Next(2) == 0 && Main.netMode != 1)
                     {
                         Vector2 vector8 = new Vector2(npc.Center.X, npc.Center.Y);
@@ -301,7 +301,7 @@ namespace EnduriumMod.NPCs.NecroMaster
                     num151 = num147 / num151;
                     num148 *= num151;
                     num150 *= num151;
-                    int num152 = 16;
+                    int num152 = 6;
                     int num25;
                     int faggot = mod.ProjectileType("BloodYellowBolt");
 

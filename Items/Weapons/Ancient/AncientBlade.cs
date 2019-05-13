@@ -17,10 +17,10 @@ namespace EnduriumMod.Items.Weapons.Ancient
             item.useTime = 24;
             item.useAnimation = 24;
             item.useStyle = 1;
-            
+
             item.knockBack = 5;
             item.value = 18000;
-            item.rare = 4;
+            item.rare = 1;
             item.UseSound = SoundID.Item1;
             item.autoReuse = false;
         }
@@ -36,7 +36,7 @@ namespace EnduriumMod.Items.Weapons.Ancient
             DisplayName.SetDefault("Primeval Blade");
             Tooltip.SetDefault("");
         }
-						        public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("AncientMandible"), 7);

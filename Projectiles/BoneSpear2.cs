@@ -19,8 +19,9 @@ namespace EnduriumMod.Projectiles
             projectile.height = 10;
             projectile.friendly = true;
             projectile.alpha = 255;
-            projectile.penetrate = 5;
-            projectile.timeLeft = 8;
+            projectile.tileCollide = false;     
+            projectile.penetrate = 1;
+            projectile.timeLeft = 18;
             projectile.melee = true;
             projectile.scale = 0.75f;
         }
@@ -31,6 +32,11 @@ namespace EnduriumMod.Projectiles
             Main.dust[num795].velocity *= 1f;
             Main.dust[num795].scale = 1f;
             Main.dust[num795].noGravity = true;
+            if (projectile.ai[1] == 0)
+            {
+                projectile.ai[1] = 1;
+                projectile.velocity = Vector2.Normalize(Main.npc[(int)projectile.ai[0]].Center - projectile.Center) * 8;
+            }
         }
     }
 }

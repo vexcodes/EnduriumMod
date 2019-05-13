@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.Weapons.MiniBiomes
         public override void SetDefaults()
         {
 
-            item.damage = 28;
+            item.damage = 21;
 
             item.melee = true;
             item.width = 48;
@@ -33,7 +33,7 @@ namespace EnduriumMod.Items.Weapons.MiniBiomes
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bone Pike");
-            Tooltip.SetDefault("Hitting enemies releases 8 flares in all directions");
+            Tooltip.SetDefault("Hitting enemies releases flares");
         }
 
         public override void AddRecipes()

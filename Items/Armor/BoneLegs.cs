@@ -31,7 +31,7 @@ namespace EnduriumMod.Items.Armor
 
         public override void UpdateEquip(Player player)
         {
-		            player.endurance += 0.04f;
+            player.endurance += 0.04f;
         }
         public override void AddRecipes()
         {

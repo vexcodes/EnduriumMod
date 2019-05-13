@@ -44,10 +44,9 @@ namespace EnduriumMod
         public float StarExcalibur = 1f;
         public int SanguineGoliathOffSet = -10;
         public int SanguineGoliathDirection = -1;
+        public bool FacemelterLethal = false;
+        public bool FacemelterHeld = false;
         public int SpearBoom = 0;
-        public static int SpawnX;
-        public static int SpawnY;
-        public bool hasSpawned = false;
         /*
         		public override Texture2D GetMapBackgroundImage()
 		{
@@ -813,7 +812,20 @@ namespace EnduriumMod
             {
                 player.armorPenetration += 9999999;
             }
-                if (StormShield)
+            if (player.HeldItem.type != mod.ItemType("Facemelter"))
+            {
+                FacemelterHeld = false;
+            }
+            bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("Facemelter")] <= 0;
+            if (petProjectileNotSpawned)
+            { 
+                if (FacemelterLethal)
+                {
+                    FacemelterLethal = false;
+                    player.KillMe(PlayerDeathReason.ByOther(10), 10.0, 0, false);
+                }
+            }
+            if (StormShield)
             {
                 double deg1 = (double)dustpos1;
                 double deg2 = (double)dustpos2;
@@ -1501,6 +1513,26 @@ namespace EnduriumMod
                         Main.dust[num21].fadeIn = 1.4f;
                         Main.dust[num21].velocity = Vector2.Normalize(vector3) * 3f;
                     }
+                    return false;
+                }
+            }
+            bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("Facemelter")] <= 0;
+            if (!petProjectileNotSpawned)
+            {
+                if (FacemelterHeld)
+                {
+                    player.statLife = 1;
+                    player.HealEffect(1);
+
+                    player.immune = true;
+                    player.immuneTime = player.longInvince ? 180 : 120;
+                    for (int k = 0; k < player.hurtCooldowns.Length; k++)
+                    {
+                        player.hurtCooldowns[k] = player.longInvince ? 180 : 120;
+                    }
+                    Main.PlaySound(SoundID.Item29, player.position);
+
+                    FacemelterLethal = true;
                     return false;
                 }
             }
