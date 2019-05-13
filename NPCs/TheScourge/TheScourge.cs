@@ -204,7 +204,7 @@ namespace EnduriumMod.NPCs.TheScourge
                 {
                     npc.ai[0] = 0f;
                     npc.ai[1] = Main.rand.Next(1, 2);
-                    npc.ai[3] = 6;
+                    npc.ai[3] = 5;
                 }
             } //normal shit
 
@@ -261,6 +261,20 @@ namespace EnduriumMod.NPCs.TheScourge
             if (npc.ai[3] == 5)
             {
                 npc.ai[0] += 1f;
+                if (npc.ai[0] == 150)
+                {
+                    float numberProjectiles = 28; // 3, 4, or 5 shots
+                    float rotation = MathHelper.ToRadians(360);
+
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+                        Vector2 perturbedSpeed = new Vector2(5f, 5f).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("ScourgeBoltTiny"), npc.damage, 1f, Main.myPlayer);
+
+                        Vector2 perturbedSpeed2 = new Vector2(15f, 15f).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, perturbedSpeed2.X, perturbedSpeed2.Y, mod.ProjectileType("ScourgeBoltTiny"), npc.damage, 1f, Main.myPlayer);
+                    }
+                }
                 if (npc.ai[0] >= 180) //summons homing projectiles
                 {
                     npc.ai[0] = 0;

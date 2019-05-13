@@ -86,7 +86,6 @@ namespace EnduriumMod.Projectiles
             if (projectile.ai[0] >= 4730)
             {
                 acc -= 0.01f;
-                projectile.alpha += 1;
             }
             modPlayer.FacemelterHeld = true;
             int num2 = 0;

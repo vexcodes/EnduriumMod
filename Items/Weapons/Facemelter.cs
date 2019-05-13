@@ -19,20 +19,19 @@ namespace EnduriumMod.Items.Weapons
             item.knockBack = 2f;
             item.width = 20;
             item.height = 12;
-            item.damage = 46;
+            item.damage = 120;
             item.rare = 10;
             item.value = Item.sellPrice(0, 25, 0, 0);
             item.noMelee = true;
             item.noUseGraphic = true;
             item.ranged = true;
             item.channel = true;
-            item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/Facemelter");
             item.shoot = mod.ProjectileType("Facemelter");
         }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Face Melter");
-            Tooltip.SetDefault("Releases 4 notes in 4 different directions\nWhile playing you gain a boost to all stats\nA normal electric guitar. Drops an amplifier on right click for double the power!\nOnce you put your hands on the strings you can't stop\nWhile using it will prevent death, but if lethal damage is taken once you stop you immediatelly die");
+            Tooltip.SetDefault("Releases 4 notes in 4 different directions\nWhile playing you gain a boost to all stats\nA normal electric guitar. Drops an amplifier on right click for double the power!\nOnce you put your hands on the strings you can't stop\nWhile using it will prevent death, but if lethal damage is taken once you stop, you immediately die");
         }
         public override bool AltFunctionUse(Player player)
         {
@@ -42,6 +41,7 @@ namespace EnduriumMod.Items.Weapons
         {
             if (player.altFunctionUse != 2)     //2 is right click
             {
+                Main.PlaySound(2, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Facemelter"));
                 return true;
             }
             else

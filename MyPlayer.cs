@@ -942,16 +942,10 @@ namespace EnduriumMod
             }
             if (TropicalAura)
             {
-                player.lifeRegen = +9;
+                player.lifeRegen += 5;
             }
             if (BloodFangBuff)
             {
-                player.meleeCrit += 10;
-                player.rangedCrit += 10;
-                player.magicCrit += 10;
-                player.thrownCrit += 10;
-
-                player.lifeRegen = +12;
             }
             if (Overgrowth3)
             {

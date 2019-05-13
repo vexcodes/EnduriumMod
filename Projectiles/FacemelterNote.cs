@@ -17,10 +17,10 @@ namespace EnduriumMod.Projectiles
         }
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 20;
+            projectile.height = 20;
             projectile.friendly = true;
-            projectile.scale *= 1.25f;
+            projectile.scale *= 1.5f;
             projectile.aiStyle = -1;
             projectile.ranged = true;
             projectile.penetrate = 1;      //this is how many enemy this projectile penetrate before desapear 
@@ -36,7 +36,7 @@ namespace EnduriumMod.Projectiles
             int y7 = glownum2 * projectile.frame;
 
             Main.spriteBatch.Draw(glowmask, projectile.Center - Main.screenPosition + new Vector2(0f, projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y7, glowmask.Width, glownum)), projectile.GetAlpha(Color.White), projectile.rotation, new Vector2((float)glowmask.Width / 2f, (float)glownum / 2f), projectile.scale, projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-            Main.spriteBatch.Draw(glowmask2, projectile.Center - Main.screenPosition + new Vector2(0f, projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y7, glowmask2.Width, glownum2)), projectile.GetAlpha(Color.White) * 0.33f, projectile.rotation, new Vector2((float)glowmask2.Width / 2f, (float)glownum2 / 2f), (projectile.scale * 1.5f), projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+           // Main.spriteBatch.Draw(glowmask2, projectile.Center - Main.screenPosition + new Vector2(0f, projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y7, glowmask2.Width, glownum2)), projectile.GetAlpha(Color.White) * 0.25f, projectile.rotation, new Vector2((float)glowmask2.Width / 2f, (float)glownum2 / 2f), projectile.scale * 1.5f, projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             return false;
         }
         public override void AI()
