@@ -24,7 +24,7 @@ namespace EnduriumMod.Items.Weapons
             Item.staff[item.type] = true;
             item.knockBack = 4f;
             item.value = 100000;
-            item.rare = 7;
+            item.rare = 6;
             item.UseSound = SoundID.Item9;
             item.autoReuse = true;
             item.useTurn = false;

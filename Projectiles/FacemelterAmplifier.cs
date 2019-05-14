@@ -96,7 +96,6 @@ namespace EnduriumMod.Projectiles
                 if (projectile.ai[0] >= 4730)
                 {
                     acc -= 0.01f;
-                    projectile.alpha += 1;
                 }
                 projectile.ai[1] += 0.25f + (acc / 4);
             }
@@ -162,27 +161,29 @@ namespace EnduriumMod.Projectiles
 
                 vector3 = projectile.Center + new Vector2((float)Main.rand.Next(-num7, num7 + 1), (float)Main.rand.Next(-num7, num7 + 1));
                 Vector2 vector5 = Vector2.Normalize(projectile.velocity) * scaleFactor2;
-                for (int i = 0; i < numberProjectiles; i++)
+                if (projectile.ai[0] <= 5040)
                 {
-                    Vector2 perturbedSpeed = new Vector2(vector5.X, vector5.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))); // Watch out for dividing by 0 if there is only 1 projectile.
-                    Projectile.NewProjectile(vector3.X, vector3.Y, perturbedSpeed.X, perturbedSpeed.Y, num6, projectile.damage, projectile.knockBack, player.whoAmI, player.whoAmI);
+                    for (int i = 0; i < numberProjectiles; i++)
+                    {
+                        Vector2 perturbedSpeed = new Vector2(vector5.X, vector5.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))); // Watch out for dividing by 0 if there is only 1 projectile.
+                        Projectile.NewProjectile(vector3.X, vector3.Y, perturbedSpeed.X, perturbedSpeed.Y, num6, projectile.damage, projectile.knockBack, player.whoAmI, player.whoAmI);
+                    }
+                    float num33 = 18;
+                    float num44 = 6.28318548f * Main.rand.NextFloat();
+                    Vector2 value = new Vector2(32f, 32f);
+                    for (float num5 = 0f; num5 < num33; num5 += 1f)
+                    {
+                        Dust dust = Main.dust[Dust.NewDust(projectile.Center, 0, 0, 269, 0f, 0f, 0, default(Color), 1f)];
+                        Vector2 vector32 = Vector2.UnitY.RotatedBy((double)(num5 * 6.28318548f / num33 + num44), default(Vector2));
+                        dust.position = projectile.Center + vector32 * value / 2f;
+                        dust.velocity = vector32;
+                        dust.noGravity = true;
+                        dust.scale = 1.5f;
+                        dust.velocity *= dust.scale;
+                        dust.fadeIn = Main.rand.NextFloat() * 0.6f;
+                        dust.customData = player;
+                    }
                 }
-                float num33 = 18;
-                float num44 = 6.28318548f * Main.rand.NextFloat();
-                Vector2 value = new Vector2(32f, 32f);
-                for (float num5 = 0f; num5 < num33; num5 += 1f)
-                {
-                    Dust dust = Main.dust[Dust.NewDust(projectile.Center, 0, 0, 269, 0f, 0f, 0, default(Color), 1f)];
-                    Vector2 vector32 = Vector2.UnitY.RotatedBy((double)(num5 * 6.28318548f / num33 + num44), default(Vector2));
-                    dust.position = projectile.Center + vector32 * value / 2f;
-                    dust.velocity = vector32;
-                    dust.noGravity = true;
-                    dust.scale = 1.5f;
-                    dust.velocity *= dust.scale;
-                    dust.fadeIn = Main.rand.NextFloat() * 0.6f;
-                    dust.customData = player;
-                }
-
                 if (float.IsNaN(vector5.X) || float.IsNaN(vector5.Y))
                 {
                     vector5 = -Vector2.UnitY;

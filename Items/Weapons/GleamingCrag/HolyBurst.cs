@@ -21,7 +21,7 @@ namespace EnduriumMod.Items.Weapons.GleamingCrag
             item.useStyle = 1;
             item.knockBack = 9;
             item.value = Terraria.Item.buyPrice(0, 0, 10, 0);
-            item.rare = 4;
+            item.rare = 6;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("HolyBurst");
@@ -32,7 +32,14 @@ namespace EnduriumMod.Items.Weapons.GleamingCrag
             item.noUseGraphic = true;
 
         }
-
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("GleamingCrag"), 2);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this, 50);
+            recipe.AddRecipe();
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Holy Burst");

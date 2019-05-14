@@ -23,11 +23,19 @@ namespace EnduriumMod.Items.Weapons.GleamingCrag
 
             item.knockBack = 1;
             item.value = 25000;
-            item.rare = 4;
+            item.rare = 6;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("CrystalSplit");
             item.shootSpeed = 8f;
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("GleamingCrag"), 18);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
         public override void SetStaticDefaults()
         {

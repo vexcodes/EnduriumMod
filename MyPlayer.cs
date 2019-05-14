@@ -812,6 +812,13 @@ namespace EnduriumMod
             {
                 player.armorPenetration += 9999999;
             }
+            if (player.HeldItem.type == mod.ItemType("HeavensGalore"))
+            {
+                if (player.statLife >= player.statLifeMax2)
+                {
+                    player.meleeDamage *= 2f;
+                }
+            }
             if (player.HeldItem.type != mod.ItemType("Facemelter"))
             {
                 FacemelterHeld = false;

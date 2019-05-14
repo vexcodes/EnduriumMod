@@ -30,6 +30,14 @@ namespace EnduriumMod.Items.Weapons.GleamingCrag
             item.shootSpeed = 20f;
             item.useAmmo = 40;
         }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("GleamingCrag"), 18);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-4, 0);

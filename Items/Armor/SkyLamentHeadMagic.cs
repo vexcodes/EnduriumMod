@@ -44,7 +44,6 @@ namespace EnduriumMod.Items.Armor
             player.setBonus = "Increases max mana and magic damage";
             player.statManaMax2 += 60;
             player.magicDamage += 0.1f;
-            player.manaCost *= 0.9f;
         }
 
         public override void UpdateEquip(Player player)

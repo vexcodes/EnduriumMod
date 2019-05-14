@@ -29,9 +29,17 @@ namespace EnduriumMod.Items.Weapons.GleamingCrag
             item.useTurn = true;
             item.useStyle = 5;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 9;
+            item.rare = 6;
             item.shoot = mod.ProjectileType("RighteousGlaive");
             item.shootSpeed = 42f;
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("GleamingCrag"), 18);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

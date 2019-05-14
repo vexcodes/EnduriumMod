@@ -19,19 +19,27 @@ namespace EnduriumMod.Items.Armor
             item.height = 18;
 
             item.value = 40000;
-            item.rare = 5;
+            item.rare = 6;
             item.defense = 8; //42
         }
-
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("GleamingCrag"), 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Starlight Caster Leggings");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("Increases magic critical strike chance");
         }
 
 
         public override void UpdateEquip(Player player)
         {
+            player.magicCrit += 8;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace EnduriumMod.Items.Weapons.GleamingCrag
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 3.25f;
             item.value = 80000;
-            item.rare = 3;
+            item.rare = 6;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("IlluminatedIres");
@@ -32,7 +32,15 @@ namespace EnduriumMod.Items.Weapons.GleamingCrag
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Illuminated Iris");
-            Tooltip.SetDefault("Fires two bouncing balls of illuminated energy");
+            Tooltip.SetDefault("Fires 4 bouncing balls of illuminated energy");
+        }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, ("GleamingCrag"), 18);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
