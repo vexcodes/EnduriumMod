@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent;
-using Terraria.GameContent.UI;
 using Terraria.GameInput;
-using Terraria.Graphics.Capture;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ModLoader.IO;
-using Terraria.ModLoader;
 
 namespace EnduriumMod
 {
@@ -82,6 +74,9 @@ namespace EnduriumMod
             bonusHealth = int.Parse(bonusLife);
             bonusMana = int.Parse(bonusMagic);
         }
+
+        public bool Voidwalker = false;
+
         public bool TropicalBlushV2 = false;
 
         public bool EyeofTheStorm = false;
@@ -282,6 +277,7 @@ namespace EnduriumMod
             CharmofLuna = CharmHide = CharmForce = CharmEffect = false;
             CharmSAccPrevious = CharmofSacrifises;
             CharmofSacrifises = CharmSHide = CharmSForce = CharmSEffect = false;
+            Voidwalker = false;
             DemonicHurt = false;
             RoyalCurseInflict = false;
             StormShield = false;
@@ -739,8 +735,6 @@ namespace EnduriumMod
         }
         public override void PreUpdateMovement()
         {
-            int num;
-            int num1;
             if (player.justJumped && CharmofLuna)
             {
                 Main.PlaySound(SoundID.Item62, player.position);
@@ -804,6 +798,28 @@ namespace EnduriumMod
         }
         public override void UpdateBadLifeRegen()
         {
+            if (Voidwalker)
+            {
+                if (Main.rand.Next(2) == 0)
+                {
+                    int num38 = Dust.NewDust(new Vector2(player.position.X - 2f, player.position.Y + (float)player.height - 2f), player.width + 2, 2, 21, 0f, 0f, 100, default(Microsoft.Xna.Framework.Color), 1.5f);
+                    Main.dust[num38].noGravity = true;
+                    Main.dust[num38].noLight = true;
+                    Dust dust2 = Main.dust[num38];
+                    dust2.velocity *= 0f;
+                }
+                if (Main.rand.Next(3) < 2)
+                {
+                    int dust = Dust.NewDust(player.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 21, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 1.5f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 0f;
+                    Main.dust[dust].velocity.Y += 0.25f;
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+            }
             if (SpearBoom > 0)
             {
                 SpearBoom -= 1;
@@ -855,6 +871,7 @@ namespace EnduriumMod
                 dustpos1 += 4;
                 dustpos2 += 4;
             }
+            
             if (SanguineGoliathOffSet <= -10)
             {
                 SanguineGoliathDirection = -1;
@@ -1059,7 +1076,6 @@ namespace EnduriumMod
                         vector += target.velocity * 12f;
                         vector.Normalize();
                         vector *= (float)Main.rand.Next(35, 39) * 0.3f;
-                        int num12 = 52;
                         Projectile.NewProjectile(target.Center.X, target.Center.Y, vector.X, vector.Y, mod.ProjectileType("ErodedFire"), damage, 0f, player.whoAmI);
 
                     }
@@ -1083,7 +1099,6 @@ namespace EnduriumMod
                             vector += target.velocity * 12f;
                             vector.Normalize();
                             vector *= (float)Main.rand.Next(35, 39) * 0.3f;
-                            int num12 = 52;
                             Projectile.NewProjectile(target.Center.X, target.Center.Y, vector.X, vector.Y, mod.ProjectileType("ErodedFire"), damage, 0f, player.whoAmI);
 
                         }
@@ -1108,7 +1123,6 @@ namespace EnduriumMod
                             vector += target.velocity * 12f;
                             vector.Normalize();
                             vector *= (float)Main.rand.Next(35, 39) * 0.3f;
-                            int num12 = 52;
                             Projectile.NewProjectile(target.Center.X, target.Center.Y, vector.X, vector.Y, mod.ProjectileType("ErodedFire"), damage, 0f, player.whoAmI);
 
                         }

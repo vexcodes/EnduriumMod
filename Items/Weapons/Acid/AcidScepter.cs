@@ -26,7 +26,7 @@ namespace EnduriumMod.Items.Weapons.Acid
             item.UseSound = SoundID.Item43;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("AcidBeam");
-            item.shootSpeed = 18f;
+            item.shootSpeed = 6f;
         }
         public override void AddRecipes()
         {
@@ -40,7 +40,7 @@ namespace EnduriumMod.Items.Weapons.Acid
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Endurian Scepter");
-            Tooltip.SetDefault("Creates a beam of acid");
+            Tooltip.SetDefault("Creates an acid beam");
         }
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {

@@ -36,7 +36,7 @@ namespace EnduriumMod.Items.Accesories
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("BloodEnergy"), 1);
+            recipe.AddIngredient(null, ("BloodEnergy"), 3);
             recipe.AddIngredient(null, ("BloodFangCore"), 15);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

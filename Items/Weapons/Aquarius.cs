@@ -36,10 +36,10 @@ namespace EnduriumMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Amarok);
 			recipe.AddIngredient(ItemID.Yelets);
-		    recipe.AddIngredient(null, ("RoyalCrystal"), 25);
+		    recipe.AddIngredient(null, ("TempleFragment"), 25);
 			recipe.AddIngredient(ItemID.SoulofLight, 20);
 			recipe.AddIngredient(ItemID.SoulofNight, 20);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(null, "SoulForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

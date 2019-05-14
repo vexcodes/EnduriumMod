@@ -26,7 +26,7 @@ namespace EnduriumMod.Items.Accesories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Crystalflare Runners");
-            Tooltip.SetDefault("Allows flight and extreme fast running\nAllows the ability to climb walls and dash\nGives a chance to dodge attacks");
+            Tooltip.SetDefault("Boosts flight and allows for extremely fast running\nAllows the ability to climb walls and dash\nGives a chance to dodge attacks");
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -43,7 +43,6 @@ namespace EnduriumMod.Items.Accesories
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.FrostsparkBoots);
             recipe.AddIngredient(984);
-            recipe.AddIngredient(null, "GlitterFrostCrystal", 5);
             recipe.AddIngredient(null, "HolySilver", 5);
             recipe.AddIngredient(null, "Aquamarine", 30);
             recipe.AddTile(null, "SoulForge");

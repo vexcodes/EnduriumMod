@@ -22,8 +22,8 @@ namespace EnduriumMod.Items
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Meteorite Energy Core");
-            Tooltip.SetDefault("Used in crafting powerfull magma and flame items.");
+            DisplayName.SetDefault("Contained Heat Core");
+            Tooltip.SetDefault("");
         }
     }
 }

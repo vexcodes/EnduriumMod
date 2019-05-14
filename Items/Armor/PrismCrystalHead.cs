@@ -19,12 +19,12 @@ namespace EnduriumMod.Items.Armor
 
             item.value = 100000;
             item.rare = 5;
-            item.defense = 8; //42
+            item.defense = 2; //42
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Void Crystal Helmet");
+            DisplayName.SetDefault("Voidwalker Helmet");
             Tooltip.SetDefault("Increases melee damage by 9%");
         }
 
@@ -41,15 +41,15 @@ namespace EnduriumMod.Items.Armor
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases melee and movement speed by 22%\nWhen critically low on health increases melee damage by 18%";
-            player.meleeSpeed += 0.22f;
+            player.setBonus = "Increases melee and movement speed by 22%\nWhen below 25% health melee damage is increased by 18%\nMelee weapons which fire a projectile also fire a Void Pulse that deals half of the weapons damage";
             player.moveSpeed += 0.22f;
-			        		if(player.statLife <= (player.statLifeMax2 * 0.25f))
-        		{
-            player.meleeDamage += 0.18f;
-        		}
+            player.meleeSpeed += 0.22f;
+            if (player.statLife <= (player.statLifeMax2 * 0.25f))
+            {
+                player.meleeDamage += 0.18f;
+            }
+            ((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).Voidwalker = true;
         }
-
         public override void UpdateEquip(Player player)
         {
             player.meleeDamage += 0.09f;
@@ -58,9 +58,9 @@ namespace EnduriumMod.Items.Armor
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("CursedHeart"));
-						recipe.AddIngredient(null, ("PrismShard"), 5);
-			recipe.AddIngredient(null, ("MagicPowder"), 6);
-			recipe.AddIngredient(null, ("GraniteEnergyCore"), 5);
+            recipe.AddIngredient(null, ("PrismShard"), 5);
+            recipe.AddIngredient(null, ("MagicPowder"), 6);
+            recipe.AddIngredient(null, ("CrypticPowerCell"), 4);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

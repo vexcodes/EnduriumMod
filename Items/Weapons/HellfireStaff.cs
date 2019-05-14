@@ -56,8 +56,8 @@ namespace EnduriumMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("HellfireScepter"));
             recipe.AddIngredient(ItemID.Flamelash);
-            recipe.AddIngredient(null, ("RoyalCrystal"), 15);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddIngredient(null, ("TempleFragment"), 15);
+            recipe.AddTile(null, "SoulForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

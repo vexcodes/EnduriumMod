@@ -1,30 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.GameContent.Shaders;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using ReLogic.Utilities;
-using System;
-using System.Collections.Generic;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.Enums;
-using Terraria.GameContent;
-using Terraria.GameContent.Achievements;
-using Terraria.GameContent.Events;
-using Terraria.GameContent.Shaders;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-using Terraria.Utilities;
-using Terraria.World.Generation;
-using EnduriumMod;
 
 namespace EnduriumMod.Items
 {
@@ -173,7 +151,6 @@ namespace EnduriumMod.Items
                     break;
                 }
             }
-            int num = 0;
             float num2 = (float)(Main.maxTilesX / 4200);
             int num3 = (int)(600f * num2);
             float num5 = 800;

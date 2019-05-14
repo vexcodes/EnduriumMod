@@ -36,10 +36,11 @@ namespace EnduriumMod.Items.Accesories
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("GraniteEnergyCore"), 5);
-            recipe.AddIngredient(null, ("MagicPowder"), 15);
-            recipe.AddIngredient(null, ("IronCross"));
-            recipe.AddTile(TileID.TinkerersWorkbench);
+            recipe.AddIngredient(null, ("CursedHeart"));
+            recipe.AddIngredient(null, ("PrismShard"), 6);
+            recipe.AddIngredient(null, ("MagicPowder"), 8);
+            recipe.AddIngredient(null, ("CrypticPowerCell"), 5);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

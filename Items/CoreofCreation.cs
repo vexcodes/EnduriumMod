@@ -34,12 +34,10 @@ namespace EnduriumMod.Items
             recipe.AddIngredient(null, ("CrypticPowerCell"), 4);
             recipe.AddIngredient(null, ("MeteoritePowerCore"), 4);
             recipe.AddIngredient(null, ("MagmaCore"), 4);
-            recipe.AddIngredient(null, ("GraniteEnergyCore"), 4);
             recipe.AddIngredient(null, ("FrigidFragment"), 4);
             recipe.AddIngredient(null, ("FieryTissue"), 4);
             recipe.AddIngredient(null, ("BloodFangCore"), 4);
             recipe.AddIngredient(null, ("TempleFragment"), 4);
-            recipe.AddIngredient(null, ("GlitterFrostCrystal"), 4);
             recipe.AddIngredient(ItemID.LunarOre, 4);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this, 2);

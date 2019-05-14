@@ -30,9 +30,9 @@ namespace EnduriumMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.JungleYoyo);
             recipe.AddIngredient(null, ("TropicalFragment"), 2);
-            recipe.AddIngredient(null, ("RoyalCrystal"), 10);
+            recipe.AddIngredient(null, ("TempleFragment"), 10);
             recipe.AddIngredient(null, ("DarkDust"), 16);
-            recipe.AddTile(null, "AltarofNature");
+            recipe.AddTile(null, "SoulForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

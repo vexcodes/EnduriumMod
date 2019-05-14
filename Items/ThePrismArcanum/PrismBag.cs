@@ -34,6 +34,7 @@ namespace EnduriumMod.Items.ThePrismArcanum
         {
             player.TryGettingDevArmor();
             player.TryGettingDevArmor();
+            player.QuickSpawnItem(mod.ItemType("CrypticPowerCell"), Main.rand.Next(15, 25));
             int choice = Main.rand.Next(6);
             if (choice == 0)
             {

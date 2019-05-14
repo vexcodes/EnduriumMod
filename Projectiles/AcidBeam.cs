@@ -19,31 +19,31 @@ namespace EnduriumMod.Projectiles
             projectile.height = 4;
             projectile.friendly = true;
             projectile.magic = true;
-            projectile.penetrate = -1;
+            projectile.penetrate = 1;
             projectile.timeLeft = 200;
             projectile.extraUpdates = 100;
             projectile.ignoreWater = true;
         }
         public override void AI()
         {
-            int num3;
-            for (int num452 = 0; num452 < 4; num452 = num3 + 1)
+            int num;
+            for (int num143 = 0; num143 < 2; num143 = num + 1)
             {
-                Vector2 vector36 = projectile.position;
-                vector36 -= projectile.velocity * ((float)num452 * 0.25f);
-                projectile.alpha = 255;
-                int num453 = Dust.NewDust(vector36, 1, 1, 89, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[num453].position = vector36;
-                Main.dust[num453].scale = (float)Main.rand.Next(70, 110) * 0.013f;
-                Dust dust3 = Main.dust[num453];
-                dust3.velocity *= 0f;
-                dust3.noGravity = true;
-                num3 = num452;
+                int num144 = Utils.SelectRandom<int>(Main.rand, new int[]
+                {
+                        107,
+                        89
+                });
+                Dust dust23 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, num144, projectile.velocity.X, projectile.velocity.Y, 25, default(Color), 1f)];
+                dust23.velocity = dust23.velocity / 4f + projectile.velocity / 2f;
+                dust23.noGravity = true;
+                dust23.scale = 1.15f;
+                dust23.position = projectile.Center;
+                num = num143;
             }
-            return;
-
         }
     }
+    
 }
 
 			

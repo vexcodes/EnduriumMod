@@ -20,12 +20,12 @@ namespace EnduriumMod.Items.Armor
 
             item.value = 122000;
             item.rare = 5;
-            item.defense = 9; //42
+            item.defense = 3; //42
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Void Crystal Breastplate");
+            DisplayName.SetDefault("Voidwalker Breastplate");
             Tooltip.SetDefault("Increases melee critical strike chance by 12%");
         }
 
@@ -40,7 +40,7 @@ namespace EnduriumMod.Items.Armor
             recipe.AddIngredient(null, ("CursedHeart"));
 			recipe.AddIngredient(null, ("PrismShard"), 6);
 			recipe.AddIngredient(null, ("MagicPowder"), 8);
-			recipe.AddIngredient(null, ("GraniteEnergyCore"), 5);
+			recipe.AddIngredient(null, ("CrypticPowerCell"), 5);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

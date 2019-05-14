@@ -44,8 +44,8 @@ namespace EnduriumMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("AcidBane"));
             recipe.AddIngredient(null, ("TropicalFragment"), 2);
-            recipe.AddIngredient(null, ("RoyalCrystal"), 8);
-            recipe.AddTile(null, "AltarofNature");
+            recipe.AddIngredient(null, ("TempleFragment"), 8);
+            recipe.AddTile(null, "SoulForge");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

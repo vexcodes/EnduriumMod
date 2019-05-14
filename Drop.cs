@@ -10,14 +10,14 @@ namespace EnduriumMod
 		{
 			if (type == mod.TileType("SkyLamentOre"))
 			{
-				if (Main.rand.Next(5) == 1)
+				if (Main.rand.Next(2) == 1)
 				{
 					Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType("MagicPowder"));
 					goto il;
 				}
 			}
 			return true;
-			il: return false;
+			il: return true;
 		}
 	}
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnduriumMod", "EnduriumMod.csproj", "{B9DAC38F-9D4C-4096-82CB-4332076BE684}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnduriumMod", "EnduriumMod.csproj", "{93C56D06-1D64-4A4C-8772-140A57FDDCA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B9DAC38F-9D4C-4096-82CB-4332076BE684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9DAC38F-9D4C-4096-82CB-4332076BE684}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9DAC38F-9D4C-4096-82CB-4332076BE684}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9DAC38F-9D4C-4096-82CB-4332076BE684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C56D06-1D64-4A4C-8772-140A57FDDCA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C56D06-1D64-4A4C-8772-140A57FDDCA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C56D06-1D64-4A4C-8772-140A57FDDCA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C56D06-1D64-4A4C-8772-140A57FDDCA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {80E598FF-1739-4275-92D0-72224D6540CA}
+		SolutionGuid = {5BF2EA11-9925-4D0A-B3BF-77F2767745F0}
 	EndGlobalSection
 EndGlobal

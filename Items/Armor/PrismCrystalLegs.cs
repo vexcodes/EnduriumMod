@@ -19,19 +19,19 @@ namespace EnduriumMod.Items.Armor
 
             item.value = 22500;
             item.rare = 5;
-            item.defense = 7; //42
+            item.defense = 2; //42
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Void Crystal Leggings");
+            DisplayName.SetDefault("Voidwalker Leggings");
             Tooltip.SetDefault("Increases movement speed");
         }
 
 
         public override void UpdateEquip(Player player)
         {
-            player.moveSpeed += 0.25f;
+            player.moveSpeed += 0.5f;
         }
         public override void AddRecipes()
         {
@@ -39,7 +39,7 @@ namespace EnduriumMod.Items.Armor
             recipe.AddIngredient(null, ("CursedHeart"));
 						recipe.AddIngredient(null, ("PrismShard"), 4);
 			recipe.AddIngredient(null, ("MagicPowder"), 5);
-			recipe.AddIngredient(null, ("GraniteEnergyCore"), 4);
+			recipe.AddIngredient(null, ("CrypticPowerCell"), 4);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -42,7 +42,7 @@ namespace EnduriumMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("BlastBuster"));
             recipe.AddIngredient(null, ("HolySilver"), 12);
-            recipe.AddIngredient(null, ("RoyalCrystal"), 20);
+            recipe.AddIngredient(null, ("TempleFragment"), 20);
             recipe.AddIngredient(ItemID.SoulofNight, 12);
             recipe.AddTile(null, "SoulForge");
             recipe.SetResult(this);

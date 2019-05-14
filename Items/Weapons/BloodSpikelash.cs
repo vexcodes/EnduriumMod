@@ -40,7 +40,7 @@ namespace EnduriumMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Chain, 5);
             recipe.AddRecipeGroup("PlatinumBars", 10);
-            recipe.AddIngredient(null, ("GraniteEnergyCore"), 5);
+            recipe.AddIngredient(null, ("MeteoritePowerCore"), 5);
             recipe.AddIngredient(null, ("BloodFangCore"), 8);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

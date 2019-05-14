@@ -1,9 +1,3 @@
-using System;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace EnduriumMod.Items
@@ -17,7 +11,7 @@ namespace EnduriumMod.Items
             item.height = 57;
             item.maxStack = 99;
             item.value = Terraria.Item.sellPrice(0, 0, 0, 0);
-            item.rare = 4;
+            item.rare = 2;
         }
 
         public override void SetStaticDefaults()

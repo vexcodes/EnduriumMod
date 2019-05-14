@@ -13,8 +13,8 @@ namespace EnduriumMod.Items
         public override void SetDefaults()
         {
 
-            item.width = 50;
-            item.height = 57;
+            item.width = 26;
+            item.height = 26;
             item.maxStack = 99;
             item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
             item.rare = 4;
@@ -24,18 +24,18 @@ namespace EnduriumMod.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Star Crystal");
-            Tooltip.SetDefault("'infused with magic'");
+            Tooltip.SetDefault("'A bunch of fallen stars fused with magical powers'");
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, ("Aquamarine"), 5);
             recipe.AddIngredient(ItemID.FallenStar, 5);
-            recipe.AddIngredient(ItemID.SoulofLight, 2);
-            recipe.AddIngredient(ItemID.SoulofNight, 2);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(ItemID.SoulofLight);
+            recipe.AddIngredient(ItemID.SoulofNight);
+            recipe.AddTile(null, "SoulForge");
 
-            recipe.SetResult(this, 4);
+            recipe.SetResult(this, 5);
             recipe.AddRecipe();
         }
     }

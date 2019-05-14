@@ -1,27 +1,8 @@
 using System;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Terraria.UI;
-using Terraria.DataStructures;
 using Terraria.GameContent.UI;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader.IO;
-using Terraria.World.Generation;
-using Microsoft.Xna.Framework;
-using Terraria.GameContent.Generation;
-using Terraria.Initializers;
-using Terraria.IO;
-using Terraria.ModLoader;
-using Terraria.GameContent;
-using Terraria.DataStructures;
-using EnduriumMod.NPCs.KeeperofHollow;
 
 namespace EnduriumMod
 {

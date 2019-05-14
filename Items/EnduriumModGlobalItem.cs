@@ -1,14 +1,26 @@
-
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using EnduriumMod;
-
 namespace EnduriumMod.Items
 {
     public class EnduriumModGlobalItem : GlobalItem
     {
+        public override bool Shoot(Item item, Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            if (((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).Voidwalker)
+            {
+                if (item.melee)
+                {
+                    if (player.statDefense <= 20)
+                    {
+                        Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));                                                                             // perturbedSpeed = perturbedSpeed * scale; 
+                        Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("VoidRocket"), damage / 2, knockBack, player.whoAmI);
+                    }
+                }
+            }
+            return base.Shoot(item, player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
+        }
         public override bool ConsumeAmmo(Item item, Player player)
         {
             if (((MyPlayer)player.GetModPlayer(mod, "MyPlayer")).RoyalQuiver)

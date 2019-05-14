@@ -53,7 +53,6 @@ namespace EnduriumMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.HallowedBar, 25);
             recipe.AddIngredient(null, ("StarCrystal"), 6);
-            recipe.AddIngredient(null, ("GlitterFrostCrystal"), 15);
             recipe.AddIngredient(ItemID.SoulofSight, 25);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
