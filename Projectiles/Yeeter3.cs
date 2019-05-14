@@ -94,8 +94,6 @@ namespace EnduriumMod.Projectiles
                     projectile.Kill();
                 }
             }
-
-            int num;
             if (projectile.velocity.X > 0f)
             {
                 projectile.direction = 1;

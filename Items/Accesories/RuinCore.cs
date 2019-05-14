@@ -39,6 +39,7 @@ namespace EnduriumMod.Items.Accesories
         {
             player.buffImmune[BuffID.Poisoned] = true;
             player.moveSpeed += 0.20f;
+            Lighting.AddLight(player.Center, 0f, 0.9f, 0f);
             int num998 = Dust.NewDust(player.position, player.width, player.height, 89, 0, 0, 0, Color.Green, 0.5f);
             Dust dust3 = Main.dust[num998];
             dust3.velocity.Y *= 3.1f;

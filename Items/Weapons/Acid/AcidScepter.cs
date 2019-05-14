@@ -11,11 +11,11 @@ namespace EnduriumMod.Items.Weapons.Acid
 
             item.damage = 74;
             item.magic = true;
-            item.mana = 12;
+            item.mana = 8;
             item.width = 50;
             item.height = 54;
-            item.useAnimation = 30;
-            item.useTime = 30;
+            item.useAnimation = 29;
+            item.useTime = 29;
             item.useStyle = 5;
             Item.staff[item.type] = true;
             item.noMelee = true; //so the item's animation doesn't do damage
@@ -45,7 +45,7 @@ namespace EnduriumMod.Items.Weapons.Acid
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 
-            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 80f;
+            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 70f;
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
             {
                 position += muzzleOffset;

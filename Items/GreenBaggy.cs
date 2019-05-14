@@ -54,6 +54,13 @@ namespace EnduriumMod.Items
             {
                 player.QuickSpawnItem(mod.ItemType("MagicPowder"), Main.rand.Next(1, 3));
             }
+            if (NPC.downedBoss3)
+            {
+                if (Main.rand.Next(4) == 0)
+                {
+                    player.QuickSpawnItem(mod.ItemType("Jade"), Main.rand.Next(1, 3));
+                }
+            }
             if (Main.rand.Next(6) == 0)
             {
                 player.QuickSpawnItem(ItemID.GlowingMushroom, Main.rand.Next(10, 25));

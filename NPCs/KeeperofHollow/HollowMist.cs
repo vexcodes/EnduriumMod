@@ -74,7 +74,6 @@ namespace EnduriumMod.NPCs.KeeperofHollow
             projectile.ai[0] = 0;
 
             int num4324;
-            int num;
             for (int num20 = 0; num20 < 1; num20 = num4324 + 1)
             {
                 float num21 = projectile.velocity.X / 4f * (float)num20;
