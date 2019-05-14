@@ -26,12 +26,12 @@ namespace EnduriumMod.Items.ThePrismArcanum
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Forgoten relic");
-      Tooltip.SetDefault("Summons the tortured...");
+      Tooltip.SetDefault("Summons the Prism Arcanum\nUse in the snow biome");
     }
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.dayTime && !NPC.AnyNPCs(mod.NPCType("ThePrismArcanum"));
+            return !Main.dayTime && player.ZoneSnow && !NPC.AnyNPCs(mod.NPCType("ThePrismArcanum"));
         }
 
         public override bool UseItem(Player player)

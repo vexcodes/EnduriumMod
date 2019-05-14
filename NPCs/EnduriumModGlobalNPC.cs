@@ -81,6 +81,18 @@ namespace EnduriumMod.NPCs
                 pool.Remove(0);
             }
         }
+        public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        {
+            if (type == 228)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Herbs.PutridGel>());
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.PutridSpore>());
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accesories.ErodedPrism>());
+                nextSlot++;
+            }
+        }
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
         {
         }

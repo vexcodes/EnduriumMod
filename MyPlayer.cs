@@ -891,13 +891,13 @@ namespace EnduriumMod
 
             if (Slimy)
             {
-                if (player.accRunSpeed >= 0f)
+                if (player.accRunSpeed >= 0.7f)
                 {
-                    player.accRunSpeed = 0f;
+                    player.accRunSpeed = 0.7f;
                 }
-                if (player.moveSpeed >= 0.2f)
+                if (player.moveSpeed >= 2f)
                 {
-                    player.moveSpeed = 0.2f;
+                    player.moveSpeed = 2f;
                 }
                 player.accRunSpeed = 0f;
                 player.eocDash = 0;
@@ -1167,7 +1167,7 @@ namespace EnduriumMod
                 {
                     player.AddBuff(mod.BuffType("Overgrowth1"), Main.rand.Next(80, 120));
                 }
-                if (Main.rand.Next(28) == 0)
+                if (Main.rand.Next(30) == 0)
                 {
                     player.AddBuff(mod.BuffType("Overgrowth2"), Main.rand.Next(80, 100));
                 }
@@ -1201,20 +1201,19 @@ namespace EnduriumMod
             {
                 if (Main.rand.Next(7) == 0)
                 {
-                    target.AddBuff(mod.BuffType("AncientCurse"), 40);
+                    target.AddBuff(mod.BuffType("AncientCurse"), 20);
                 }
             }
             if (MinionShiver && proj.minion)
             {
                 if (Main.rand.Next(7) == 0)
                 {
-                    target.AddBuff(mod.BuffType("Shiver"), 45);
+                    target.AddBuff(mod.BuffType("Shiver"), 25);
                 }
             }
             if (NatureMagic && proj.magic)
             {
-                target.AddBuff(mod.BuffType("NatureSting"), 40);
-
+                target.AddBuff(mod.BuffType("NatureSting"), 20);
             }
 
             if (BloodFangBuff)
@@ -1226,7 +1225,6 @@ namespace EnduriumMod
                     int healAmount = 5;
                     player.HealEffect(healAmount);
                     player.statLife += healAmount;
-
                 }
             }
             if (BloodFang && !BloodFangBuff)

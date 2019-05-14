@@ -26,8 +26,8 @@ namespace EnduriumMod.Items.Weapons
             item.noUseGraphic = true;
             item.ranged = true;
             item.channel = true;
-            item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/Facemelter");
-            item.shoot = mod.ProjectileType("Facemelter");
+            //item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/Facemelter");
+            item.shoot = mod.ProjectileType("AcidDouser");
         }
         public override void AddRecipes()
         {

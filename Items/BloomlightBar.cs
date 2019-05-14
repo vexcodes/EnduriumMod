@@ -24,10 +24,10 @@ namespace EnduriumMod.Items
 		public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, ("BloomlightOre"), 3);
+            recipe.AddIngredient(null, ("BloomlightOre"), 6);
             recipe.AddIngredient(null, ("PutridSpore"), 1);
             recipe.AddTile(TileID.Furnaces);
-            recipe.SetResult(this);
+            recipe.SetResult(this, 2);
             recipe.AddRecipe();
         }
     }

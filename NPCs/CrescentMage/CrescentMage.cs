@@ -28,7 +28,7 @@ namespace EnduriumMod.NPCs.CrescentMage
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return EnduriumWorld.downedPhantasmShaman && Main.hardMode && Main.bloodMoon ? 0.1f : 0f;
+            return EnduriumWorld.downedPhantasmShaman && Main.hardMode && Main.bloodMoon && !spawnInfo.playerInTown && !spawnInfo.player.ZoneTowerStardust && !spawnInfo.player.ZoneTowerSolar && !spawnInfo.player.ZoneTowerVortex && !spawnInfo.player.ZoneTowerNebula ? 0.1f : 0f;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {

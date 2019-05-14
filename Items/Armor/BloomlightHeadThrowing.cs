@@ -25,7 +25,7 @@ namespace EnduriumMod.Items.Armor
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bloomlight Headgear");
-            Tooltip.SetDefault("Increases throwing damage by 10%");
+            Tooltip.SetDefault("Increases throwing damage by 8%");
         }
 
 
@@ -48,7 +48,7 @@ namespace EnduriumMod.Items.Armor
 
         public override void UpdateEquip(Player player)
         {
-            player.thrownDamage += 0.1f;
+            player.thrownDamage += 0.08f;
         }
         public override void AddRecipes()
         {

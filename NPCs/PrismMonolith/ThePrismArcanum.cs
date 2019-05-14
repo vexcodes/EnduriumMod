@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace EnduriumMod.NPCs.PrismMonolith
 {
+    [AutoloadBossHead]
     public class ThePrismArcanum : ModNPC
     {
         public override void SetStaticDefaults()

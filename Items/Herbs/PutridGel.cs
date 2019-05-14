@@ -17,13 +17,13 @@ namespace EnduriumMod.Items.Herbs
             item.height = 22;
             item.maxStack = 99;
             item.value = Terraria.Item.sellPrice(0, 0, 5, 0);
-            item.rare = 3;
+            item.rare = 2;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Putrid Gel");
-            Tooltip.SetDefault("Used in advanced potion brewing");
+            //Tooltip.SetDefault("Used in advanced potion brewing");
         }
     }
 }

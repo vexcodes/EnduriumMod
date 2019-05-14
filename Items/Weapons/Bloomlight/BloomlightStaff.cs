@@ -9,7 +9,7 @@ namespace EnduriumMod.Items.Weapons.Bloomlight
         public override void SetDefaults()
         {
 
-            item.damage = 36;
+            item.damage = 26;
             item.magic = true;
             item.mana = 12;
             item.width = 56;
@@ -24,7 +24,7 @@ namespace EnduriumMod.Items.Weapons.Bloomlight
             item.value = 45000;
             item.rare = 6;
             item.UseSound = SoundID.Item43;
-            item.autoReuse = true;
+            item.autoReuse = false;
             item.shoot = mod.ProjectileType("BloomlightStaff");
             item.shootSpeed = 18f;
         }

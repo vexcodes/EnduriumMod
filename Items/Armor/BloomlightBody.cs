@@ -20,7 +20,7 @@ namespace EnduriumMod.Items.Armor
 
             item.value = 12000;
             item.rare = 6;
-            item.defense = 7; //42
+            item.defense = 4; //42
         }
 
         public override void SetStaticDefaults()

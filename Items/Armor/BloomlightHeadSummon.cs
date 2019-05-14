@@ -42,7 +42,7 @@ namespace EnduriumMod.Items.Armor
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = "Increases max minions";
-			            player.maxMinions += 2;
+			player.maxMinions += 2;
         }
 
         public override void UpdateEquip(Player player)

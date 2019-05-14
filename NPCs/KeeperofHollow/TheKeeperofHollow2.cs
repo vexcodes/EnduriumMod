@@ -11,6 +11,7 @@ using Terraria.GameContent.Generation;
 
 namespace EnduriumMod.NPCs.KeeperofHollow
 {
+    [AutoloadBossHead]
     public class TheKeeperofHollow2 : ModNPC
     {
         public override void SetDefaults()

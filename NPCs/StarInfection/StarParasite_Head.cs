@@ -21,9 +21,9 @@ namespace EnduriumMod.NPCs.StarInfection
         public override void SetDefaults()
         {
             npc.damage = 400;
-            npc.npcSlots = 5f;
+            npc.npcSlots = 1f;
             npc.width = 38; //324
-            npc.height = 34; //216
+            npc.height = 30; //216
             npc.defense = 60;
             npc.lifeMax = 22000;
             npc.aiStyle = 6;

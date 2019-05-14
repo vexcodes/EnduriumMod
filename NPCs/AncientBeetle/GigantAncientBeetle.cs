@@ -40,7 +40,7 @@ namespace EnduriumMod.NPCs.AncientBeetle
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             Tile tile = Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY];
-            return spawnInfo.player.ZoneDesert && !spawnInfo.playerInTown && !spawnInfo.player.ZoneTowerStardust && !spawnInfo.player.ZoneTowerSolar && !spawnInfo.player.ZoneTowerVortex && !spawnInfo.player.ZoneTowerNebula ? 0.01f : 0f;
+            return spawnInfo.player.ZoneDesert && !spawnInfo.playerInTown && !spawnInfo.player.ZoneTowerStardust && !spawnInfo.player.ZoneTowerSolar && !spawnInfo.player.ZoneTowerVortex && !spawnInfo.player.ZoneTowerNebula ? 0.012f : 0f;
         }
 		public override void HitEffect(int hitDirection, double damage)
 		{

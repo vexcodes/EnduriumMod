@@ -20,8 +20,8 @@ namespace EnduriumMod.Items.Weapons.Bloomlight
             item.mana = 10;
             item.width = 46;
             item.height = 46;
-            item.useTime = 6;
-            item.useAnimation = 18;
+            item.useTime = 11;
+            item.useAnimation = 33;
             item.reuseDelay = 15;
             item.useStyle = 5;
 
@@ -31,7 +31,7 @@ namespace EnduriumMod.Items.Weapons.Bloomlight
             item.value = 20000;
             item.rare = 3;
             item.UseSound = SoundID.Item72;
-            item.autoReuse = true;
+            item.autoReuse = false;
             item.shoot = mod.ProjectileType("OrbTome");
             item.shootSpeed = 14f;
         }

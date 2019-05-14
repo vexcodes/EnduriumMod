@@ -46,7 +46,7 @@ namespace EnduriumMod.Items.Weapons
             }
             else
             {
-                Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, mod.ProjectileType("FacemelterAmplifier"), item.damage, item.knockBack, item.owner);
+                Projectile.NewProjectile(Main.MouseWorld.X, Main.MouseWorld.Y, 0f, 0f, mod.ProjectileType("FacemelterAmplifier"), item.damage, item.knockBack, Main.myPlayer);
                 return false;
             }
             return true;

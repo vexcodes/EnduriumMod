@@ -84,11 +84,6 @@ namespace EnduriumMod.Projectiles
         {
             for (int k = 0; k < 7; k++)
             {
-                int num137 = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 61, projectile.oldVelocity.X * 0.05f, projectile.oldVelocity.Y * 0.05f);
-                Main.dust[num137].noGravity = true;
-            }
-            for (int k = 0; k < 7; k++)
-            {
                 int num137 = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 89, projectile.oldVelocity.X * 0.05f, projectile.oldVelocity.Y * 0.05f);
                 Main.dust[num137].noGravity = true;
             }

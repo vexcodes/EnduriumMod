@@ -186,7 +186,7 @@ namespace EnduriumMod.NPCs.MiniBiomes
             int x = spawnInfo.spawnTileX;
             int y = spawnInfo.spawnTileY;
             Tile tile = Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY];
-            return (tile.type == 367) ? 0.24f : 0f;
+            return (tile.type == 367) && !spawnInfo.playerInTown && !spawnInfo.player.ZoneTowerStardust && !spawnInfo.player.ZoneTowerSolar && !spawnInfo.player.ZoneTowerVortex && !spawnInfo.player.ZoneTowerNebula ? 0.24f : 0f;
         }
         public override void NPCLoot()
         {

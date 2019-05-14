@@ -36,6 +36,10 @@ namespace EnduriumMod.Items.HollowWarlock
             {
                 return false;
             }
+            if (!player.ZoneHoly)
+            {
+                return false;
+            }
             return true;
         }
 

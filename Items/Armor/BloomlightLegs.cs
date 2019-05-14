@@ -19,22 +19,22 @@ namespace EnduriumMod.Items.Armor
 
             item.value = 12500;
             item.rare = 3;
-            item.defense = 6; //42
+            item.defense = 4; //42
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bloomlight Cuisses");
-            Tooltip.SetDefault("Increases movement speed\nInreases magic, ranged and throwing critical strike chance by 6%");
+            Tooltip.SetDefault("Increases movement speed\nInreases magic, ranged and throwing critical strike chance by 4%");
         }
 
 
         public override void UpdateEquip(Player player)
         {
             player.moveSpeed += 0.15f;
-			player.thrownCrit += 6;
-            player.rangedCrit += 6;
-            player.magicCrit += 6;
+			player.thrownCrit += 4;
+            player.rangedCrit += 4;
+            player.magicCrit += 4;
         }
         public override void AddRecipes()
         {

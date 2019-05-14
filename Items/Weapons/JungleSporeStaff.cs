@@ -10,7 +10,7 @@ namespace EnduriumMod.Items.Weapons
         public override void SetDefaults()
         {
 
-            item.damage = 19;
+            item.damage = 12;
             item.magic = true;
             item.mana = 10;
             item.width = 46;
@@ -28,7 +28,7 @@ namespace EnduriumMod.Items.Weapons
             item.UseSound = SoundID.Item43;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("PoisonBolt");
-            item.shootSpeed = 9f;
+            item.shootSpeed = 6f;
         }
         public override void AddRecipes()
         {

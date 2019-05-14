@@ -11,6 +11,7 @@ using Terraria.GameContent.Generation;
 
 namespace EnduriumMod.NPCs.TheSwarm
 {
+    [AutoloadBossHead]
     public class TheSwarm : ModNPC
     {
         public override void SetDefaults()

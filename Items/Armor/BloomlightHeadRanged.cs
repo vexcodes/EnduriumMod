@@ -25,7 +25,7 @@ namespace EnduriumMod.Items.Armor
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bloomlight Helmet");
-            Tooltip.SetDefault("Increases ranged damage by 10%");
+            Tooltip.SetDefault("Increases ranged damage by 8%");
         }
 
 
@@ -48,7 +48,7 @@ namespace EnduriumMod.Items.Armor
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage += 0.1f;
+            player.rangedDamage += 0.08f;
         }
         public override void AddRecipes()
         {
